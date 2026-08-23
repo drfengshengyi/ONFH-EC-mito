@@ -1,0 +1,20 @@
+sample,dataset,group,participant_id,inferential_unit,independent_for_inference,source_note
+onfh1,liao_alcohol,ONFH_3A,LIAO_onfh1,participant,true,Liao cohort donor
+onfh2,liao_alcohol,ONFH_3A,LIAO_onfh2,participant,true,Liao cohort donor
+onfh3,liao_alcohol,ONFH_3A,LIAO_onfh3,participant,true,Liao cohort donor
+onfh4,liao_alcohol,ONFH_4,LIAO_onfh4,participant,true,Liao cohort donor
+onfh5,liao_alcohol,ONFH_4,LIAO_onfh5,participant,true,Liao cohort donor
+onfh6,liao_alcohol,ONFH_4,LIAO_onfh6,participant,true,Liao cohort donor
+hoa1,liao_alcohol,HOA,LIAO_hoa1,participant,true,Liao cohort donor
+hoa2,liao_alcohol,HOA,LIAO_hoa2,participant,true,Liao cohort donor
+hoa3,liao_alcohol,HOA,LIAO_hoa3,participant,true,Liao cohort donor
+fnf1,liao_alcohol,FNF,LIAO_fnf1,participant,true,Liao cohort donor
+fnf2,liao_alcohol,FNF,LIAO_fnf2,participant,true,Liao cohort donor
+S1,healthy,Healthy,GSE169396_S1,participant,true,GSE169396 donor
+S2,healthy,Healthy,GSE169396_S2,participant,true,GSE169396 donor
+S3,healthy,Healthy,GSE169396_S3,participant,true,GSE169396 donor
+S4,healthy,Healthy,GSE169396_S4,participant,true,GSE169396 donor
+AL,sonfh_cystic,SONFH,,sequencing_library,false,GSE290411 paper reports 3 participants but mapping of 4 GEO libraries is unavailable
+bone,sonfh_cystic,SONFH,,sequencing_library,false,GSE290411 paper reports 3 participants but mapping of 4 GEO libraries is unavailable
+DWR,sonfh_cystic,SONFH,,sequencing_library,false,GSE290411 paper reports 3 participants but mapping of 4 GEO libraries is unavailable
+WXJ,sonfh_cystic,SONFH,,sequencing_library,false,GSE290411 paper reports 3 participants but mapping of 4 GEO libraries is unavailable

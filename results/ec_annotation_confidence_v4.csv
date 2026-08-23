@@ -1,0 +1,10 @@
+cluster,top_panel,second_panel,top_score,second_score,top_two_margin,ambiguous_margin_lt_0.15,assigned_subtype,assigned_matches_top_panel,strict_subtype
+0,venous_ACKR1,typeH_EMCN_KDR,1.25547456741333,1.2041646242141724,0.051309943199157715,True,venous_ACKR1,True,Ambiguous
+1,typeR_bone_remodel,typeH_EMCN_KDR,1.2128196954727173,1.1933969259262085,0.01942276954650879,True,typeR_bone_remodel,True,Ambiguous
+2,typeR_bone_remodel,venous_ACKR1,0.7280222177505493,0.7139265537261963,0.014095664024353027,True,typeR_bone_remodel,True,Ambiguous
+3,typeH_EMCN_KDR,venous_ACKR1,1.3257170915603638,1.2847378253936768,0.04097926616668701,True,typeH_EMCN_KDR,True,Ambiguous
+4,typeH_EMCN_KDR,typeR_bone_remodel,1.2471070289611816,1.025642991065979,0.22146403789520264,False,typeH_EMCN_KDR,True,typeH_EMCN_KDR
+5,lymphatic,typeR_bone_remodel,2.178406238555908,0.962835729122162,1.2155705094337463,False,lymphatic,True,lymphatic
+6,typeH_EMCN_KDR,venous_ACKR1,0.9389598965644836,0.7929403185844421,0.1460195779800415,True,typeH_EMCN_KDR,True,Ambiguous
+7,venous_ACKR1,typeH_EMCN_KDR,0.691908061504364,0.6889731287956238,0.0029349327087402344,True,venous_ACKR1,True,Ambiguous
+8,typeH_EMCN_KDR,typeR_bone_remodel,1.0890605449676514,1.0348299741744995,0.054230570793151855,True,typeH_EMCN_KDR,True,Ambiguous

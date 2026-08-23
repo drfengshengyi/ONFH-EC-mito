@@ -1,0 +1,38 @@
+# Primary data are downloaded from the public accessions.
+data/*
+!data/README.md
+!data/datasets.tsv
+
+# Large regenerated intermediates
+*.h5ad
+*.h5
+*.hdf5
+analysis/*.rds
+analysis/*.rda
+
+# Local environments and caches
+.venv*/
+renv/library/
+__pycache__/
+*.py[cod]
+.Rhistory
+.RData
+.Rproj.user/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+tmp/
+
+# Local manuscript/compiler products
+*.aux
+*.bbl
+*.blg
+*.out
+*.spl
+*.synctex.gz
+
+# Platform files
+.DS_Store
+Thumbs.db

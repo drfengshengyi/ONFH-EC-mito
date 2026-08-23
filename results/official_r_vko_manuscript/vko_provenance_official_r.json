@@ -1,0 +1,57 @@
+{
+  "analysis": "donor-separated SQSTM1 virtual knockout with official R package",
+  "target": "SQSTM1",
+  "profile": "manuscript",
+  "donors": ["hoa2", "hoa3"],
+  "frozen_feature_file": "virtual_knockout/vko_selected_features_v5.csv",
+  "frozen_barcode_file": "virtual_knockout/vko_ec_barcodes_v5.csv",
+  "parameters": {
+    "n_net": 20,
+    "n_cells": 500,
+    "n_comp": 3,
+    "q": 0.94999999999999996,
+    "td_k": 3,
+    "td_max_iter": 500,
+    "td_max_error": 1.0000000000000001e-05,
+    "td_n_decimal": 3,
+    "ma_n_dim": 30
+  },
+  "n_cores": 1,
+  "official_package_behavior": {
+    "normalization": "CPM normalization is always applied by scTenifoldKnk",
+    "sampling": "scTenifoldNet::makeNetworks samples cells with replacement",
+    "seed": "the official scTenifoldKnk wrapper internally calls set.seed(1)"
+  },
+  "runs": [
+    {
+      "donor": "hoa2",
+      "n_ec": 1043,
+      "n_genes": 300,
+      "target_prevalence": 0.70757430488974116,
+      "target_rank": 1,
+      "downstream_genes_fdr_lt_0_05": 4,
+      "elapsed_seconds": 1032.1699999999998
+    },
+    {
+      "donor": "hoa3",
+      "n_ec": 760,
+      "n_genes": 300,
+      "target_prevalence": 0.72236842105263155,
+      "target_rank": 1,
+      "downstream_genes_fdr_lt_0_05": 2,
+      "elapsed_seconds": 1041.2
+    }
+  ],
+  "donor_rank_spearman": {
+    "rho": 0.47161501794464383,
+    "p_value": 5.0923051878220647e-18
+  },
+  "software": {
+    "R": "4.6.1",
+    "scTenifoldKnk": "1.1",
+    "scTenifoldNet": "1.4",
+    "Matrix": "1.7.5",
+    "jsonlite": "2.0.0"
+  },
+  "interpretation_guardrail": "Network perturbation ranks are exploratory predictions, not experimental knockout validation or participant-level causal tests."
+}
