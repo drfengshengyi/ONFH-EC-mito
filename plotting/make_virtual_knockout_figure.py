@@ -105,76 +105,136 @@ def rounded_box(
 
 def workflow_panel(ax: plt.Axes) -> None:
     ax.set_axis_off()
-    ax.set_title("Official-package virtual-knockout design", loc="left", pad=5)
+    ax.set_title("Donor-separated official-package virtual-knockout workflow", loc="left", pad=5)
 
     rounded_box(
         ax,
-        (0.02, 0.76),
-        0.25,
-        0.12,
-        "HOA1: 26 ECs\nExcluded from network",
+        (0.02, 0.83),
+        0.96,
+        0.075,
+        "HOA1 excluded before network inference: only 26 control ECs remained",
         "#E5E7EB",
-        fontsize=7.7,
+        fontsize=7.4,
     )
     rounded_box(
         ax,
-        (0.02, 0.51),
-        0.25,
-        0.17,
-        "HOA2 control ECs\nn = 1,043\nSQSTM1+ = 70.8%",
-        "#DDEBF7",
-        fontsize=7.7,
-    )
-    rounded_box(
-        ax,
-        (0.02, 0.26),
-        0.25,
-        0.17,
-        "HOA3 control ECs\nn = 760\nSQSTM1+ = 72.2%",
-        "#E2F0D9",
-        fontsize=7.7,
-    )
-    rounded_box(
-        ax,
-        (0.38, 0.40),
-        0.26,
-        0.27,
-        "Official R packages\nscTenifoldKnk v1.1\nscTenifoldNet v1.4\n300 shared genes",
-        "#FFF2CC",
-    )
-    rounded_box(
-        ax,
-        (0.73, 0.40),
-        0.25,
-        0.27,
-        "Virtual SQSTM1 KO\nSQSTM1 network row = 0\nWT--KO manifold alignment\nDifferential regulation",
-        "#FCE4D6",
-    )
-
-    arrow = dict(arrowstyle="-|>", lw=1.5, color="#4B5563", mutation_scale=12)
-    ax.annotate("", (0.38, 0.57), (0.27, 0.595), xycoords=ax.transAxes, arrowprops=arrow)
-    ax.annotate("", (0.38, 0.49), (0.27, 0.345), xycoords=ax.transAxes, arrowprops=arrow)
-    ax.annotate("", (0.73, 0.535), (0.64, 0.535), xycoords=ax.transAxes, arrowprops=arrow)
-    ax.text(0.295, 0.82, "not modeled", transform=ax.transAxes, fontsize=6.6, color="#6B7280", va="center")
-
-    ax.text(
-        0.01,
-        0.08,
-        "Parameter audit",
-        transform=ax.transAxes,
-        fontsize=9,
-        fontweight="bold",
-    )
-    ax.text(
-        0.01,
-        0.015,
+        (0.02, 0.66),
+        0.96,
+        0.115,
         (
-            "Primary: 20 networks, q=0.95, 30 manifold dimensions   |   "
-            "Package-default sensitivity: 10 networks, q=0.90, 2 dimensions\n"
-            "No downstream gene or pathway was FDR-significant in both donors under both profiles."
+            "Shared software and gene space (applied separately to each donor)\n"
+            "scTenifoldKnk v1.1; scTenifoldNet v1.4; 300 shared genes\n"
+            "Primary: 20 networks, q=0.95, 30 dimensions | Sensitivity: 10 networks, q=0.90, 2 dimensions"
         ),
+        "#FFF2CC",
+        fontsize=6.8,
+    )
+
+    for x, label in (
+        (0.12, "Input"),
+        (0.38, "Donor-specific WT network"),
+        (0.64, "In silico perturbation"),
+        (0.89, "Ranked output"),
+    ):
+        ax.text(
+            x,
+            0.605,
+            label,
+            transform=ax.transAxes,
+            ha="center",
+            va="center",
+            fontsize=6.9,
+            fontweight="bold",
+            color="#374151",
+        )
+
+    rounded_box(
+        ax,
+        (0.02, 0.39),
+        0.20,
+        0.15,
+        "HOA2 control ECs\nn = 1,043\nSQSTM1 detected\nin 70.8%",
+        "#DDEBF7",
+        fontsize=6.6,
+    )
+    rounded_box(
+        ax,
+        (0.28, 0.39),
+        0.20,
+        0.15,
+        "Independent HOA2\nWT tensor network",
+        "#FFF7DA",
+        fontsize=6.8,
+    )
+    rounded_box(
+        ax,
+        (0.54, 0.39),
+        0.20,
+        0.15,
+        "Virtual SQSTM1 KO\nSQSTM1 outgoing row\nset to zero",
+        "#FCE4D6",
+        fontsize=6.6,
+    )
+    rounded_box(
+        ax,
+        (0.80, 0.39),
+        0.18,
+        0.15,
+        "WT-KO manifold\nalignment\nGene + pathway ranks",
+        "#E8EAF6",
+        fontsize=6.6,
+    )
+
+    rounded_box(
+        ax,
+        (0.02, 0.17),
+        0.20,
+        0.15,
+        "HOA3 control ECs\nn = 760\nSQSTM1 detected\nin 72.2%",
+        "#E2F0D9",
+        fontsize=6.6,
+    )
+    rounded_box(
+        ax,
+        (0.28, 0.17),
+        0.20,
+        0.15,
+        "Independent HOA3\nWT tensor network",
+        "#FFF7DA",
+        fontsize=6.8,
+    )
+    rounded_box(
+        ax,
+        (0.54, 0.17),
+        0.20,
+        0.15,
+        "Virtual SQSTM1 KO\nSQSTM1 outgoing row\nset to zero",
+        "#FCE4D6",
+        fontsize=6.6,
+    )
+    rounded_box(
+        ax,
+        (0.80, 0.17),
+        0.18,
+        0.15,
+        "WT-KO manifold\nalignment\nGene + pathway ranks",
+        "#E8EAF6",
+        fontsize=6.6,
+    )
+
+    for y, color in ((0.465, "#4C78A8"), (0.245, "#59A14F")):
+        arrow = dict(arrowstyle="-|>", lw=1.45, color=color, mutation_scale=11)
+        ax.annotate("", (0.28, y), (0.22, y), xycoords=ax.transAxes, arrowprops=arrow)
+        ax.annotate("", (0.54, y), (0.48, y), xycoords=ax.transAxes, arrowprops=arrow)
+        ax.annotate("", (0.80, y), (0.74, y), xycoords=ax.transAxes, arrowprops=arrow)
+
+    ax.text(
+        0.02,
+        0.055,
+        "Guardrail: HOA2 and HOA3 used separate expression matrices, tensor networks, and WT-KO alignments; donor data were not pooled.",
         transform=ax.transAxes,
-        fontsize=7.5,
+        fontsize=7.0,
+        color="#4B5563",
         va="bottom",
     )
     panel_label(ax, "A")
