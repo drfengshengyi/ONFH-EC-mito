@@ -18,6 +18,8 @@ try {
     Invoke-Python "plotting/make_evidence_model.py"
     Invoke-Python "plotting/make_virtual_knockout_figure.py"
     Invoke-Python "plotting/assemble_manuscript_figures.py"
+    Invoke-Python "plotting/make_reviewed_figures.py"
+    Invoke-Python "plotting/correct_figure4_fdr.py"
 } finally {
     Pop-Location
 }

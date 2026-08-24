@@ -57,6 +57,9 @@ scikit-learn==1.9.0
 scipy==1.18.0
 scverse-misc==0.1.3
 seaborn==0.13.2
+pypdf==6.10.0
+pypdfium2==5.12.1
+reportlab==4.4.9
 session-info2==0.4.2
 session_info==1.0.1
 setuptools==84.0.0

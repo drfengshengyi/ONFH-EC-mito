@@ -53,6 +53,9 @@ python -m pip install -r environment\requirements-python.lock.txt
 
 # 5. Audit repository structure, syntax, metadata, and portability
 python qa\check_repository.py
+
+# Optional release audit: also require byte-identical manuscript figure PDFs
+python qa\check_repository.py --submission-dir <path-to-submission-figures>
 ```
 
 For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages are installed separately with `environment/install_official_sctenifoldknk.R`; see [`virtual_knockout/README.md`](virtual_knockout/README.md).

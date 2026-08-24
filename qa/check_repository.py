@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import ast
 import csv
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -25,6 +26,10 @@ REQUIRED = [
     "virtual_knockout/run_official_vko.R",
     "virtual_knockout/vko_selected_features_v5.csv",
     "plotting/assemble_manuscript_figures.py",
+    "plotting/make_reviewed_figures.py",
+    "plotting/correct_figure4_fdr.py",
+    "results/figure_inputs/module_scores_liao_stats_v4.csv",
+    "results/figure_inputs/diag_summary_v4.json",
     "workflow/run_core_analysis.ps1",
     "workflow/run_virtual_knockout.ps1",
     "workflow/run_figures.ps1",
@@ -53,9 +58,22 @@ def pass_(message: str) -> None:
     print(f"PASS  {message}")
 
 
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check-data", action="store_true", help="also require downloaded primary data")
+    parser.add_argument(
+        "--submission-dir",
+        type=Path,
+        help="optional submission figure directory whose PDFs must byte-match figures/final",
+    )
     args = parser.parse_args()
     errors: list[str] = []
 
@@ -121,6 +139,22 @@ def main() -> int:
         fail(errors, "missing final figures: " + ", ".join(final_missing))
     else:
         pass_("all submission figures are present as PDF and PNG")
+
+    if args.submission_dir:
+        names = [f"Figure{i}.pdf" for i in range(1, 7)] + ["SupplementaryFigureS1.pdf"]
+        missing_submission = [name for name in names if not (args.submission_dir / name).exists()]
+        if missing_submission:
+            fail(errors, "missing PDFs in --submission-dir: " + ", ".join(missing_submission))
+        else:
+            mismatched = [
+                name
+                for name in names
+                if sha256(ROOT / "figures" / "final" / name) != sha256(args.submission_dir / name)
+            ]
+            if mismatched:
+                fail(errors, "repository/submission figure hash mismatch: " + ", ".join(mismatched))
+            else:
+                pass_("repository and submission figure PDFs are byte-identical")
 
     if args.check_data:
         data_missing = [name for name in DATA_REQUIRED if not (ROOT / name).exists()]

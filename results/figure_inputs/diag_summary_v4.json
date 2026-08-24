@@ -1,0 +1,53 @@
+{
+  "primary_statistic": "AUC of per-sample OOF probabilities averaged over 5 repeated outer 5-fold CV runs",
+  "model": "standardization plus inner-CV-tuned L1 logistic regression, fitted inside each outer training fold",
+  "n_samples": 40,
+  "n_sonfh": 30,
+  "n_steroid_exposed_non_sonfh": 10,
+  "sample_source": "peripheral serum",
+  "candidate_genes_on_array": 77,
+  "aggregate_oof_auc": 0.87,
+  "aggregate_oof_average_precision": 0.9272,
+  "average_precision_prevalence_baseline": 0.75,
+  "repeat_auc_mean": 0.874,
+  "repeat_auc_sd": 0.0388,
+  "repeat_average_precision_mean": 0.9449,
+  "repeat_average_precision_sd": 0.024,
+  "cross_fitted_prediction_bootstrap_ci95": [
+    0.6733,
+    1.0
+  ],
+  "ci_scope": "stratified sample bootstrap of fixed aggregated cross-fitted predictions",
+  "n_permutations": 1000,
+  "permutation_empirical_p": 0.001998,
+  "permutation_statistic_matches_observed": true,
+  "ma2024_available_genes": [
+    "BID",
+    "FTH1",
+    "LACTB",
+    "PDK3"
+  ],
+  "ma2024_aggregate_oof_auc": 0.8133,
+  "ma2024_aggregate_oof_average_precision": 0.8735,
+  "ma2024_repeat_auc_mean": 0.7667,
+  "ma2024_repeat_auc_sd": 0.0347,
+  "ma2024_repeat_average_precision_mean": 0.871,
+  "ma2024_repeat_average_precision_sd": 0.0353,
+  "feature_stability_top": {
+    "AMBRA1": 0.8,
+    "FKBP8": 0.8,
+    "GABARAPL2": 0.8,
+    "YAP1": 0.64,
+    "BNIP3L": 0.56,
+    "TAX1BP1": 0.56,
+    "ULK1": 0.44,
+    "MAP1LC3B": 0.32,
+    "ATG7": 0.32,
+    "BAX": 0.28,
+    "MFN1": 0.28,
+    "BNIP3": 0.24,
+    "BCL2L1": 0.24,
+    "BCL2": 0.24,
+    "NBR1": 0.24
+  }
+}
