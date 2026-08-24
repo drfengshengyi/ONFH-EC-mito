@@ -316,7 +316,7 @@ def make_figure6() -> None:
     summary = json.loads((INPUT / "diag_summary_v4.json").read_text(encoding="utf-8"))
 
     fig = plt.figure(figsize=(11.4, 8.2), constrained_layout=True)
-    outer = fig.add_gridspec(2, 2, height_ratios=[1.0, 0.82])
+    outer = fig.add_gridspec(2, 2, height_ratios=[1.0, 1.0])
 
     ax_a = fig.add_subplot(outer[0, 0])
     null = pd.to_numeric(permutation["perm_auc"], errors="coerce").dropna()
@@ -336,24 +336,78 @@ def make_figure6() -> None:
     ax_b.set_xlabel("Selection frequency across 25 outer folds")
     panel_label(ax_b, "B", "Feature-selection stability")
 
-    ax_c = fig.add_subplot(outer[1, :])
+    labels = [
+        "EC mitochondrial\ncandidates",
+        f"Ma et al. comparator\n({len(summary['ma2024_available_genes'])}/7 genes available)",
+    ]
+
+    def performance_panel(
+        ax: plt.Axes,
+        first: np.ndarray,
+        second: np.ndarray,
+        *,
+        metric_label: str,
+        baseline: float,
+        panel: str,
+        title: str,
+        ylim: tuple[float, float],
+    ) -> None:
+        for idx, (values, color) in enumerate(((first, "#0072b2"), (second, "#cc79a7"))):
+            ax.scatter(
+                ordered_jitter(len(values), idx),
+                values,
+                s=44,
+                color=color,
+                edgecolor="white",
+                linewidth=0.6,
+                zorder=3,
+            )
+            mean = float(values.mean())
+            sd = float(values.std(ddof=1))
+            ax.errorbar(idx, mean, yerr=sd, color="#333333", capsize=6, lw=1.2, zorder=2)
+        ax.axhline(baseline, color="#888888", lw=0.9, ls="--")
+        ax.text(
+            0.02,
+            0.05,
+            f"Dashed line: baseline = {baseline:.2f}",
+            transform=ax.transAxes,
+            fontsize=7.0,
+            color="#666666",
+        )
+        ax.set_xlim(-0.42, 1.42)
+        ax.set_ylim(*ylim)
+        ax.set_xticks([0, 1], labels)
+        ax.set_ylabel(metric_label)
+        panel_label(ax, panel, title)
+
+    ax_c = fig.add_subplot(outer[1, 0])
     nested_auc = pd.to_numeric(nested["AUC"], errors="coerce").dropna().to_numpy()
     comparator_auc = pd.to_numeric(comparator["AUC"], errors="coerce").dropna().to_numpy()
-    labels = ["EC mitochondrial candidates", f"Ma et al. comparator\n({len(summary['ma2024_available_genes'])}/7 genes available)"]
-    for idx, (values, color) in enumerate(((nested_auc, "#0072b2"), (comparator_auc, "#cc79a7"))):
-        ax_c.scatter(ordered_jitter(len(values), idx), values, s=50, color=color, edgecolor="white", linewidth=0.6, zorder=3)
-        mean = float(values.mean())
-        sd = float(values.std(ddof=1))
-        ax_c.errorbar(idx, mean, yerr=sd, color="#333333", capsize=7, lw=1.25, zorder=2)
-    ax_c.axhline(0.5, color="#888888", lw=0.9, ls="--")
-    ax_c.text(0.01, 0.12, "Dashed line: no-skill AUC = 0.5", transform=ax_c.transAxes, fontsize=7.2, color="#666666")
-    ax_c.set_xlim(-0.45, 1.45)
-    ax_c.set_ylim(0.45, 1.02)
-    ax_c.set_xticks([0, 1], labels)
-    ax_c.set_ylabel("AUC per outer-CV repeat")
-    panel_label(ax_c, "C", "Five repeats of nested outer five-fold cross-validation (mean ± SD)")
+    performance_panel(
+        ax_c,
+        nested_auc,
+        comparator_auc,
+        metric_label="AUC per outer-CV repeat",
+        baseline=0.50,
+        panel="C",
+        title="Repeat-level AUC (mean ± SD)",
+        ylim=(0.45, 1.02),
+    )
 
-    fig.suptitle("GSE123568 peripheral-serum classifier: exploratory internal validation", fontsize=12.5, y=1.02)
+    ax_d = fig.add_subplot(outer[1, 1])
+    nested_ap = pd.to_numeric(nested["average_precision"], errors="coerce").dropna().to_numpy()
+    comparator_ap = pd.to_numeric(comparator["average_precision"], errors="coerce").dropna().to_numpy()
+    performance_panel(
+        ax_d,
+        nested_ap,
+        comparator_ap,
+        metric_label="Average precision per outer-CV repeat",
+        baseline=float(summary["average_precision_prevalence_baseline"]),
+        panel="D",
+        title="Repeat-level average precision (mean ± SD)",
+        ylim=(0.70, 1.02),
+    )
+
     save(fig, "Figure6")
 
 
