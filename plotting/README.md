@@ -4,7 +4,8 @@
 - `make_virtual_knockout_figure.py` generates Figure 5 from the official-R outputs and matched-null post-processing tables.
 - `make_evidence_model.py` generates Supplementary Figure S1.
 - `make_reviewed_figures.py` rebuilds Figures 2, 3, and 6 from the versioned plotting inputs. It clips percentage error intervals at zero, uses publication-facing subtype labels, marks the SONFH contrast as descriptive, and reads displayed FDR values from the result table.
-- `correct_figure4_fdr.py` synchronizes the Figure 4 cGAS-STING title with the same machine-readable FDR table.
+- `make_figure4.py` rebuilds all four Figure 4 panels from versioned GSEA, module-score, TF-activity, and communication tables. Every displayed FDR is table-derived; no post-hoc text overlay is used.
+- `correct_figure4_fdr.py` is retained only as a legacy record and is not called by the current workflow.
 
 Run all plotting steps with:
 

@@ -6,6 +6,7 @@ import argparse
 import ast
 import csv
 import hashlib
+import math
 import re
 import sys
 from pathlib import Path
@@ -27,8 +28,13 @@ REQUIRED = [
     "virtual_knockout/vko_selected_features_v5.csv",
     "plotting/assemble_manuscript_figures.py",
     "plotting/make_reviewed_figures.py",
-    "plotting/correct_figure4_fdr.py",
+    "plotting/make_figure4.py",
     "results/figure_inputs/module_scores_liao_stats_v4.csv",
+    "results/figure_inputs/gsea_ONFH3A_vs_HOA_H.csv",
+    "results/figure_inputs/sample_level_tf_ulm_v4.csv",
+    "results/figure_inputs/tf_stats_ulm_v4.csv",
+    "results/figure_inputs/comm_scores_v4_long.csv.gz",
+    "results/figure_inputs/comm_top_ONFH_4_vs_ONFH_3A_v4.csv",
     "results/figure_inputs/diag_summary_v4.json",
     "workflow/run_core_analysis.ps1",
     "workflow/run_virtual_knockout.ps1",
@@ -131,6 +137,24 @@ def main() -> int:
         pass_("sampling-unit guardrail: 19 libraries, 15 mapped participants, 4 descriptive SONFH libraries")
     else:
         fail(errors, "sampling-unit metadata no longer matches the frozen inferential design")
+
+    with (ROOT / "results/figure_inputs/gsea_ONFH3A_vs_HOA_H.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        gsea = {row["pathway"]: float(row["padj"]) for row in csv.DictReader(handle)}
+    expected_gsea = {
+        "HALLMARK_ALLOGRAFT_REJECTION": 1.12899319297421e-17,
+        "HALLMARK_INTERFERON_GAMMA_RESPONSE": 2.11625060949194e-14,
+        "HALLMARK_INTERFERON_ALPHA_RESPONSE": 8.32810112872156e-10,
+        "HALLMARK_INFLAMMATORY_RESPONSE": 1.15308484547667e-9,
+    }
+    if all(
+        name in gsea and math.isclose(gsea[name], value, rel_tol=1e-12)
+        for name, value in expected_gsea.items()
+    ):
+        pass_("Figure 4A GSEA FDR values match the frozen manuscript results")
+    else:
+        fail(errors, "Figure 4A GSEA table no longer matches the frozen manuscript results")
 
     final_expected = [f"figures/final/Figure{i}.{ext}" for i in range(1, 7) for ext in ("pdf", "png")]
     final_expected += [f"figures/final/SupplementaryFigureS1.{ext}" for ext in ("pdf", "png")]
