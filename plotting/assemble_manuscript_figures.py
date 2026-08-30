@@ -3,7 +3,7 @@
 
 The analysis scripts write source panels to ``figures/source``. This script
 only lays out those panels; it does not refit models or recalculate statistics.
-Figure 5 is generated separately by ``make_virtual_knockout_figure.py``.
+Figure 5 is generated separately by ``make_virtual_knockout_figure.R``.
 """
 from __future__ import annotations
 
@@ -171,4 +171,4 @@ plt.close(fig)
 print("saved Figure6")
 
 if not (FINAL / "Figure5.pdf").exists():
-    print("Figure5 is pending: run plotting/make_virtual_knockout_figure.py")
+    print("Figure5 is pending: run plotting/make_virtual_knockout_figure.R")
