@@ -1,0 +1,11 @@
+"profile","metric","direction","sqstm1_value","comparator_median","comparator_min","comparator_max","sqstm1_percentile","exact_empirical_p"
+"manuscript","cross_donor_spearman","higher",0.466295706044758,0.392940001346771,0.263261430719849,0.569064667459765,70,0.333333333333333
+"manuscript","top20_overlap_fraction","higher",0.55,0.525,0.4,0.6,75,0.523809523809524
+"manuscript","replicated_downstream_fdr_count","higher",1,0,0,1,100,0.476190476190476
+"manuscript","downstream_fdr_hoa2","higher",4,3,0,5,55,0.523809523809524
+"manuscript","downstream_fdr_hoa3","higher",2,2,0,2,100,0.714285714285714
+"official_default","cross_donor_spearman","higher",0.531843505196292,0.434166011986263,0.316754730533546,0.63280644654441,80,0.238095238095238
+"official_default","top20_overlap_fraction","higher",0.65,0.425,0.25,0.7,95,0.0952380952380952
+"official_default","replicated_downstream_fdr_count","higher",0,0,0,0,100,1
+"official_default","downstream_fdr_hoa2","higher",2,3,1,3,30,0.952380952380952
+"official_default","downstream_fdr_hoa3","higher",1,1,1,2,70,1

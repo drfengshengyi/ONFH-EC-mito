@@ -2,7 +2,7 @@
 
 Reproducible code and processed outputs for the manuscript:
 
-> **Participant-aware multi-cohort analysis characterizes heterogeneous endothelial and mitochondrial profiles in osteonecrosis of the femoral head**
+> **Endothelial heterogeneity and mitochondrial stress--clearance profiles in osteonecrosis of the femoral head: a participant-aware multi-cohort transcriptomic reanalysis**
 
 This release separates data preparation, biological analyses, the official-R `SQSTM1` virtual-knockout audit, and manuscript plotting. Primary public matrices are not redistributed. Processed result tables and final figures are included so the reported outputs can be inspected without rebuilding the complete atlas.
 
@@ -45,14 +45,14 @@ python -m pip install -r environment\requirements-python.lock.txt
 # 2. Rebuild the main analysis after placing public data under data/
 .\workflow\run_core_analysis.ps1 -Python python -Rscript Rscript -Jobs 4
 
-# 3. Run both official-R virtual-knockout profiles
+# 3. Run the original/mtDNA-feature-excluded official-R profiles and matched comparators
 .\workflow\run_virtual_knockout.ps1 -Python python -Rscript Rscript -Cores 1
 
 # 4. Rebuild final figures from the versioned source panels/results
-.\workflow\run_figures.ps1 -Python python
+.\workflow\run_figures.ps1 -Python python -Rscript Rscript
 
 # 5. Audit repository structure, syntax, metadata, and portability
-python qa\check_repository.py
+python qa\check_repository.py --rscript Rscript
 
 # Optional release audit: also require byte-identical manuscript figure PDFs
 python qa\check_repository.py --submission-dir <path-to-submission-figures>
@@ -65,6 +65,8 @@ For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages 
 - Statistical inference is performed at the participant/sampling-unit level where participant identity is available.
 - The four GSE290411 SONFH libraries are retained for descriptive visualization and effect-size comparison, not treated as four confirmed independent participants.
 - The `SQSTM1` virtual knockout is an expression-derived network perturbation performed separately in HOA2 and HOA3. It is **not** a wet-lab knockout and **not** a CellOracle cell-fate or differentiation-trajectory simulation.
+- The mtDNA-feature-exclusion sensitivity is a complete 295-gene network refit after removing `MT-ATP6`, `MT-CO1`, `MT-CO2`, `MT-ND1`, and `MT-ND4`; no replacement genes are introduced.
+- Twenty WT-matched gene perturbations calibrate whether `SQSTM1` is exceptional among similarly expressed and connected genes. They are computational comparators, not validated negative controls.
 - Virtual-knockout gene and pathway ranks are exploratory predictions. They do not establish causal `SQSTM1` dependence, mitochondrial function, or clinical utility.
 
 ## Reproducibility notes
@@ -72,6 +74,7 @@ For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages 
 - `analysis/sample_metadata_v4.csv` is the authoritative library-to-participant map.
 - Randomized analyses use fixed seeds recorded in code and provenance files.
 - `results/official_r_vko_manuscript/` and `results/official_r_vko_official_default/` retain parameter, package-version, and session information.
+- Matching, mtDNA-feature-excluded refits, common-universe rank comparisons, and target-selection rationale are versioned under `results/official_r_vko_matched_controls/` and the corresponding sensitivity-result directories.
 - Final figure PDFs in `figures/final/` are the submission versions; PNG counterparts are included for rapid review.
 
 ## Data availability

@@ -16,7 +16,9 @@ parse_cli <- function(args) {
     profile = "manuscript",
     cores = 1L,
     donors = c("hoa2", "hoa3"),
-    output_dir = NULL
+    output_dir = NULL,
+    target = "SQSTM1",
+    exclude_mt_encoded = FALSE
   )
   for (arg in args) {
     if (grepl("^--profile=", arg)) {
@@ -28,6 +30,10 @@ parse_cli <- function(args) {
       config$donors <- strsplit(value, ",", fixed = TRUE)[[1L]]
     } else if (grepl("^--output-dir=", arg)) {
       config$output_dir <- sub("^--output-dir=", "", arg)
+    } else if (grepl("^--target=", arg)) {
+      config$target <- sub("^--target=", "", arg)
+    } else if (identical(arg, "--exclude-mt-encoded")) {
+      config$exclude_mt_encoded <- TRUE
     } else if (arg %in% c("--help", "-h")) {
       cat(
         "Usage:\n",
@@ -38,6 +44,8 @@ parse_cli <- function(args) {
         "Optional:\n",
         "  --donors=hoa2,hoa3\n",
         "  --output-dir=results/custom-vko-output\n",
+        "  --target=SQSTM1\n",
+        "  --exclude-mt-encoded  Refit after removing genes beginning MT-\n",
         sep = ""
       )
       quit(save = "no", status = 0L)
@@ -234,10 +242,11 @@ python_consensus_path <- file.path(
 
 output_dir <- cli$output_dir
 if (is.null(output_dir)) {
+  suffix <- if (isTRUE(cli$exclude_mt_encoded)) "_no_mt_encoded" else ""
   output_dir <- file.path(
     project_root,
     "results",
-    paste0("official_r_vko_", gsub("-", "_", cli$profile))
+    paste0("official_r_vko_", gsub("-", "_", cli$profile), suffix)
   )
 }
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
@@ -257,14 +266,21 @@ for (path in c(features_path, barcodes_path)) {
   }
 }
 
-target <- "SQSTM1"
+target <- cli$target
 features <- utils::read.csv(features_path, check.names = FALSE)
 if (!all(c("gene", "selected_order") %in% names(features))) {
   stop("Malformed selected-feature file: ", features_path, call. = FALSE)
 }
 selected_genes <- as.character(features$gene)
 if (length(selected_genes) != 300L || anyDuplicated(selected_genes)) {
-  stop("Expected exactly 300 unique frozen genes", call. = FALSE)
+  stop("Expected exactly 300 unique genes before sensitivity filtering", call. = FALSE)
+}
+mt_encoded_genes <- selected_genes[grepl("^MT-", selected_genes)]
+if (isTRUE(cli$exclude_mt_encoded)) {
+  selected_genes <- setdiff(selected_genes, mt_encoded_genes)
+  if (length(mt_encoded_genes) == 0L) {
+    stop("No MT-encoded genes were available for exclusion", call. = FALSE)
+  }
 }
 if (!target %in% selected_genes) {
   stop(target, " is absent from the frozen feature set", call. = FALSE)
@@ -352,12 +368,18 @@ for (donor in cli$donors) {
   results[[donor]] <- donor_result
   utils::write.csv(
     donor_result,
-    file.path(output_dir, paste0("vko_sqstm1_", donor, "_official_r.csv")),
+    file.path(
+      output_dir,
+      paste0("vko_", tolower(target), "_", donor, "_official_r.csv")
+    ),
     row.names = FALSE
   )
   saveRDS(
     model,
-    file.path(output_dir, paste0("vko_sqstm1_", donor, "_official_r.rds")),
+    file.path(
+      output_dir,
+      paste0("vko_", tolower(target), "_", donor, "_official_r.rds")
+    ),
     compress = "xz"
   )
 
@@ -380,7 +402,10 @@ for (donor in cli$donors) {
 consensus <- make_consensus(results, cli$donors)
 utils::write.csv(
   consensus,
-  file.path(output_dir, "vko_sqstm1_consensus_official_r.csv"),
+  file.path(
+    output_dir,
+    paste0("vko_", tolower(target), "_consensus_official_r.csv")
+  ),
   row.names = FALSE
 )
 
@@ -394,9 +419,13 @@ if (length(cli$donors) == 2L) {
   ))
 }
 
-python_comparison <- compare_python_ranks(
-  consensus, python_consensus_path, cli$donors
-)
+python_comparison <- if (
+  identical(target, "SQSTM1") && !isTRUE(cli$exclude_mt_encoded)
+) {
+  compare_python_ranks(consensus, python_consensus_path, cli$donors)
+} else {
+  NULL
+}
 if (!is.null(python_comparison) && nrow(python_comparison) > 0L) {
   utils::write.csv(
     python_comparison,
@@ -414,12 +443,32 @@ package_versions <- list(
 )
 
 provenance <- list(
-  analysis = "donor-separated SQSTM1 virtual knockout with official R package",
+  analysis = paste(
+    "donor-separated", target,
+    "virtual knockout with official R package"
+  ),
   target = target,
   profile = cli$profile,
   donors = cli$donors,
   frozen_feature_file = display_path(features_path),
   frozen_barcode_file = display_path(barcodes_path),
+  feature_sensitivity = list(
+    exclude_mt_encoded = isTRUE(cli$exclude_mt_encoded),
+    excluded_genes = if (isTRUE(cli$exclude_mt_encoded)) {
+      mt_encoded_genes
+    } else {
+      character(0)
+    },
+    retained_gene_count = length(selected_genes),
+    design = if (isTRUE(cli$exclude_mt_encoded)) {
+      paste(
+        "Complete network refit after removing all frozen-feature",
+        "symbols beginning MT-."
+      )
+    } else {
+      "Original frozen 300-gene feature set."
+    }
+  ),
   parameters = params,
   n_cores = cli$cores,
   official_package_behavior = list(
@@ -457,8 +506,8 @@ summary_lines <- c(
   vapply(run_audit, function(x) {
     paste0(
       toupper(x$donor), ": n=", x$n_ec,
-      ", SQSTM1 prevalence=", sprintf("%.1f%%", 100 * x$target_prevalence),
-      ", SQSTM1 rank=", x$target_rank,
+      ", ", target, " prevalence=", sprintf("%.1f%%", 100 * x$target_prevalence),
+      ", ", target, " rank=", x$target_rank,
       ", downstream FDR<0.05 genes=", x$downstream_genes_fdr_lt_0_05
     )
   }, character(1)),

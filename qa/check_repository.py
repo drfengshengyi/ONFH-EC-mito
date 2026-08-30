@@ -8,6 +8,7 @@ import csv
 import hashlib
 import math
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -25,10 +26,13 @@ REQUIRED = [
     "analysis/v4_common.py",
     "analysis/prepare_matrices.R",
     "virtual_knockout/run_official_vko.R",
+    "virtual_knockout/run_matched_control_vko.R",
+    "virtual_knockout/postprocess_mt_exclusion.R",
     "virtual_knockout/vko_selected_features_v5.csv",
     "plotting/assemble_manuscript_figures.py",
     "plotting/make_reviewed_figures.py",
     "plotting/make_figure4.py",
+    "plotting/make_virtual_knockout_figure.R",
     "results/figure_inputs/module_scores_liao_stats_v4.csv",
     "results/figure_inputs/gsea_ONFH3A_vs_HOA_H.csv",
     "results/figure_inputs/sample_level_tf_ulm_v4.csv",
@@ -36,6 +40,18 @@ REQUIRED = [
     "results/figure_inputs/comm_scores_v4_long.csv.gz",
     "results/figure_inputs/comm_top_ONFH_4_vs_ONFH_3A_v4.csv",
     "results/figure_inputs/diag_summary_v4.json",
+    "results/official_r_vko_manuscript_no_mt_encoded/vko_provenance_official_r.json",
+    "results/official_r_vko_official_default_no_mt_encoded/vko_provenance_official_r.json",
+    "results/official_r_vko_no_mt_gene_comparison.csv",
+    "results/official_r_vko_no_mt_summary.csv",
+    "results/official_r_vko_no_mt_pathway_by_donor.csv",
+    "results/official_r_vko_no_mt_pathway_summary.csv",
+    "results/vko_mt_encoded_exclusion_manifest.csv",
+    "results/official_r_vko_matched_controls/matched_control_selection.csv",
+    "results/official_r_vko_matched_controls/matched_control_vko_summary.csv",
+    "results/official_r_vko_matched_controls/sqstm1_matched_control_calibration.csv",
+    "results/official_r_vko_matched_controls/frozen_wt_reuse_validation.csv",
+    "results/official_r_vko_matched_controls/sqstm1_selection_rationale.csv",
     "workflow/run_core_analysis.ps1",
     "workflow/run_virtual_knockout.ps1",
     "workflow/run_figures.ps1",
@@ -76,6 +92,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check-data", action="store_true", help="also require downloaded primary data")
     parser.add_argument(
+        "--rscript",
+        type=Path,
+        help="optional Rscript executable used to parse every versioned R file",
+    )
+    parser.add_argument(
         "--submission-dir",
         type=Path,
         help="optional submission figure directory whose PDFs must byte-match figures/final",
@@ -104,6 +125,30 @@ def main() -> int:
         fail(errors, "Python syntax: " + " | ".join(syntax_errors))
     else:
         pass_(f"Python syntax ({len(python_files)} files)")
+
+    if args.rscript:
+        r_files = sorted(
+            path
+            for directory in ("analysis", "virtual_knockout", "plotting", "environment")
+            for path in (ROOT / directory).rglob("*.R")
+        )
+        r_syntax_errors = []
+        for path in r_files:
+            r_path = str(path).replace("\\", "/")
+            completed = subprocess.run(
+                [str(args.rscript), "-e", f"invisible(parse(file={r_path!r}))"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if completed.returncode != 0:
+                detail = (completed.stderr or completed.stdout).strip().replace("\n", " | ")
+                r_syntax_errors.append(f"{path.relative_to(ROOT)}: {detail}")
+        if r_syntax_errors:
+            fail(errors, "R syntax: " + " | ".join(r_syntax_errors))
+        else:
+            pass_(f"R syntax ({len(r_files)} files)")
 
     local_paths = []
     for path in ROOT.rglob("*"):
@@ -165,15 +210,27 @@ def main() -> int:
         pass_("all submission figures are present as PDF and PNG")
 
     if args.submission_dir:
-        names = [f"Figure{i}.pdf" for i in range(1, 7)] + ["SupplementaryFigureS1.pdf"]
-        missing_submission = [name for name in names if not (args.submission_dir / name).exists()]
+        names = [f"Figure{i}.pdf" for i in range(1, 7)]
+        submission_names = {name: name for name in names}
+        supplement_candidates = ("SupplementaryFigureS1.pdf", "Supplementary_Figure_S1.pdf")
+        supplement_name = next(
+            (name for name in supplement_candidates if (args.submission_dir / name).exists()),
+            supplement_candidates[0],
+        )
+        submission_names["SupplementaryFigureS1.pdf"] = supplement_name
+        missing_submission = [
+            submitted
+            for submitted in submission_names.values()
+            if not (args.submission_dir / submitted).exists()
+        ]
         if missing_submission:
             fail(errors, "missing PDFs in --submission-dir: " + ", ".join(missing_submission))
         else:
             mismatched = [
-                name
-                for name in names
-                if sha256(ROOT / "figures" / "final" / name) != sha256(args.submission_dir / name)
+                canonical
+                for canonical, submitted in submission_names.items()
+                if sha256(ROOT / "figures" / "final" / canonical)
+                != sha256(args.submission_dir / submitted)
             ]
             if mismatched:
                 fail(errors, "repository/submission figure hash mismatch: " + ", ".join(mismatched))

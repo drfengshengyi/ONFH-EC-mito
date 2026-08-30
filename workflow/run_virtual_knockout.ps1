@@ -22,9 +22,13 @@ Push-Location $RepoRoot
 try {
     Invoke-Checked $Rscript @("virtual_knockout/run_official_vko.R", "--profile=manuscript", "--cores=$Cores")
     Invoke-Checked $Rscript @("virtual_knockout/run_official_vko.R", "--profile=official-default", "--cores=$Cores")
+    Invoke-Checked $Rscript @("virtual_knockout/run_official_vko.R", "--profile=manuscript", "--cores=$Cores", "--exclude-mt-encoded")
+    Invoke-Checked $Rscript @("virtual_knockout/run_official_vko.R", "--profile=official-default", "--cores=$Cores", "--exclude-mt-encoded")
     Invoke-Checked $Python @("virtual_knockout/postprocess_official_vko.py")
+    Invoke-Checked $Rscript @("virtual_knockout/run_matched_control_vko.R", "--cores=$Cores")
+    Invoke-Checked $Rscript @("virtual_knockout/postprocess_mt_exclusion.R")
     Invoke-Checked $Rscript @("virtual_knockout/export_figure_data.R")
-    Invoke-Checked $Python @("plotting/make_virtual_knockout_figure.py")
+    Invoke-Checked $Rscript @("plotting/make_virtual_knockout_figure.R")
 } finally {
     Pop-Location
 }

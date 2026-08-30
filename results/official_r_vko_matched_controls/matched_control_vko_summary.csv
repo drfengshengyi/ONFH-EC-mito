@@ -1,0 +1,43 @@
+"profile","perturbation_gene","role","cross_donor_spearman","cross_donor_spearman_p","top20_overlap_count","top20_overlap_fraction","downstream_fdr_hoa2","downstream_fdr_hoa3","replicated_downstream_fdr_count"
+"manuscript","SQSTM1","target",0.466295706044758,1.51185565722812e-17,11,0.55,4,2,1
+"manuscript","FIS1","matched comparator",0.390344100020202,2.53958400019045e-12,12,0.6,0,2,0
+"manuscript","HSPE1","matched comparator",0.352214316176966,3.68544963800305e-10,8,0.4,5,2,1
+"manuscript","MAP1LC3B","matched comparator",0.429325043208907,7.70718384178761e-15,11,0.55,5,2,1
+"manuscript","SOD1","matched comparator",0.395535902673341,1.22479393382248e-12,10,0.5,2,2,0
+"manuscript","PRDX1","matched comparator",0.36165024354111,1.14206295068764e-10,9,0.45,2,2,0
+"manuscript","PRDX2","matched comparator",0.406870777311396,2.38301128488624e-13,9,0.45,5,2,1
+"manuscript","GPX4","matched comparator",0.360348813719108,1.34543653313861e-10,10,0.5,2,1,0
+"manuscript","NFE2L2","matched comparator",0.468431685035128,1.02999017862859e-17,12,0.6,5,2,1
+"manuscript","CALCOCO2","matched comparator",0.3460339835245,7.77585096560512e-10,9,0.45,5,1,0
+"manuscript","PRDX5","matched comparator",0.409786536778075,1.54825582078814e-13,12,0.6,0,1,0
+"manuscript","ATP5F1A","matched comparator",0.359854548719445,1.43156021957334e-10,11,0.55,1,2,0
+"manuscript","NDUFA1","matched comparator",0.384355906713654,5.79703449598814e-12,9,0.45,5,2,1
+"manuscript","RHEB","matched comparator",0.324364885187762,9.39681206757691e-09,9,0.45,5,2,1
+"manuscript","UQCRB","matched comparator",0.388279948822698,3.38174698947287e-12,10,0.5,1,2,0
+"manuscript","VDAC2","matched comparator",0.263261430719849,3.93456581455827e-06,8,0.4,5,2,1
+"manuscript","AKAP12","matched comparator",0.561680770353079,2.9305819665665e-26,11,0.55,0,1,0
+"manuscript","C11orf96","matched comparator",0.499617965926691,2.76518182039444e-20,11,0.55,4,2,1
+"manuscript","MT2A","matched comparator",0.471953491504119,5.43823115572964e-18,12,0.6,5,2,1
+"manuscript","LGALS1","matched comparator",0.470680343875558,6.85644883428315e-18,12,0.6,2,0,0
+"manuscript","EGR1","matched comparator",0.569064667459765,4.67643854249257e-27,11,0.55,0,1,0
+"official_default","SQSTM1","target",0.531843505196292,3.11324961466043e-23,13,0.65,2,1,0
+"official_default","FIS1","matched comparator",0.482135978990371,8.22750618520181e-19,9,0.45,2,1,0
+"official_default","HSPE1","matched comparator",0.373698009023367,2.41763483862289e-11,7,0.35,3,2,0
+"official_default","MAP1LC3B","matched comparator",0.408752665484501,1.80492187451833e-13,11,0.55,3,1,0
+"official_default","SOD1","matched comparator",0.456251487059774,8.86848051290671e-17,11,0.55,1,1,0
+"official_default","PRDX1","matched comparator",0.413126080222666,9.39917465843254e-14,8,0.4,3,1,0
+"official_default","PRDX2","matched comparator",0.396082242822832,1.13347755183759e-12,5,0.25,3,2,0
+"official_default","GPX4","matched comparator",0.335914345357007,2.55043641418511e-09,7,0.35,3,1,0
+"official_default","NFE2L2","matched comparator",0.462235191129268,3.11292739271389e-17,9,0.45,2,1,0
+"official_default","CALCOCO2","matched comparator",0.316754730533546,2.15479468774457e-08,5,0.25,3,1,0
+"official_default","PRDX5","matched comparator",0.437176718816637,2.18325751068938e-15,9,0.45,3,1,0
+"official_default","ATP5F1A","matched comparator",0.431155305155889,5.76060973834208e-15,10,0.5,3,1,0
+"official_default","NDUFA1","matched comparator",0.380979102601513,9.16530702126699e-12,7,0.35,3,1,0
+"official_default","RHEB","matched comparator",0.429935579448273,6.99531352741624e-15,7,0.35,3,2,0
+"official_default","UQCRB","matched comparator",0.459754887656843,4.81637837552738e-17,7,0.35,3,2,0
+"official_default","VDAC2","matched comparator",0.385001010078337,5.30810892358112e-12,8,0.4,3,2,0
+"official_default","AKAP12","matched comparator",0.63280644654441,7.40449702774094e-35,9,0.45,2,1,0
+"official_default","C11orf96","matched comparator",0.559274090368342,5.27784668530079e-26,12,0.6,2,1,0
+"official_default","MT2A","matched comparator",0.499443334605284,2.86328623047832e-20,14,0.7,3,1,0
+"official_default","LGALS1","matched comparator",0.56708581176629,7.68215413563659e-27,11,0.55,3,2,0
+"official_default","EGR1","matched comparator",0.618479495409755,6.01702835148216e-33,8,0.4,2,1,0

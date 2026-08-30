@@ -1,0 +1,13 @@
+Matched-comparator virtual-knockout audit
+Comparators (n=20): FIS1, HSPE1, MAP1LC3B, SOD1, PRDX1, PRDX2, GPX4, NFE2L2, CALCOCO2, PRDX5, ATP5F1A, NDUFA1, RHEB, UQCRB, VDAC2, AKAP12, C11orf96, MT2A, LGALS1, EGR1
+Closest five: FIS1, HSPE1, MAP1LC3B, SOD1, PRDX1
+manuscript | cross_donor_spearman: SQSTM1=0.4663, empirical p=0.3333
+manuscript | top20_overlap_fraction: SQSTM1=0.55, empirical p=0.5238
+manuscript | replicated_downstream_fdr_count: SQSTM1=1, empirical p=0.4762
+manuscript | downstream_fdr_hoa2: SQSTM1=4, empirical p=0.5238
+manuscript | downstream_fdr_hoa3: SQSTM1=2, empirical p=0.7143
+official_default | cross_donor_spearman: SQSTM1=0.5318, empirical p=0.2381
+official_default | top20_overlap_fraction: SQSTM1=0.65, empirical p=0.09524
+official_default | replicated_downstream_fdr_count: SQSTM1=0, empirical p=1
+official_default | downstream_fdr_hoa2: SQSTM1=2, empirical p=0.9524
+official_default | downstream_fdr_hoa3: SQSTM1=1, empirical p=1

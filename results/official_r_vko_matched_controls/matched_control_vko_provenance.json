@@ -1,0 +1,68 @@
+{
+  "analysis": "matched-comparator virtual knockouts using frozen official-R WT networks",
+  "target": "SQSTM1",
+  "comparator_genes": ["FIS1", "HSPE1", "MAP1LC3B", "SOD1", "PRDX1", "PRDX2", "GPX4", "NFE2L2", "CALCOCO2", "PRDX5", "ATP5F1A", "NDUFA1", "RHEB", "UQCRB", "VDAC2", "AKAP12", "C11orf96", "MT2A", "LGALS1", "EGR1"],
+  "closest_five_by_standardized_distance": ["FIS1", "HSPE1", "MAP1LC3B", "SOD1", "PRDX1"],
+  "profiles": {
+    "manuscript": {
+      "directory": "official_r_vko_manuscript",
+      "d": 30
+    },
+    "official_default": {
+      "directory": "official_r_vko_official_default",
+      "d": 2
+    }
+  },
+  "donors": ["hoa2", "hoa3"],
+  "selection": {
+    "candidate universe": "Frozen 300-gene feature set; detectable in both donors",
+    "excluded symbols": "SQSTM1 and symbols beginning MT-",
+    "prevalence caliper": "Absolute donor-specific difference <= 0.20",
+    "mean log1p CPM caliper": "Absolute donor-specific difference <= 0.60",
+    "WT out-degree caliper": "Absolute donor-specific difference <= 40 edges",
+    "WT absolute out-strength ratio": "Between 1/3 and 3 in each donor",
+    "number of comparators": "20 (minimum attainable empirical p = 1/21)",
+    "selection blinding": "Control covariates only; no disease effect or KO outcome used",
+    "interpretation": "Matched comparators, not validated biological negative controls"
+  },
+  "seed": 1,
+  "n_cores": 1,
+  "validation": [
+    {
+      "profile": "manuscript",
+      "donor": "hoa2",
+      "n_genes": 300,
+      "ranks_identical": true,
+      "max_abs_p_value_difference": 0
+    },
+    {
+      "profile": "manuscript",
+      "donor": "hoa3",
+      "n_genes": 300,
+      "ranks_identical": true,
+      "max_abs_p_value_difference": 0
+    },
+    {
+      "profile": "official_default",
+      "donor": "hoa2",
+      "n_genes": 300,
+      "ranks_identical": true,
+      "max_abs_p_value_difference": 0
+    },
+    {
+      "profile": "official_default",
+      "donor": "hoa3",
+      "n_genes": 300,
+      "ranks_identical": true,
+      "max_abs_p_value_difference": 0
+    }
+  ],
+  "software": {
+    "R": "4.6.1",
+    "scTenifoldKnk": "1.1",
+    "scTenifoldNet": "1.4",
+    "Matrix": "1.7.5",
+    "jsonlite": "2.0.0"
+  },
+  "guardrail": "Comparator genes are matched computational perturbations, not experimentally established negative controls."
+}

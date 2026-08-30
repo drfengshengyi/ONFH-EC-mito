@@ -1,0 +1,5 @@
+"profile","donor","n_genes","ranks_identical","max_abs_p_value_difference"
+"manuscript","hoa2",300,TRUE,0
+"manuscript","hoa3",300,TRUE,0
+"official_default","hoa2",300,TRUE,0
+"official_default","hoa3",300,TRUE,0

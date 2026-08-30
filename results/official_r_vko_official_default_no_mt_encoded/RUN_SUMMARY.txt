@@ -1,0 +1,6 @@
+Profile: official-default
+Official scTenifoldKnk version: 1.1
+HOA2: n=1043, SQSTM1 prevalence=70.8%, SQSTM1 rank=1, downstream FDR<0.05 genes=0
+HOA3: n=760, SQSTM1 prevalence=72.2%, SQSTM1 rank=1, downstream FDR<0.05 genes=0
+Cross-donor Spearman rho=0.6352, p=9.695e-35
+Output directory: results/official_r_vko_official_default_no_mt_encoded

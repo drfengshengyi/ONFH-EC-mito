@@ -20,12 +20,16 @@ The workflow performs:
 
 1. donor-separated official-R perturbation for the manuscript profile;
 2. donor-separated package-default sensitivity analysis;
-3. matched-null pathway post-processing and cross-profile audit;
-4. export of plot-ready R objects; and
-5. generation of Figure 5.
+3. complete donor-specific refits of both profiles after removing the five mtDNA-encoded frozen features;
+4. twenty expression- and WT-topology-matched comparator-gene perturbations under both profiles;
+5. common-nuclear-universe rank and matched-null pathway audits;
+6. export of plot-ready R objects; and
+7. R-only generation of Figure 5.
 
 Outputs are written under `results/official_r_vko_*`. Read `OFFICIAL_R_VKO_RESULTS.md` for the frozen result audit.
 
 ## Interpretation
 
 Zeroing the inferred `SQSTM1` regulatory row simulates loss of its outgoing network influence. The output is a gene-manifold perturbation rank. It is not a cell-state velocity field, a differentiation trajectory, or experimental knockout validation.
+
+The matched genes are computational comparators selected before their perturbation outputs were inspected. They are not assumed to be biologically inert. The mtDNA-feature-exclusion analysis removes `MT-ATP6`, `MT-CO1`, `MT-CO2`, `MT-ND1`, and `MT-ND4` from the input expression matrices and completely rebuilds each network on the remaining 295 genes.

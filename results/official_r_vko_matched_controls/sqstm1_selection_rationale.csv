@@ -1,0 +1,7 @@
+"step","criterion","observed_evidence","decision"
+1,"Prespecified biology","SQSTM1 belonged to the prespecified selective-clearance/mitophagy panel.","retain"
+2,"Directional disease-oriented contrast","Estimated SONFH-versus-HOA EC log2 fold change = -1.265 (descriptive cross-cohort contrast).","retain as descriptive support"
+3,"Independent-donor contrast","Estimated Liao ARCO 3A-versus-HOA EC log2 fold change = -0.450; direction matched but FDR was not significant.","retain as directional support"
+4,"Control-EC detectability","Detected in 70.8% of HOA2 ECs and 72.2% of HOA3 ECs.","eligible"
+5,"Network eligibility","HOA2 (1,043 ECs) and HOA3 (760 ECs) were modeled separately; HOA1 (26 ECs) was excluded.","two-donor analysis"
+6,"Interpretive boundary","Selection supports a loss-hypothesis perturbation only; it does not establish SQSTM1 causality.","exploratory target"
