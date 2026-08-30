@@ -62,6 +62,13 @@ had a downstream FDR hit under package defaults. Cross-donor common-nuclear
 rank correlations were 0.555 and 0.632 for the manuscript and package-default
 profiles, respectively.
 
+The exact cross-donor coefficients, P values, overlap counts, FDR counts, and
+gene identities are frozen in `results/official_r_vko_no_mt_cross_donor_audit.csv`.
+The VWF/NFKBIA/C7 row-level statistics are frozen in
+`results/official_r_vko_no_mt_hoa3_fdr_audit.csv`. That file keeps both the
+official-output BH family (295 rows, including SQSTM1) and the common-nuclear
+BH family (294 shared non-target nuclear genes) explicit.
+
 EC-inflammation enrichment remained confined to HOA3 after refitting
 (manuscript FDR=0.0320; package-default FDR=0.0115). HOA2 FDR values were 0.448
 and 0.590, and no pathway reached FDR < 0.05 in both donors. The common-universe

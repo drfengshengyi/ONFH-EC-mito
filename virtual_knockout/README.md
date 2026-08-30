@@ -27,6 +27,7 @@ The workflow performs:
 7. R-only generation of Figure 5.
 
 Outputs are written under `results/official_r_vko_*`. Read `OFFICIAL_R_VKO_RESULTS.md` for the frozen result audit.
+The exact cross-donor common-nuclear correlations and the primary-refit HOA3 FDR-positive identities used in Table S10g are frozen in `results/official_r_vko_no_mt_cross_donor_audit.csv` and `results/official_r_vko_no_mt_hoa3_fdr_audit.csv`, respectively.
 
 ## Interpretation
 

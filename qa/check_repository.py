@@ -44,6 +44,8 @@ REQUIRED = [
     "results/official_r_vko_official_default_no_mt_encoded/vko_provenance_official_r.json",
     "results/official_r_vko_no_mt_gene_comparison.csv",
     "results/official_r_vko_no_mt_summary.csv",
+    "results/official_r_vko_no_mt_cross_donor_audit.csv",
+    "results/official_r_vko_no_mt_hoa3_fdr_audit.csv",
     "results/official_r_vko_no_mt_pathway_by_donor.csv",
     "results/official_r_vko_no_mt_pathway_summary.csv",
     "results/vko_mt_encoded_exclusion_manifest.csv",

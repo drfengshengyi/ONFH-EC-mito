@@ -215,6 +215,90 @@ utils::write.csv(
   row.names = FALSE
 )
 
+# Freeze the cross-donor common-nuclear audit used in the Results text and
+# supplementary Table S10g. This comparison is distinct from summary_table:
+# it compares HOA2 with HOA3 after the mtDNA-feature-excluded refit rather than
+# comparing original and refitted models within each donor.
+cross_donor_rows <- lapply(names(all_results), function(profile) {
+  hoa2 <- all_results[[profile]]$mt_excluded$hoa2
+  hoa3 <- all_results[[profile]]$mt_excluded$hoa3
+  joined <- merge(
+    hoa2[, c("Gene", "common_rank", "common_adjusted_p_value")],
+    hoa3[, c("Gene", "common_rank", "common_adjusted_p_value")],
+    by = "Gene",
+    suffixes = c("_hoa2", "_hoa3")
+  )
+  joined <- joined[order(joined$Gene), , drop = FALSE]
+  rho <- suppressWarnings(stats::cor.test(
+    joined$common_rank_hoa2,
+    joined$common_rank_hoa3,
+    method = "spearman",
+    exact = FALSE
+  ))
+  top20_hoa2 <- joined$Gene[order(joined$common_rank_hoa2)][1:20]
+  top20_hoa3 <- joined$Gene[order(joined$common_rank_hoa3)][1:20]
+  significant_hoa2 <- sort(joined$Gene[joined$common_adjusted_p_value_hoa2 < 0.05])
+  significant_hoa3 <- sort(joined$Gene[joined$common_adjusted_p_value_hoa3 < 0.05])
+  replicated <- intersect(significant_hoa2, significant_hoa3)
+  data.frame(
+    profile = profile,
+    model_variant = "mt_excluded",
+    donor_pair = "hoa2_vs_hoa3",
+    n_common_nuclear_genes = nrow(joined),
+    rank_metric = "common_rank",
+    spearman_rho = unname(rho$estimate),
+    spearman_p_value = rho$p.value,
+    top20_overlap_count = length(intersect(top20_hoa2, top20_hoa3)),
+    top20_jaccard = length(intersect(top20_hoa2, top20_hoa3)) /
+      length(union(top20_hoa2, top20_hoa3)),
+    common_bh_fdr_hoa2_count = length(significant_hoa2),
+    common_bh_fdr_hoa3_count = length(significant_hoa3),
+    common_bh_fdr_replicated_count = length(replicated),
+    common_bh_fdr_hoa2_genes = paste(significant_hoa2, collapse = ";"),
+    common_bh_fdr_hoa3_genes = paste(significant_hoa3, collapse = ";"),
+    common_bh_fdr_replicated_genes = paste(replicated, collapse = ";"),
+    stringsAsFactors = FALSE
+  )
+})
+cross_donor_audit <- do.call(rbind, cross_donor_rows)
+utils::write.csv(
+  cross_donor_audit,
+  file.path(results_dir, "official_r_vko_no_mt_cross_donor_audit.csv"),
+  row.names = FALSE
+)
+
+# Record the exact downstream HOA3 FDR-positive identities under the primary
+# mtDNA-feature-excluded refit. Both BH families are retained: the official
+# 295-row output (including SQSTM1) and the 294-gene non-target common universe.
+hoa3_primary <- all_results$manuscript$mt_excluded$hoa3
+hoa3_fdr_audit <- hoa3_primary[
+  hoa3_primary$common_adjusted_p_value < 0.05,
+  c(
+    "Gene", "rank", "common_rank", "rank_percentile", "Distance", "Z", "FC",
+    "p_value", "adjusted_p_value", "common_adjusted_p_value"
+  ),
+  drop = FALSE
+]
+hoa3_fdr_audit <- hoa3_fdr_audit[order(hoa3_fdr_audit$common_rank), , drop = FALSE]
+names(hoa3_fdr_audit) <- c(
+  "gene", "official_rank", "common_rank", "common_rank_percentile", "distance",
+  "z_score", "fold_change", "raw_p_value", "official_bh_fdr_295_family",
+  "common_nuclear_bh_fdr_294_family"
+)
+hoa3_fdr_audit <- data.frame(
+  profile = "manuscript",
+  model_variant = "mt_excluded",
+  donor = "hoa3",
+  hoa3_fdr_audit,
+  common_nuclear_fdr_0_05 = hoa3_fdr_audit$common_nuclear_bh_fdr_294_family < 0.05,
+  stringsAsFactors = FALSE
+)
+utils::write.csv(
+  hoa3_fdr_audit,
+  file.path(results_dir, "official_r_vko_no_mt_hoa3_fdr_audit.csv"),
+  row.names = FALSE
+)
+
 matching_columns <- c(
   "prevalence_hoa2", "prevalence_hoa3",
   "mean_log1p_cpm_hoa2", "mean_log1p_cpm_hoa3"
@@ -372,7 +456,7 @@ utils::write.csv(
 )
 
 writeLines(
-  capture.output(utils::sessionInfo()),
+  sub("[[:space:]]+$", "", capture.output(utils::sessionInfo())),
   file.path(results_dir, "official_r_vko_no_mt_sessionInfo.txt")
 )
 cat("Wrote mtDNA-feature exclusion comparisons for ", nrow(summary_table), " donor-profile pairs.\n", sep = "")

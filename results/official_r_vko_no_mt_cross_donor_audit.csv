@@ -1,0 +1,3 @@
+"profile","model_variant","donor_pair","n_common_nuclear_genes","rank_metric","spearman_rho","spearman_p_value","top20_overlap_count","top20_jaccard","common_bh_fdr_hoa2_count","common_bh_fdr_hoa3_count","common_bh_fdr_replicated_count","common_bh_fdr_hoa2_genes","common_bh_fdr_hoa3_genes","common_bh_fdr_replicated_genes"
+"manuscript","mt_excluded","hoa2_vs_hoa3",294,"common_rank",0.554595584980102,4.12990601768117e-25,10,0.333333333333333,0,3,0,"","C7;NFKBIA;VWF",""
+"official_default","mt_excluded","hoa2_vs_hoa3",294,"common_rank",0.631506983541956,4.00826490585901e-34,9,0.290322580645161,0,0,0,"","",""

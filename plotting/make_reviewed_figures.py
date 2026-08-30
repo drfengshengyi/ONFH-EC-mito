@@ -228,8 +228,22 @@ def make_figure3() -> None:
     modules = pd.read_csv(INPUT / "module_scores_by_library_v4.csv")
     stats = pd.read_csv(INPUT / "module_scores_liao_stats_v4.csv").set_index("module")
 
-    fig = plt.figure(figsize=(12.4, 8.4), constrained_layout=True)
-    outer = fig.add_gridspec(2, 2, height_ratios=[1.04, 0.96], width_ratios=[1.42, 0.78])
+    # Use an explicit layout here rather than constrained_layout. The latter
+    # can assign a disproportionate inter-panel gutter to nested GridSpecs,
+    # which previously left a large visual gap in panel C.
+    fig = plt.figure(figsize=(12.4, 8.4))
+    outer = fig.add_gridspec(
+        2,
+        2,
+        height_ratios=[1.04, 0.96],
+        width_ratios=[1.42, 0.78],
+        left=0.065,
+        right=0.985,
+        bottom=0.105,
+        top=0.945,
+        wspace=0.20,
+        hspace=0.42,
+    )
 
     ax_a = fig.add_subplot(outer[0, 0])
     x = np.log10(pd.to_numeric(de["baseMean"], errors="coerce").clip(lower=0) + 1)
@@ -291,7 +305,7 @@ def make_figure3() -> None:
     ax_b.spines[["left", "bottom"]].set_visible(False)
     panel_label(ax_b, "B", "Mitochondrial stress and selective-clearance genes")
 
-    grid_c = GridSpecFromSubplotSpec(1, 3, subplot_spec=outer[1, :], wspace=0.30)
+    grid_c = GridSpecFromSubplotSpec(1, 3, subplot_spec=outer[1, :], wspace=0.24)
     axes_c: list[plt.Axes] = []
     for idx, module in enumerate(("Mito_fission", "Mito_fusion", "Mitophagy_core")):
         ax = fig.add_subplot(grid_c[0, idx])
@@ -304,6 +318,10 @@ def make_figure3() -> None:
             f"{MODULE_LABELS[module]}\nLiao exact KW FDR = {fdr:.2f}",
         )
         axes_c.append(ax)
+    # One shared y-axis label is sufficient for these aligned small multiples
+    # and keeps the three panels visually continuous.
+    for ax in axes_c[1:]:
+        ax.set_ylabel("")
     panel_label(axes_c[0], "C", "Sampling-unit mitochondrial module scores (mean ± SD)", y=1.22)
     save(fig, "Figure3")
 
