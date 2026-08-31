@@ -19,13 +19,20 @@ lg("stage B start")
 adata = sc.read_h5ad(ROOT + "/analysis/atlas_neighbors.h5ad")
 lg("loaded:", adata.shape)
 
-sc.tl.leiden(adata, resolution=0.5, flavor="igraph", n_iterations=2, directed=False)
+sc.tl.leiden(
+    adata,
+    resolution=0.5,
+    flavor="igraph",
+    n_iterations=2,
+    directed=False,
+    random_state=0,
+)
 lg("leiden done:", adata.obs["leiden"].nunique(), "clusters")
 
 adata.write(ROOT + "/analysis/atlas_leiden.h5ad")
 lg("leiden checkpoint saved")
 
-sc.tl.umap(adata)
+sc.tl.umap(adata, random_state=0)
 lg("UMAP done")
 
 adata.write(ROOT + "/analysis/atlas_umap.h5ad")

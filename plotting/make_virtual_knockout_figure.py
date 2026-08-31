@@ -1,7 +1,12 @@
-"""Publication Figure 5 with official scTenifoldKnk network and manifold outputs.
+"""Legacy diagnostic Figure 5 with official scTenifoldKnk outputs.
 
-This figure borrows the visual grammar of established in-silico perturbation
-papers while preserving the meaning of the present analysis:
+The submission Figure 5 is generated only by ``make_virtual_knockout_figure.R``.
+This historical Python implementation is retained for provenance and writes to
+``figures/legacy`` so that an accidental manual run cannot overwrite the
+canonical submission files.
+
+The figure borrows the visual grammar of established in-silico perturbation
+papers while preserving the meaning of the analysis:
 
 * the network panel contains actual SQSTM1 outgoing edges from the official
   scTenifoldKnk wild-type tensor networks;
@@ -27,7 +32,7 @@ import seaborn as sns
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
-OUT = ROOT / "figures" / "final"
+OUT = ROOT / "figures" / "legacy"
 OUT.mkdir(parents=True, exist_ok=True)
 FIGURE_DATA = RESULTS / "official_r_vko_figure_data"
 PRIMARY = RESULTS / "official_r_vko_manuscript"

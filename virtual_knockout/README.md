@@ -9,6 +9,7 @@ Rscript environment\install_official_sctenifoldknk.R
 ```
 
 The primary manuscript profile uses 20 networks, `q = 0.95`, and 30 manifold dimensions. A package-default sensitivity profile uses 10 networks, `q = 0.90`, and 2 dimensions. The frozen 300-gene feature list and cell-barcode manifest are versioned in this directory.
+The byte sizes and SHA256 checksums of the exact HOA2/HOA3 RDS inputs used for the release are recorded in `vko_input_checksums.tsv`; primary matrices themselves remain excluded from Git.
 
 ## Run
 

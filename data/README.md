@@ -10,6 +10,14 @@ Create `data/liao2022/` with sparse gene-by-cell R matrices:
 
 Each RDS must have gene symbols as row names and original cell barcodes as column names. The virtual-knockout barcode manifest expects the same original barcodes before the analysis prefix is attached.
 
+The repository starts from these processed matrices and does not claim to reproduce the original study's Cell Ranger/SoupX preprocessing from FASTQ files. For the two matrices used by the official-R virtual-knockout release, exact byte sizes and SHA256 values are frozen in `virtual_knockout/vko_input_checksums.tsv`. Verify them with:
+
+```powershell
+python qa\check_repository.py --check-vko-data
+```
+
+An exact full-atlas rebuild requires the corresponding processed RDS files from the source-data release or authors; substituting newly reprocessed FASTQs may change cell barcodes, retained genes, and downstream values.
+
 ## GSE169396
 
 Create `data/gse169396/` containing the GEO supplementary 10x files for GSM5201883–GSM5201886, for example:

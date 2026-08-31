@@ -52,7 +52,13 @@ sc.pp.log1p(adata)
 lg("log1p done")
 sc.pp.highly_variable_genes(adata, n_top_genes=2000, flavor="seurat", subset=False)
 lg("HVG:", int(adata.var.highly_variable.sum()))
-sc.pp.pca(adata, n_comps=30, use_highly_variable=True, svd_solver="arpack")
+sc.pp.pca(
+    adata,
+    n_comps=30,
+    use_highly_variable=True,
+    svd_solver="arpack",
+    random_state=0,
+)
 lg("PCA done")
 adata.write(ROOT + "/analysis/atlas_pca.h5ad")
 lg("checkpoint saved (atlas_pca.h5ad); DONE stage A (batch correction handled in A2)")

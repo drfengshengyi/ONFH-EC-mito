@@ -1,0 +1,18 @@
+component	version	source	role
+R	4.6.1	CRAN R for Windows	analysis runtime
+Seurat	5.5.1	CRAN	single-cell matrix import and object preparation
+Matrix	1.7.5	CRAN	sparse matrix operations
+fgsea	1.38.0	Bioconductor	preranked gene-set enrichment
+msigdbr	26.1.0	CRAN	MSigDB gene-set retrieval
+data.table	1.18.4	CRAN	tabular I/O for enrichment
+jsonlite	2.0.0	CRAN	provenance serialization
+ggplot2	4.0.3	CRAN	R figure generation
+patchwork	1.3.2	CRAN	Figure 5 composition
+ggrepel	0.9.8	CRAN	Figure 5 labels
+dplyr	1.2.1	CRAN	virtual-knockout post-processing
+tidyr	1.3.2	CRAN	virtual-knockout reshaping
+ragg	1.5.2	CRAN	raster export
+cowplot	1.2.0	CRAN	Figure 5 composition
+tibble	3.3.1	CRAN	tabular manipulation
+scTenifoldNet	1.4	CaiLab R-universe	control-cell gene-regulatory networks
+scTenifoldKnk	1.1	CaiLab R-universe	SQSTM1 virtual perturbation

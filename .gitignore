@@ -25,6 +25,22 @@ __pycache__/
 *.bak
 tmp/
 
+# Local graphical-abstract and illustration work.  Commit only a deliberately
+# named final export/source after manual editing is complete.
+figures/qa/
+qa/figma_export_download_*/
+qa/graphical_abstract_export_*/
+figures/final/graphical_abstract_v[0-9]*
+figures/source/graphical_abstract_figma_v[0-9]*
+figures/graphical_abstract_v*_editable.*
+figures/graphical_abstract_v*_preview.*
+figures/final/femoral_head_arterial_supply_*
+figures/source/femoral_head_arterial_supply_*
+figures/source/proximal_femur_*
+docs/graphical_abstract_v*_figma_brief.md
+docs/nanobanana2_graphical_abstract_prompt.md
+plotting/make_graphical_abstract.py
+
 # Local manuscript/compiler products
 *.aux
 *.bbl

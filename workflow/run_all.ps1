@@ -12,5 +12,5 @@ $ErrorActionPreference = "Stop"
 if ($LASTEXITCODE -ne 0) { throw "Core analysis failed." }
 & (Join-Path $PSScriptRoot "run_virtual_knockout.ps1") -Python $Python -Rscript $Rscript -Cores $Cores
 if ($LASTEXITCODE -ne 0) { throw "Virtual knockout failed." }
-& (Join-Path $PSScriptRoot "run_figures.ps1") -Python $Python
+& (Join-Path $PSScriptRoot "run_figures.ps1") -Python $Python -Rscript $Rscript
 if ($LASTEXITCODE -ne 0) { throw "Figure generation failed." }

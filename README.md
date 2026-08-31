@@ -31,6 +31,7 @@ This release separates data preparation, biological analyses, the official-R `SQ
 | GSE123568 | Peripheral-serum expression dataset; repeated nested cross-validation |
 
 The exact local filenames expected by the scripts are listed in [`data/README.md`](data/README.md) and [`data/datasets.tsv`](data/datasets.tsv).
+The exact HOA2/HOA3 processed-matrix checksums used by the virtual-knockout release are in [`virtual_knockout/vko_input_checksums.tsv`](virtual_knockout/vko_input_checksums.tsv).
 
 ## Quick start
 
@@ -38,9 +39,13 @@ Run these commands from the repository root in PowerShell. Override `-Python` or
 
 ```powershell
 # 1. Create an environment
+# Python 3.12 is the archived release runtime (see .python-version).
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r environment\requirements-python.lock.txt
+
+# Verify the exact R 4.6.1/package release environment.
+Rscript environment\check_r_packages.R
 
 # 2. Rebuild the main analysis after placing public data under data/
 .\workflow\run_core_analysis.ps1 -Python python -Rscript Rscript -Jobs 4
@@ -51,7 +56,7 @@ python -m pip install -r environment\requirements-python.lock.txt
 # 4. Rebuild final figures from the versioned source panels/results
 .\workflow\run_figures.ps1 -Python python -Rscript Rscript
 
-# 5. Audit repository structure, syntax, metadata, and portability
+# 5. Audit repository structure, syntax, metadata, Table S10g, and portability
 python qa\check_repository.py --rscript Rscript
 
 # Optional release audit: also require byte-identical manuscript figure PDFs
@@ -73,9 +78,11 @@ For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages 
 
 - `analysis/sample_metadata_v4.csv` is the authoritative library-to-participant map.
 - Randomized analyses use fixed seeds recorded in code and provenance files.
+- Python 3.12 is fixed in `.python-version`; the R 4.6.1 package manifest is `environment/r-package-versions.tsv`.
 - `results/official_r_vko_manuscript/` and `results/official_r_vko_official_default/` retain parameter, package-version, and session information.
 - Matching, mtDNA-feature-excluded refits, common-universe rank comparisons, and target-selection rationale are versioned under `results/official_r_vko_matched_controls/` and the corresponding sensitivity-result directories.
 - Final figure PDFs in `figures/final/` are the submission versions; PNG counterparts are included for rapid review.
+- `results/README.md` maps each figure/table to its canonical producer and direct versioned inputs.
 
 ## Data availability
 

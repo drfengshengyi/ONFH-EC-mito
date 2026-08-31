@@ -31,8 +31,19 @@ harmonize <- function(m) {
     rn[hit] <- ALIAS[rn[hit]]
     rownames(m) <- rn
     if (anyDuplicated(rownames(m))) {
-      m <- as(m, "dgTMatrix")
-      m <- Matrix.utils::aggregate.Matrix(as(m, "dgCMatrix"), groupings = rownames(m), fun = "sum")
+      # Sum duplicate symbols using a sparse row-aggregation matrix.  This is
+      # equivalent to Matrix.utils::aggregate.Matrix(..., fun = "sum") but
+      # avoids an archived package dependency in a clean R installation.
+      symbols <- unique(rownames(m))
+      membership <- match(rownames(m), symbols)
+      aggregator <- Matrix::sparseMatrix(
+        i = membership,
+        j = seq_along(membership),
+        x = 1,
+        dims = c(length(symbols), nrow(m)),
+        dimnames = list(symbols, rownames(m))
+      )
+      m <- aggregator %*% m
     }
   }
   m

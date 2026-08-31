@@ -40,14 +40,20 @@ import traceback
 try:
     sc.pp.scale(sub, max_value=10)
     lg("scaled")
-    sc.pp.pca(sub, n_comps=30, svd_solver="arpack")
+    sc.pp.pca(sub, n_comps=30, svd_solver="arpack", random_state=0)
     lg("PCA done")
 except Exception:
     lg("SCALE/PCA FAILED:\n" + traceback.format_exc())
     raise
 
 adata.obsm["X_pca_combat"] = sub.obsm["X_pca"]
-sc.pp.neighbors(adata, use_rep="X_pca_combat", n_neighbors=15, n_pcs=30)
+sc.pp.neighbors(
+    adata,
+    use_rep="X_pca_combat",
+    n_neighbors=15,
+    n_pcs=30,
+    random_state=0,
+)
 lg("neighbors done")
 
 adata.write(ROOT + "/analysis/atlas_neighbors.h5ad")
