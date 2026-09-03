@@ -1,0 +1,7 @@
+subset,program,n_spots,spearman_rho_descriptive,p_value
+all QC spots,Stress/permeabilization,2947,0.07088128378778878,not_tested_single_section
+top-quintile EC-marker spots,Stress/permeabilization,590,-0.020404500438916864,not_tested_single_section
+all QC spots,Selective clearance,2947,0.01944584140382438,not_tested_single_section
+top-quintile EC-marker spots,Selective clearance,590,-0.014256903493813412,not_tested_single_section
+all QC spots,EC inflammation,2947,0.06028332220295213,not_tested_single_section
+top-quintile EC-marker spots,EC inflammation,590,-0.024209220602449476,not_tested_single_section

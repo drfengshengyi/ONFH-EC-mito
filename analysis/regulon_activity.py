@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Figure 5 v4: correctly signed DoRothEA ULM activity.
+"""Figure 4 v4: correctly signed DoRothEA ULM activity.
 
 Key safeguards
 --------------

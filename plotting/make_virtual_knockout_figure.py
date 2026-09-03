@@ -1,6 +1,6 @@
-"""Legacy diagnostic Figure 5 with official scTenifoldKnk outputs.
+"""Legacy diagnostic Figure 6 with official scTenifoldKnk outputs.
 
-The submission Figure 5 is generated only by ``make_virtual_knockout_figure.R``.
+The submission Figure 6 is generated only by ``make_virtual_knockout_figure.R``.
 This historical Python implementation is retained for provenance and writes to
 ``figures/legacy`` so that an accidental manual run cannot overwrite the
 canonical submission files.
@@ -698,8 +698,8 @@ def main() -> None:
     manifold_panel(fig, grid[1, :2])
     pathway_panel(fig, grid[1, 2:])
 
-    png_out = OUT / "Figure5.png"
-    pdf_out = OUT / "Figure5.pdf"
+    png_out = OUT / "Figure6.png"
+    pdf_out = OUT / "Figure6.pdf"
     fig.savefig(png_out, dpi=300, bbox_inches="tight", facecolor="white")
     fig.savefig(pdf_out, bbox_inches="tight", facecolor="white")
     plt.close(fig)

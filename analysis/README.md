@@ -18,4 +18,6 @@ The scripts are ordered by dependency rather than by historical filename. Run th
 
 `v4_common.py` contains shared metadata, exact-test, multiple-testing, and plotting utilities. Analysis tables and large intermediate objects are written to `analysis/`; final manuscript deliverables are copied or generated under `results/` and `figures/`.
 
+`spatial_contextualization.py` is an independent external-context module for GSE284089. It maps prespecified endothelial, stress, selective-clearance, inflammation, and `SQSTM1` signals onto one osteoarthritic femoral-head section. Its outputs are descriptive; it does not enter the participant-level ONFH models or the virtual-knockout analysis.
+
 The SONFH entries with missing participant identifiers have `independent_for_inference = FALSE` in `sample_metadata_v4.csv`. Do not change that flag unless a verifiable participant-to-library map becomes available.

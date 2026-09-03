@@ -426,7 +426,7 @@ def make_figure6() -> None:
         ylim=(0.70, 1.02),
     )
 
-    save(fig, "Figure6")
+    save(fig, "Figure7")
 
 
 def main() -> None:

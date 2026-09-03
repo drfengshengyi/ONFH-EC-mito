@@ -1,0 +1,70 @@
+program,gene,present_in_feature_table,detected_in_qc_spots,percent_qc_spots_detected,included_in_score
+EC marker enrichment,PECAM1,True,358,12.147947064811673,True
+EC marker enrichment,VWF,True,143,4.852392263318629,True
+EC marker enrichment,CDH5,True,69,2.341364099083814,True
+EC marker enrichment,CLDN5,True,67,2.273498473023414,True
+EC marker enrichment,EMCN,True,66,2.239565659993213,True
+EC marker enrichment,KDR,True,24,0.8143875127248049,True
+EC marker enrichment,FLT1,True,73,2.477095351204615,True
+EC marker enrichment,ENG,True,211,7.159823549372243,True
+EC marker enrichment,RAMP2,True,36,1.2215812690872074,True
+EC marker enrichment,RAMP3,True,116,3.9362063115032235,True
+EC marker enrichment,PLVAP,True,68,2.307431286053614,True
+EC marker enrichment,KLF2,True,351,11.910417373600271,True
+EC marker enrichment,KLF4,True,122,4.139803189684425,True
+EC marker enrichment,ESAM,True,33,1.1197828299966066,True
+EC marker enrichment,EGFL7,True,203,6.888361045130641,True
+EC marker enrichment,ECSCR,True,46,1.5609093993892094,True
+EC marker enrichment,EPAS1,True,383,12.996267390566677,True
+EC marker enrichment,ESM1,True,17,0.5768578215134035,True
+EC marker enrichment,TEK,True,36,1.2215812690872074,True
+EC marker enrichment,ERG,True,40,1.3573125212080082,True
+EC marker enrichment,CLEC14A,True,34,1.153715643026807,True
+EC marker enrichment,CA4,True,1,0.0339328130302002,True
+EC marker enrichment,RGCC,True,45,1.5269765863590092,True
+Stress/permeabilization,BAK1,True,49,1.66270783847981,True
+Stress/permeabilization,BAX,True,92,3.1218187987784187,True
+Stress/permeabilization,BBC3,True,17,0.5768578215134035,True
+Stress/permeabilization,BCL2,True,128,4.343400067865626,True
+Stress/permeabilization,BCL2L1,True,140,4.750593824228028,True
+Stress/permeabilization,BID,True,44,1.4930437733288089,True
+Stress/permeabilization,EIF4EBP1,True,52,1.7645062775704106,True
+Stress/permeabilization,MCL1,True,746,25.31387852052935,True
+Stress/permeabilization,PMAIP1,True,5,0.16966406515100102,True
+Stress/permeabilization,VDAC1,True,15,0.508992195453003,True
+Stress/permeabilization,VDAC2,True,48,1.6287750254496098,True
+Stress/permeabilization,VDAC3,True,55,1.8663047166610112,True
+Selective clearance,PINK1,True,47,1.5948422124194095,True
+Selective clearance,PRKN,True,30,1.017984390906006,True
+Selective clearance,BNIP3,False,0,0.0,False
+Selective clearance,BNIP3L,True,159,5.395317271801832,True
+Selective clearance,FUNDC1,True,11,0.3732609433322022,True
+Selective clearance,AMBRA1,True,74,2.511028164234815,True
+Selective clearance,BCL2L13,True,102,3.461146929080421,True
+Selective clearance,FKBP8,True,86,2.9182219205972175,True
+Selective clearance,PHB2,True,35,1.187648456057007,True
+Selective clearance,OPTN,True,92,3.1218187987784187,True
+Selective clearance,CALCOCO2,True,136,4.614862572107228,True
+Selective clearance,TAX1BP1,True,86,2.9182219205972175,True
+Selective clearance,SQSTM1,True,334,11.333559552086868,True
+Selective clearance,NBR1,True,82,2.7824906684764166,True
+Selective clearance,MAP1LC3B,True,16,0.5429250084832032,True
+Selective clearance,GABARAP,True,157,5.327451645741432,True
+Selective clearance,GABARAPL2,True,66,2.239565659993213,True
+Selective clearance,ATG5,True,64,2.171700033932813,True
+Selective clearance,ATG7,True,107,3.630810994231422,True
+Selective clearance,VCP,True,45,1.5269765863590092,True
+Selective clearance,HIF1A,True,47,1.5948422124194095,True
+Selective clearance,TBK1,True,43,1.4591109602986088,True
+Selective clearance,ULK1,True,77,2.6128266033254155,True
+Selective clearance,VDAC1,True,15,0.508992195453003,True
+EC inflammation,SELE,True,14,0.4750593824228028,True
+EC inflammation,ICAM1,True,105,3.5629453681710213,True
+EC inflammation,VCAM1,True,199,6.752629793009841,True
+EC inflammation,ACKR1,True,95,3.2236172378690195,True
+EC inflammation,CCL2,True,53,1.7984390906006107,True
+EC inflammation,IL6,True,13,0.44112656939260264,True
+EC inflammation,CXCL8,True,3,0.10179843909060061,True
+EC inflammation,NFKBIA,True,317,10.756701730573464,True
+EC inflammation,TNFAIP3,True,151,5.123854767560231,True
+EC inflammation,PTGS2,True,13,0.44112656939260264,True

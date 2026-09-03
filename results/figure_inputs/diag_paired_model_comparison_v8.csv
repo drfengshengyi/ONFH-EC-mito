@@ -1,0 +1,2 @@
+comparison,delta_auc,ci_low,ci_high,two_sided_p,n_bootstrap,scope
+mitochondrial_candidate_space_minus_Ma_four_gene_model,0.05666666666666642,-0.026666666666666727,0.1533333333333332,0.1871906404679766,20000,paired stratified bootstrap of fixed aggregated cross-fitted predictions; model-refitting variability excluded

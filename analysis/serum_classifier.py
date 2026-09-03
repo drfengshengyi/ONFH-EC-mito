@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Figure 6 v4: reproducible leakage-free blood classifier evaluation.
+"""Figure 7 v4: reproducible leakage-free blood classifier evaluation.
 
 The primary statistic is the AUC of per-sample probabilities averaged across
 five repeated outer five-fold CV runs. Every permutation repeats that exact
@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import os
 import time
 import warnings
 from pathlib import Path
@@ -35,7 +36,9 @@ N_REPEATS = 5
 N_OUTER_FOLDS = 5
 N_INNER_FOLDS = 4
 CS = np.logspace(-3, 2, 16)
-LOG = ANALYSIS / "py_fig6_v4.log"
+DATA_ROOT = Path(os.environ.get("ONFH_DATA_ROOT", ROOT / "data")).resolve()
+OUTPUT = Path(os.environ.get("ONFH_OUTPUT_DIR", ANALYSIS)).resolve()
+LOG = OUTPUT / "py_fig7_v4.log"
 
 
 def lg(*parts) -> None:
@@ -46,7 +49,7 @@ def lg(*parts) -> None:
 
 
 def load_gse123568() -> tuple[pd.DataFrame, np.ndarray, list[str]]:
-    matrix_path = ROOT / "data" / "GSE123568_series_matrix.txt.gz"
+    matrix_path = DATA_ROOT / "GSE123568_series_matrix.txt.gz"
     with gzip.open(matrix_path, "rt", errors="replace") as handle:
         lines = handle.readlines()
 
@@ -71,7 +74,7 @@ def load_gse123568() -> tuple[pd.DataFrame, np.ndarray, list[str]]:
     if expr.shape[1] != len(disease):
         raise RuntimeError("expression columns and disease labels are misaligned")
 
-    with gzip.open(ROOT / "data" / "GSE123568_family.soft.gz", "rt", errors="replace") as handle:
+    with gzip.open(DATA_ROOT / "GSE123568_family.soft.gz", "rt", errors="replace") as handle:
         soft = handle.read()
     platform = soft.split("!platform_table_begin", 1)[1].split("!platform_table_end", 1)[0]
     platform_lines = platform.strip().split("\n")
@@ -207,6 +210,43 @@ def stratified_prediction_bootstrap(y, probability, n_boot: int = 5000) -> tuple
     return tuple(np.percentile(aucs, [2.5, 97.5]).astype(float))
 
 
+def stratified_paired_auc_bootstrap(
+    y: np.ndarray,
+    probability_a: np.ndarray,
+    probability_b: np.ndarray,
+    n_boot: int = 20000,
+) -> dict[str, float]:
+    """Paired uncertainty for the fixed cross-fitted AUC difference.
+
+    Both models are evaluated on identical stratified resamples of the same
+    participants. This estimates uncertainty of the archived cross-fitted
+    predictions and, deliberately, does not claim to include model-refitting
+    variability.
+    """
+    rng = np.random.default_rng(BASE_SEED + 71)
+    case = np.flatnonzero(y == 1)
+    control = np.flatnonzero(y == 0)
+    delta = np.empty(n_boot, dtype=float)
+    for i in range(n_boot):
+        idx = np.concatenate(
+            [rng.choice(case, len(case), replace=True), rng.choice(control, len(control), replace=True)]
+        )
+        delta[i] = roc_auc_score(y[idx], probability_a[idx]) - roc_auc_score(
+            y[idx], probability_b[idx]
+        )
+    observed = roc_auc_score(y, probability_a) - roc_auc_score(y, probability_b)
+    lower, upper = np.percentile(delta, [2.5, 97.5]).astype(float)
+    lower_tail = (np.sum(delta <= 0) + 1) / (n_boot + 1)
+    upper_tail = (np.sum(delta >= 0) + 1) / (n_boot + 1)
+    return {
+        "delta_auc": float(observed),
+        "ci_low": float(lower),
+        "ci_high": float(upper),
+        "two_sided_p": float(min(1.0, 2 * min(lower_tail, upper_tail))),
+        "n_bootstrap": int(n_boot),
+    }
+
+
 def one_permutation(perm_id: int, x: np.ndarray, y: np.ndarray) -> dict:
     rng = np.random.default_rng(BASE_SEED + 10_000 + perm_id)
     yp = rng.permutation(y)
@@ -219,7 +259,7 @@ def one_permutation(perm_id: int, x: np.ndarray, y: np.ndarray) -> dict:
 
 
 def run_permutations(x, y, target: int, jobs: int, batch_size: int = 20) -> pd.DataFrame:
-    out = ANALYSIS / "diag_permutation_v4.csv"
+    out = OUTPUT / "diag_permutation_v4.csv"
     if out.exists():
         done = pd.read_csv(out)
         expected = {"perm_id", "perm_auc", "perm_repeat_auc_mean"}
@@ -248,10 +288,16 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--permutations", type=int, default=1000)
     parser.add_argument("--jobs", type=int, default=4)
+    parser.add_argument(
+        "--no-plot",
+        action="store_true",
+        help="Skip the legacy matplotlib preview; manuscript figures are generated in R.",
+    )
     args = parser.parse_args()
     if args.permutations < 0:
         raise ValueError("--permutations must be non-negative")
 
+    OUTPUT.mkdir(parents=True, exist_ok=True)
     if LOG.exists():
         LOG.unlink()
     expr, y, sample_names = load_gse123568()
@@ -269,7 +315,24 @@ def main() -> None:
     for chosen in observed["selected"]:
         feature_counts.iloc[chosen] += 1
     feature_frequency = (feature_counts / (N_REPEATS * N_OUTER_FOLDS)).sort_values(ascending=False)
-    feature_frequency.rename("selection_frequency").to_csv(ANALYSIS / "diag_feature_stability_v4.csv")
+    feature_frequency.rename("selection_frequency").to_csv(OUTPUT / "diag_feature_stability_v4.csv")
+    pd.DataFrame({"repeat": range(N_REPEATS), "AUC": repeat_aucs}).to_csv(
+        OUTPUT / "diag_nested_cv_auc_v4.csv", index=False
+    )
+    pd.DataFrame(
+        {
+            "repeat": range(N_REPEATS),
+            "AUC": repeat_aucs,
+            "average_precision": observed["repeat_average_precision"],
+        }
+    ).to_csv(OUTPUT / "diag_nested_cv_performance_v7.csv", index=False)
+
+    ma_all = ["BID", "FTH1", "LACTB", "PDK3", "RAB5IF", "SOD2", "SQOR"]
+    ma_available = [g for g in ma_all if g in expr.index]
+    ma = repeated_nested_oof(expr.loc[ma_available].T.to_numpy(dtype=float), y, record_features=False, l2=True)
+    paired = stratified_paired_auc_bootstrap(
+        y, observed["mean_probability"], ma["mean_probability"]
+    )
 
     oof_rows = []
     for repeat in range(N_REPEATS):
@@ -280,23 +343,35 @@ def main() -> None:
                     "sample": sample,
                     "label": int(y[i]),
                     "oof_probability": float(observed["probabilities"][repeat, i]),
+                    "candidate_oof_probability": float(observed["probabilities"][repeat, i]),
+                    "ma_oof_probability": float(ma["probabilities"][repeat, i]),
                 }
             )
-    pd.DataFrame(oof_rows).to_csv(ANALYSIS / "diag_oof_predictions_v4.csv", index=False)
-    pd.DataFrame({"repeat": range(N_REPEATS), "AUC": repeat_aucs}).to_csv(
-        ANALYSIS / "diag_nested_cv_auc_v4.csv", index=False
-    )
+    pd.DataFrame(oof_rows).to_csv(OUTPUT / "diag_oof_predictions_v4.csv", index=False)
+    pd.DataFrame(
+        {
+            "sample": sample_names,
+            "label": y.astype(int),
+            "candidate_mean_oof_probability": observed["mean_probability"],
+            "ma_mean_oof_probability": ma["mean_probability"],
+        }
+    ).to_csv(OUTPUT / "diag_oof_predictions_aggregated_v8.csv", index=False)
     pd.DataFrame(
         {
             "repeat": range(N_REPEATS),
-            "AUC": repeat_aucs,
-            "average_precision": observed["repeat_average_precision"],
+            "AUC": ma["repeat_aucs"],
+            "average_precision": ma["repeat_average_precision"],
         }
-    ).to_csv(ANALYSIS / "diag_nested_cv_performance_v7.csv", index=False)
-
-    ma_all = ["BID", "FTH1", "LACTB", "PDK3", "RAB5IF", "SOD2", "SQOR"]
-    ma_available = [g for g in ma_all if g in expr.index]
-    ma = repeated_nested_oof(expr.loc[ma_available].T.to_numpy(dtype=float), y, record_features=False, l2=True)
+    ).to_csv(OUTPUT / "diag_ma_comparator_repeat_performance_v7.csv", index=False)
+    pd.DataFrame(
+        [
+            {
+                "comparison": "mitochondrial_candidate_space_minus_Ma_four_gene_model",
+                **paired,
+                "scope": "paired stratified bootstrap of fixed aggregated cross-fitted predictions; model-refitting variability excluded",
+            }
+        ]
+    ).to_csv(OUTPUT / "diag_paired_model_comparison_v8.csv", index=False)
 
     if args.permutations:
         permutation = run_permutations(x, y, args.permutations, max(1, args.jobs))
@@ -334,10 +409,22 @@ def main() -> None:
         "ma2024_repeat_auc_sd": round(float(ma["repeat_aucs"].std(ddof=1)), 4),
         "ma2024_repeat_average_precision_mean": round(float(ma["repeat_average_precision"].mean()), 4),
         "ma2024_repeat_average_precision_sd": round(float(ma["repeat_average_precision"].std(ddof=1)), 4),
+        "candidate_minus_ma_auc": round(float(paired["delta_auc"]), 4),
+        "paired_fixed_prediction_bootstrap_ci95": [
+            round(float(paired["ci_low"]), 4),
+            round(float(paired["ci_high"]), 4),
+        ],
+        "paired_fixed_prediction_bootstrap_p": round(float(paired["two_sided_p"]), 6),
+        "paired_comparison_scope": "paired stratified bootstrap of fixed aggregated cross-fitted predictions; model-refitting variability excluded",
         "feature_stability_top": {k: round(float(v), 3) for k, v in feature_frequency.head(15).items()},
     }
-    with (ANALYSIS / "diag_summary_v4.json").open("w", encoding="utf-8") as handle:
+    with (OUTPUT / "diag_summary_v4.json").open("w", encoding="utf-8") as handle:
         json.dump(summary, handle, indent=2, ensure_ascii=False)
+
+    if args.no_plot:
+        lg("legacy matplotlib preview skipped; use the R manuscript-figure workflow")
+        lg("done", json.dumps(summary, ensure_ascii=False))
+        return
 
     fig, axes = plt.subplots(1, 3, figsize=(14.4, 4.3))
     ax = axes[0]

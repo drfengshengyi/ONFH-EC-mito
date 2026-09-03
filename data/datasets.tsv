@@ -2,6 +2,7 @@ accession	archive	local_path	analysis_role	inference_boundary
 SRP361778	NCBI SRA	data/liao2022/*.rds	Femoral-head atlas; within-cohort participant-level contrasts; HOA2/HOA3 virtual knockout	Participant-level where identifiers are available
 GSE169396	NCBI GEO	data/gse169396/*	Healthy femoral-head atlas component	Descriptive external context
 GSE290411	NCBI GEO	data/gse290411/*	SONFH single-cell libraries	Descriptive only; participant mapping unavailable
+GSE284089	NCBI GEO	data/gse284089/GSM8677818_*	One osteoarthritic femoral-head Visium CytAssist FFPE section	External anatomical spatial contextualization only; one section; not ONFH validation
 GSE123568	NCBI GEO	data/GSE123568_series_matrix.txt.gz; data/GSE123568_family.soft.gz	Peripheral-serum exploratory classifier	Repeated nested cross-validation; no external validation claim
 CellChatDB.human	CellChat	data/cellchatdb_interactions.csv; data/cellchatdb_complex_named.csv	Ligand-receptor and complex definitions	Curated interaction resource
 DoRothEA A/B/C	DoRothEA	data/dorothea_ABC.tsv	Signed transcription-factor target network	ULM activity estimation

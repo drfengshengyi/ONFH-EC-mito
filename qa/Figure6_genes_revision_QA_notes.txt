@@ -1,0 +1,8 @@
+Genes Figure 6 QA contract
+Backend: R only.
+Core finding: after excluding mitochondrially encoded features, SQSTM1 perturbation ranks are donor-correlated but not specific relative to matched comparator genes.
+The network panel contains nuclear genes only and is explicitly descriptive.
+HOA3-only FDR genes (VWF, NFKBIA and C7) are not described as cross-donor hits.
+No nuclear downstream gene reached FDR<0.05 in both donors.
+One pathway reached empirical FDR<0.05 in HOA3 only; no pathway replicated.
+Matched-comparator exact empirical p values are shown for both parameter profiles.

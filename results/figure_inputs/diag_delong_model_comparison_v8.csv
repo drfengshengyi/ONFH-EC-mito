@@ -1,0 +1,2 @@
+"comparison","n_participants","n_sonfh","n_steroid_exposed_non_sonfh","candidate_auc","ma_auc","delta_auc","delong_z","delong_p_two_sided","paired","scope"
+"mitochondrial_candidate_space_minus_Ma_four_gene_model",40,30,10,0.87,0.813333333333333,0.0566666666666666,1.30548919838026,0.191726322860077,TRUE,"paired DeLong test on fixed probabilities averaged across five repeated outer-CV runs; model-refitting variability excluded"

@@ -1,0 +1,2 @@
+"ranking_statistic","full_design","sensitivity_design","enrichment_null","interpretive_scope","fgsea_version","msigdbr_version"
+"participant-pseudobulk DESeq2 Wald statistic","three ONFH ARCO 3A versus three HOA participants","six leave-one-participant-out refits","competitive gene-set null; participants are not permuted by fgsea","leave-one-participant-out sensitivity to a single influential participant; not independent cohort validation","1.38.0","26.1.0"

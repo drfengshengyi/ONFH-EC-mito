@@ -1,0 +1,1326 @@
+program,control_gene
+EC marker enrichment,AAGAB
+EC marker enrichment,ABCA1
+EC marker enrichment,ABHD15
+EC marker enrichment,ABHD16A
+EC marker enrichment,AC005551.1
+EC marker enrichment,ACTB
+EC marker enrichment,ACTG1
+EC marker enrichment,ACTN1
+EC marker enrichment,ADAMTS2
+EC marker enrichment,ADD3
+EC marker enrichment,ADM
+EC marker enrichment,AKNA
+EC marker enrichment,ALPK1
+EC marker enrichment,ALS2
+EC marker enrichment,ANGPT1
+EC marker enrichment,ANKRD50
+EC marker enrichment,ANXA9
+EC marker enrichment,AP1B1
+EC marker enrichment,APMAP
+EC marker enrichment,ARFIP1
+EC marker enrichment,ARHGAP6
+EC marker enrichment,ARHGEF10
+EC marker enrichment,ARHGEF2
+EC marker enrichment,ARPC1A
+EC marker enrichment,ASCC3
+EC marker enrichment,ATG10
+EC marker enrichment,ATP2B3
+EC marker enrichment,AUP1
+EC marker enrichment,BAHD1
+EC marker enrichment,BLZF1
+EC marker enrichment,BPNT1
+EC marker enrichment,BPTF
+EC marker enrichment,BTK
+EC marker enrichment,C11orf80
+EC marker enrichment,C16orf54
+EC marker enrichment,C1R
+EC marker enrichment,C1orf198
+EC marker enrichment,C3
+EC marker enrichment,C8orf33
+EC marker enrichment,CABP7
+EC marker enrichment,CALCOCO1
+EC marker enrichment,CALD1
+EC marker enrichment,CAPNS1
+EC marker enrichment,CAVIN1
+EC marker enrichment,CCDC163
+EC marker enrichment,CCDC194
+EC marker enrichment,CCDC32
+EC marker enrichment,CCDC8
+EC marker enrichment,CCDC88A
+EC marker enrichment,CCN3
+EC marker enrichment,CCNH
+EC marker enrichment,CD24
+EC marker enrichment,CD3G
+EC marker enrichment,CD74
+EC marker enrichment,CD82
+EC marker enrichment,CDK14
+EC marker enrichment,CERS5
+EC marker enrichment,CFB
+EC marker enrichment,CFL1
+EC marker enrichment,CHST1
+EC marker enrichment,CHTF18
+EC marker enrichment,CISH
+EC marker enrichment,CKB
+EC marker enrichment,CLK1
+EC marker enrichment,CLN5
+EC marker enrichment,CLU
+EC marker enrichment,CLUH
+EC marker enrichment,CMTR2
+EC marker enrichment,CNMD
+EC marker enrichment,CNN2
+EC marker enrichment,COA4
+EC marker enrichment,COL16A1
+EC marker enrichment,COL1A2
+EC marker enrichment,COL6A2
+EC marker enrichment,COQ5
+EC marker enrichment,COX16
+EC marker enrichment,COX7C
+EC marker enrichment,CSNK1D
+EC marker enrichment,CSRP1
+EC marker enrichment,CTDSP1
+EC marker enrichment,CTPS1
+EC marker enrichment,CTSO
+EC marker enrichment,CYB5B
+EC marker enrichment,CYTH4
+EC marker enrichment,DAZAP2
+EC marker enrichment,DCAF11
+EC marker enrichment,DDX59
+EC marker enrichment,DHRSX
+EC marker enrichment,DIPK2B
+EC marker enrichment,DLC1
+EC marker enrichment,DNAJB11
+EC marker enrichment,DNM3
+EC marker enrichment,DNTTIP1
+EC marker enrichment,DNTTIP2
+EC marker enrichment,DPYD
+EC marker enrichment,DQX1
+EC marker enrichment,DSPP
+EC marker enrichment,DSTN
+EC marker enrichment,DTD1
+EC marker enrichment,DYM
+EC marker enrichment,DYNLL1
+EC marker enrichment,EARS2
+EC marker enrichment,EFCAB13
+EC marker enrichment,EHD2
+EC marker enrichment,EID1
+EC marker enrichment,EIF2AK2
+EC marker enrichment,EIF3A
+EC marker enrichment,EIF4G2
+EC marker enrichment,EIF5B
+EC marker enrichment,EMC4
+EC marker enrichment,EMC6
+EC marker enrichment,ENPP2
+EC marker enrichment,EPB41L2
+EC marker enrichment,EPS15L1
+EC marker enrichment,ERC1
+EC marker enrichment,ERGIC3
+EC marker enrichment,ETAA1
+EC marker enrichment,ETS1
+EC marker enrichment,EVI2A
+EC marker enrichment,EVI5L
+EC marker enrichment,EYA2
+EC marker enrichment,F13A1
+EC marker enrichment,F3
+EC marker enrichment,FAM104B
+EC marker enrichment,FBLN5
+EC marker enrichment,FBXO28
+EC marker enrichment,FCRL5
+EC marker enrichment,FGG
+EC marker enrichment,FLG2
+EC marker enrichment,FLOT1
+EC marker enrichment,FLT4
+EC marker enrichment,FLVCR1
+EC marker enrichment,FLYWCH2
+EC marker enrichment,FNDC3A
+EC marker enrichment,FNDC3B
+EC marker enrichment,FOXC1
+EC marker enrichment,FTH1
+EC marker enrichment,FUCA2
+EC marker enrichment,GABRE
+EC marker enrichment,GADD45B
+EC marker enrichment,GAK
+EC marker enrichment,GALK2
+EC marker enrichment,GAS7
+EC marker enrichment,GMDS
+EC marker enrichment,GNB1
+EC marker enrichment,GOLGA3
+EC marker enrichment,GOSR2
+EC marker enrichment,GPAA1
+EC marker enrichment,GPIHBP1
+EC marker enrichment,GPR180
+EC marker enrichment,GRHPR
+EC marker enrichment,GSTA4
+EC marker enrichment,HECTD4
+EC marker enrichment,HIST2H2BE
+EC marker enrichment,HSPA5
+EC marker enrichment,IFI44
+EC marker enrichment,IFITM1
+EC marker enrichment,IFNAR2
+EC marker enrichment,IGFBP5
+EC marker enrichment,IKBKB
+EC marker enrichment,IL2RB
+EC marker enrichment,IL7
+EC marker enrichment,INHBA
+EC marker enrichment,INTS13
+EC marker enrichment,IRX3
+EC marker enrichment,ISOC2
+EC marker enrichment,ITGA7
+EC marker enrichment,ITPR2
+EC marker enrichment,JAK1
+EC marker enrichment,JKAMP
+EC marker enrichment,JPT1
+EC marker enrichment,JUNB
+EC marker enrichment,KANK3
+EC marker enrichment,KAZN
+EC marker enrichment,KCNK18
+EC marker enrichment,KCTD12
+EC marker enrichment,KHNYN
+EC marker enrichment,KIF16B
+EC marker enrichment,KIRREL1
+EC marker enrichment,KLC1
+EC marker enrichment,KLF3
+EC marker enrichment,KPNA3
+EC marker enrichment,KRTAP20-2
+EC marker enrichment,KRTAP4-2
+EC marker enrichment,LAPTM5
+EC marker enrichment,LCOR
+EC marker enrichment,LCP1
+EC marker enrichment,LCP2
+EC marker enrichment,LENG8
+EC marker enrichment,LILRA4
+EC marker enrichment,LMO7
+EC marker enrichment,LRCH1
+EC marker enrichment,LRP1
+EC marker enrichment,LRP8
+EC marker enrichment,LRRC28
+EC marker enrichment,LRRC58
+EC marker enrichment,LRRC8B
+EC marker enrichment,MAN1B1
+EC marker enrichment,MAOB
+EC marker enrichment,MAP7D2
+EC marker enrichment,MAP7D3
+EC marker enrichment,MAPK14
+EC marker enrichment,MAPKAPK2
+EC marker enrichment,MCTS1
+EC marker enrichment,MED23
+EC marker enrichment,MED29
+EC marker enrichment,MED7
+EC marker enrichment,MEIS1
+EC marker enrichment,METTL23
+EC marker enrichment,MICAL3
+EC marker enrichment,MIS12
+EC marker enrichment,MKRN2OS
+EC marker enrichment,MMP14
+EC marker enrichment,MMS19
+EC marker enrichment,MPEG1
+EC marker enrichment,MS4A7
+EC marker enrichment,MT-CO2
+EC marker enrichment,MT1X
+EC marker enrichment,MTA1
+EC marker enrichment,MTAP
+EC marker enrichment,MTHFD2
+EC marker enrichment,MVB12B
+EC marker enrichment,MYL9
+EC marker enrichment,MYOF
+EC marker enrichment,N4BP2
+EC marker enrichment,NAA40
+EC marker enrichment,NABP1
+EC marker enrichment,NAGK
+EC marker enrichment,NCAPH2
+EC marker enrichment,NDUFA10
+EC marker enrichment,NDUFB11
+EC marker enrichment,NFE2L1
+EC marker enrichment,NFE2L2
+EC marker enrichment,NIN
+EC marker enrichment,NIT2
+EC marker enrichment,NKAPD1
+EC marker enrichment,NOP10
+EC marker enrichment,NPHP1
+EC marker enrichment,NRP2
+EC marker enrichment,NT5DC2
+EC marker enrichment,NUB1
+EC marker enrichment,NUDC
+EC marker enrichment,NUDT22
+EC marker enrichment,NUDT3
+EC marker enrichment,OAF
+EC marker enrichment,ODF3B
+EC marker enrichment,OLFML2B
+EC marker enrichment,OPN3
+EC marker enrichment,ORC5
+EC marker enrichment,OSR1
+EC marker enrichment,OSTM1
+EC marker enrichment,PALM2-AKAP2
+EC marker enrichment,PARP3
+EC marker enrichment,PARP6
+EC marker enrichment,PBX2
+EC marker enrichment,PCDHGB7
+EC marker enrichment,PDCD4
+EC marker enrichment,PEX11B
+EC marker enrichment,PEX5
+EC marker enrichment,PFKFB3
+EC marker enrichment,PHF14
+EC marker enrichment,PIAS1
+EC marker enrichment,PIK3AP1
+EC marker enrichment,PILRB
+EC marker enrichment,PIP5K1C
+EC marker enrichment,PKP4
+EC marker enrichment,PLA2G7
+EC marker enrichment,PLPP1
+EC marker enrichment,PLPP3
+EC marker enrichment,PMF1
+EC marker enrichment,POLDIP2
+EC marker enrichment,POM121C
+EC marker enrichment,POMP
+EC marker enrichment,PPARGC1A
+EC marker enrichment,PPP1R35
+EC marker enrichment,PPP4R2
+EC marker enrichment,PRAC1
+EC marker enrichment,PRDX1
+EC marker enrichment,PRDX4
+EC marker enrichment,PRKCD
+EC marker enrichment,PRR14L
+EC marker enrichment,PRSS23
+EC marker enrichment,PTBP3
+EC marker enrichment,PTGER3
+EC marker enrichment,PTPN21
+EC marker enrichment,PTPRA
+EC marker enrichment,PUS7L
+EC marker enrichment,RABL6
+EC marker enrichment,RASGRF2
+EC marker enrichment,RBL2
+EC marker enrichment,RBM39
+EC marker enrichment,REEP5
+EC marker enrichment,RELN
+EC marker enrichment,RESF1
+EC marker enrichment,REST
+EC marker enrichment,REXO2
+EC marker enrichment,RHOA
+EC marker enrichment,RING1
+EC marker enrichment,RIOK3
+EC marker enrichment,RIPOR1
+EC marker enrichment,RNASE1
+EC marker enrichment,RPF2
+EC marker enrichment,RRBP1
+EC marker enrichment,RRP1
+EC marker enrichment,RSRC1
+EC marker enrichment,RTCA
+EC marker enrichment,RTN2
+EC marker enrichment,S100A13
+EC marker enrichment,S100A5
+EC marker enrichment,SAFB
+EC marker enrichment,SAP130
+EC marker enrichment,SBNO1
+EC marker enrichment,SCAF4
+EC marker enrichment,SCARB1
+EC marker enrichment,SCARF1
+EC marker enrichment,SCFD1
+EC marker enrichment,SCPEP1
+EC marker enrichment,SCYL1
+EC marker enrichment,SDCCAG8
+EC marker enrichment,SELENOO
+EC marker enrichment,SEMA3F
+EC marker enrichment,SEMA4D
+EC marker enrichment,SENP5
+EC marker enrichment,SERINC4
+EC marker enrichment,SERPINA9
+EC marker enrichment,SERPINB6
+EC marker enrichment,SETX
+EC marker enrichment,SFRP1
+EC marker enrichment,SGIP1
+EC marker enrichment,SH3GL1
+EC marker enrichment,SIN3A
+EC marker enrichment,SIRT3
+EC marker enrichment,SKI
+EC marker enrichment,SLC16A4
+EC marker enrichment,SLC1A3
+EC marker enrichment,SLC20A2
+EC marker enrichment,SLC26A2
+EC marker enrichment,SLC38A7
+EC marker enrichment,SLC39A1
+EC marker enrichment,SLC39A3
+EC marker enrichment,SLC39A6
+EC marker enrichment,SLC45A4
+EC marker enrichment,SLC66A3
+EC marker enrichment,SLFN12
+EC marker enrichment,SLFN12L
+EC marker enrichment,SMARCD3
+EC marker enrichment,SMARCE1
+EC marker enrichment,SNAI2
+EC marker enrichment,SNED1
+EC marker enrichment,SNN
+EC marker enrichment,SNRNP48
+EC marker enrichment,SNU13
+EC marker enrichment,SOCS2
+EC marker enrichment,SORL1
+EC marker enrichment,SP4
+EC marker enrichment,SPARC
+EC marker enrichment,SPARCL1
+EC marker enrichment,SPATA4
+EC marker enrichment,SPOP
+EC marker enrichment,SREBF2
+EC marker enrichment,SRPX
+EC marker enrichment,SRSF4
+EC marker enrichment,STAG2
+EC marker enrichment,STARD9
+EC marker enrichment,STAT4
+EC marker enrichment,STK17B
+EC marker enrichment,STK25
+EC marker enrichment,STMN2
+EC marker enrichment,STX10
+EC marker enrichment,STX3
+EC marker enrichment,STX6
+EC marker enrichment,SUCLG1
+EC marker enrichment,SULF2
+EC marker enrichment,SUPV3L1
+EC marker enrichment,SUSD6
+EC marker enrichment,SYNC
+EC marker enrichment,SYNE1
+EC marker enrichment,SYNJ2BP
+EC marker enrichment,TALDO1
+EC marker enrichment,TARSL2
+EC marker enrichment,TAZ
+EC marker enrichment,TBC1D14
+EC marker enrichment,TBC1D15
+EC marker enrichment,TBL1XR1
+EC marker enrichment,TCF25
+EC marker enrichment,TCF7L1
+EC marker enrichment,TCN2
+EC marker enrichment,TFPT
+EC marker enrichment,THUMPD1
+EC marker enrichment,THYN1
+EC marker enrichment,TIFA
+EC marker enrichment,TLE1
+EC marker enrichment,TMEM165
+EC marker enrichment,TMEM175
+EC marker enrichment,TMEM19
+EC marker enrichment,TMEM199
+EC marker enrichment,TMEM201
+EC marker enrichment,TMEM87A
+EC marker enrichment,TMEM9
+EC marker enrichment,TNFAIP2
+EC marker enrichment,TNFAIP8L1
+EC marker enrichment,TNRC6C
+EC marker enrichment,TNS2
+EC marker enrichment,TOE1
+EC marker enrichment,TOP3B
+EC marker enrichment,TRAPPC4
+EC marker enrichment,TRAPPC6A
+EC marker enrichment,TRIOBP
+EC marker enrichment,TRIR
+EC marker enrichment,TSC2
+EC marker enrichment,TTC3
+EC marker enrichment,TTC33
+EC marker enrichment,TTLL3
+EC marker enrichment,TUBA4A
+EC marker enrichment,TUBB2A
+EC marker enrichment,TUT7
+EC marker enrichment,TYSND1
+EC marker enrichment,TYW1
+EC marker enrichment,UBC
+EC marker enrichment,UBE2O
+EC marker enrichment,URB2
+EC marker enrichment,USF1
+EC marker enrichment,USP34
+EC marker enrichment,USP37
+EC marker enrichment,USP38
+EC marker enrichment,VCAN
+EC marker enrichment,VKORC1L1
+EC marker enrichment,WDFY2
+EC marker enrichment,WLS
+EC marker enrichment,WRAP73
+EC marker enrichment,XPR1
+EC marker enrichment,ZC3H3
+EC marker enrichment,ZCCHC3
+EC marker enrichment,ZDHHC24
+EC marker enrichment,ZEB2
+EC marker enrichment,ZFP41
+EC marker enrichment,ZMYM2
+EC marker enrichment,ZNF169
+EC marker enrichment,ZNF189
+EC marker enrichment,ZNF345
+EC marker enrichment,ZNF346
+EC marker enrichment,ZNF44
+EC marker enrichment,ZNF625
+EC marker enrichment,ZNF638
+EC marker enrichment,ZNF791
+EC marker enrichment,ZRANB2
+EC marker enrichment,ZSWIM8
+EC marker enrichment,ZXDC
+EC marker enrichment,ZYX
+Stress/permeabilization,ABCA2
+Stress/permeabilization,ABCC9
+Stress/permeabilization,ACTB
+Stress/permeabilization,ADCYAP1
+Stress/permeabilization,ADRM1
+Stress/permeabilization,AGFG1
+Stress/permeabilization,AKIRIN1
+Stress/permeabilization,AKIRIN2
+Stress/permeabilization,ANAPC16
+Stress/permeabilization,ANKRA2
+Stress/permeabilization,ARFGEF2
+Stress/permeabilization,ARL14EP
+Stress/permeabilization,ARL6IP5
+Stress/permeabilization,ARMH1
+Stress/permeabilization,ARPC1B
+Stress/permeabilization,ARPC3
+Stress/permeabilization,ARPC5L
+Stress/permeabilization,ARSG
+Stress/permeabilization,ATP1B2
+Stress/permeabilization,ATP2B4
+Stress/permeabilization,ATP5F1C
+Stress/permeabilization,BANF1
+Stress/permeabilization,BCS1L
+Stress/permeabilization,BEND4
+Stress/permeabilization,BHLHE41
+Stress/permeabilization,BRI3
+Stress/permeabilization,BTN2A1
+Stress/permeabilization,BTN2A2
+Stress/permeabilization,C19orf48
+Stress/permeabilization,C2orf81
+Stress/permeabilization,C8orf58
+Stress/permeabilization,CADPS2
+Stress/permeabilization,CAPN5
+Stress/permeabilization,CAVIN1
+Stress/permeabilization,CBX6
+Stress/permeabilization,CCNDBP1
+Stress/permeabilization,CCT6B
+Stress/permeabilization,CD55
+Stress/permeabilization,CELF1
+Stress/permeabilization,CFL1
+Stress/permeabilization,CGRRF1
+Stress/permeabilization,CHCHD4
+Stress/permeabilization,CHIC2
+Stress/permeabilization,CNTLN
+Stress/permeabilization,COL1A1
+Stress/permeabilization,COL6A3
+Stress/permeabilization,CPPED1
+Stress/permeabilization,CRTC1
+Stress/permeabilization,CRYL1
+Stress/permeabilization,CYP2J2
+Stress/permeabilization,DAB2IP
+Stress/permeabilization,DCAF12
+Stress/permeabilization,DDX50
+Stress/permeabilization,DHX15
+Stress/permeabilization,DHX8
+Stress/permeabilization,DIS3L
+Stress/permeabilization,DTHD1
+Stress/permeabilization,DUSP10
+Stress/permeabilization,DUSP22
+Stress/permeabilization,DZANK1
+Stress/permeabilization,ELK4
+Stress/permeabilization,ELMSAN1
+Stress/permeabilization,ERCC1
+Stress/permeabilization,ERI3
+Stress/permeabilization,EXOSC1
+Stress/permeabilization,FAM107B
+Stress/permeabilization,FAM126B
+Stress/permeabilization,FAM227A
+Stress/permeabilization,FBXO30
+Stress/permeabilization,FIS1
+Stress/permeabilization,FLT3LG
+Stress/permeabilization,FN3KRP
+Stress/permeabilization,GET3
+Stress/permeabilization,GMCL1
+Stress/permeabilization,GNRH1
+Stress/permeabilization,GOLGA7
+Stress/permeabilization,GON4L
+Stress/permeabilization,GPD1
+Stress/permeabilization,GPI
+Stress/permeabilization,GPRIN3
+Stress/permeabilization,GRINA
+Stress/permeabilization,GUCD1
+Stress/permeabilization,HK2
+Stress/permeabilization,HPS4
+Stress/permeabilization,IER3
+Stress/permeabilization,IFI27L1
+Stress/permeabilization,IFI30
+Stress/permeabilization,IP6K2
+Stress/permeabilization,JAKMIP3
+Stress/permeabilization,JUP
+Stress/permeabilization,KCND3
+Stress/permeabilization,KCNJ8
+Stress/permeabilization,KCNQ3
+Stress/permeabilization,KDM3A
+Stress/permeabilization,KEAP1
+Stress/permeabilization,KLK4
+Stress/permeabilization,KRT19
+Stress/permeabilization,KRT8
+Stress/permeabilization,LAMP2
+Stress/permeabilization,LDLRAP1
+Stress/permeabilization,LIPE
+Stress/permeabilization,LRFN4
+Stress/permeabilization,LUC7L2
+Stress/permeabilization,LY6G5B
+Stress/permeabilization,MACO1
+Stress/permeabilization,MARCKS
+Stress/permeabilization,MASTL
+Stress/permeabilization,MED13L
+Stress/permeabilization,MGRN1
+Stress/permeabilization,MOB1B
+Stress/permeabilization,MOG
+Stress/permeabilization,MORC2
+Stress/permeabilization,MRRF
+Stress/permeabilization,MRTFA
+Stress/permeabilization,MSN
+Stress/permeabilization,MT-ND3
+Stress/permeabilization,MTX3
+Stress/permeabilization,MYDGF
+Stress/permeabilization,MYO1B
+Stress/permeabilization,N4BP2
+Stress/permeabilization,NAT10
+Stress/permeabilization,NBPF11
+Stress/permeabilization,NDUFAB1
+Stress/permeabilization,NEDD8
+Stress/permeabilization,NET1
+Stress/permeabilization,NFIC
+Stress/permeabilization,NOL11
+Stress/permeabilization,NPIPB15
+Stress/permeabilization,NUDT18
+Stress/permeabilization,OGDH
+Stress/permeabilization,OSBPL7
+Stress/permeabilization,OTUD5
+Stress/permeabilization,P2RY10
+Stress/permeabilization,PABPC1L
+Stress/permeabilization,PARD3
+Stress/permeabilization,PARP14
+Stress/permeabilization,PCSK5
+Stress/permeabilization,PECR
+Stress/permeabilization,PHYHD1
+Stress/permeabilization,PIK3R5
+Stress/permeabilization,PIR
+Stress/permeabilization,POU2AF1
+Stress/permeabilization,PPIF
+Stress/permeabilization,PPP2R2D
+Stress/permeabilization,PRDX6
+Stress/permeabilization,PRPF4B
+Stress/permeabilization,PRRC2B
+Stress/permeabilization,PTEN
+Stress/permeabilization,PWWP2B
+Stress/permeabilization,PXDN
+Stress/permeabilization,RAB7A
+Stress/permeabilization,RAB8B
+Stress/permeabilization,RAD23B
+Stress/permeabilization,RCN2
+Stress/permeabilization,RCOR3
+Stress/permeabilization,RETSAT
+Stress/permeabilization,REV3L
+Stress/permeabilization,RNF187
+Stress/permeabilization,RNPEP
+Stress/permeabilization,RPA2
+Stress/permeabilization,RTN4R
+Stress/permeabilization,RTP1
+Stress/permeabilization,RWDD1
+Stress/permeabilization,SAMD3
+Stress/permeabilization,SAMD5
+Stress/permeabilization,SAT2
+Stress/permeabilization,SBNO1
+Stress/permeabilization,SC5D
+Stress/permeabilization,SCRIB
+Stress/permeabilization,SEC23IP
+Stress/permeabilization,SENP8
+Stress/permeabilization,SEPTIN2
+Stress/permeabilization,SERPING1
+Stress/permeabilization,SGTA
+Stress/permeabilization,SH2B1
+Stress/permeabilization,SLC12A4
+Stress/permeabilization,SLC38A2
+Stress/permeabilization,SLC44A2
+Stress/permeabilization,SLC52A2
+Stress/permeabilization,SLC7A1
+Stress/permeabilization,SMAD2
+Stress/permeabilization,SMCR8
+Stress/permeabilization,SNRNP48
+Stress/permeabilization,SNRPF
+Stress/permeabilization,SNU13
+Stress/permeabilization,SP140L
+Stress/permeabilization,SS18
+Stress/permeabilization,STMN3
+Stress/permeabilization,SUCLG2
+Stress/permeabilization,SVEP1
+Stress/permeabilization,SYMPK
+Stress/permeabilization,TCEAL9
+Stress/permeabilization,TDRD6
+Stress/permeabilization,TEX30
+Stress/permeabilization,TIGAR
+Stress/permeabilization,TIMM10B
+Stress/permeabilization,TLNRD1
+Stress/permeabilization,TMEM143
+Stress/permeabilization,TMEM184C
+Stress/permeabilization,TMLHE
+Stress/permeabilization,TNFSF12
+Stress/permeabilization,TNKS1BP1
+Stress/permeabilization,TNRC18
+Stress/permeabilization,TP53INP1
+Stress/permeabilization,TPM1
+Stress/permeabilization,TPRKB
+Stress/permeabilization,TRANK1
+Stress/permeabilization,TRAPPC11
+Stress/permeabilization,TRIM52
+Stress/permeabilization,TRIP10
+Stress/permeabilization,TRMT6
+Stress/permeabilization,TRMU
+Stress/permeabilization,TRPV2
+Stress/permeabilization,TSKU
+Stress/permeabilization,TSPAN6
+Stress/permeabilization,TSPAN7
+Stress/permeabilization,TXNDC15
+Stress/permeabilization,UBE2L3
+Stress/permeabilization,UBE3A
+Stress/permeabilization,UBXN4
+Stress/permeabilization,USP8
+Stress/permeabilization,VCAN
+Stress/permeabilization,VILL
+Stress/permeabilization,VPS25
+Stress/permeabilization,WDR90
+Stress/permeabilization,ZFX
+Stress/permeabilization,ZNF444
+Stress/permeabilization,ZNF496
+Stress/permeabilization,ZNF507
+Stress/permeabilization,ZNF559
+Stress/permeabilization,ZNF599
+Stress/permeabilization,ZNF83
+Stress/permeabilization,ZSCAN1
+Selective clearance,AARSD1
+Selective clearance,ABCG1
+Selective clearance,ABHD14B
+Selective clearance,ABR
+Selective clearance,ABTB1
+Selective clearance,AC073111.4
+Selective clearance,ACADM
+Selective clearance,ACO2
+Selective clearance,ADAMTS2
+Selective clearance,ADAR
+Selective clearance,ADCY4
+Selective clearance,ADCY7
+Selective clearance,ADD1
+Selective clearance,AGAP1
+Selective clearance,AHCY
+Selective clearance,AKAP1
+Selective clearance,ALAS1
+Selective clearance,ALDH1A1
+Selective clearance,ALPL
+Selective clearance,ANAPC4
+Selective clearance,ANGEL2
+Selective clearance,ANGPTL2
+Selective clearance,ANKRD11
+Selective clearance,ANKRD53
+Selective clearance,ANKRD54
+Selective clearance,AP2A2
+Selective clearance,AP4S1
+Selective clearance,APEX1
+Selective clearance,APMAP
+Selective clearance,ARCN1
+Selective clearance,ARFGAP3
+Selective clearance,ARFRP1
+Selective clearance,ARMCX3
+Selective clearance,ARSG
+Selective clearance,ATP10A
+Selective clearance,ATP6V1B2
+Selective clearance,ATP6V1C1
+Selective clearance,ATXN7
+Selective clearance,BAG5
+Selective clearance,BCL2A1
+Selective clearance,BMPR2
+Selective clearance,BRD1
+Selective clearance,BTAF1
+Selective clearance,BUD13
+Selective clearance,C11orf96
+Selective clearance,C17orf49
+Selective clearance,C19orf38
+Selective clearance,C1R
+Selective clearance,C1orf21
+Selective clearance,C7orf25
+Selective clearance,CACNA2D4
+Selective clearance,CALCOCO1
+Selective clearance,CAMTA1
+Selective clearance,CAPN2
+Selective clearance,CAPRIN1
+Selective clearance,CAPZA2
+Selective clearance,CARHSP1
+Selective clearance,CASP3
+Selective clearance,CCDC158
+Selective clearance,CCDC78
+Selective clearance,CCNL1
+Selective clearance,CCR10
+Selective clearance,CD164
+Selective clearance,CD248
+Selective clearance,CD4
+Selective clearance,CDC42EP3
+Selective clearance,CDIPT
+Selective clearance,CDKAL1
+Selective clearance,CEBPD
+Selective clearance,CEP95
+Selective clearance,CERS2
+Selective clearance,CERS5
+Selective clearance,CHRNB1
+Selective clearance,CHST14
+Selective clearance,CHST15
+Selective clearance,CHTOP
+Selective clearance,CIAO1
+Selective clearance,CISD2
+Selective clearance,CIZ1
+Selective clearance,CKB
+Selective clearance,CLCN7
+Selective clearance,CLDN15
+Selective clearance,CLEC7A
+Selective clearance,CLIC4
+Selective clearance,CNKSR2
+Selective clearance,COA4
+Selective clearance,COG3
+Selective clearance,CPLX1
+Selective clearance,CRACR2A
+Selective clearance,CREBRF
+Selective clearance,CRTAM
+Selective clearance,CSF1
+Selective clearance,CSNK1G3
+Selective clearance,CTNNB1
+Selective clearance,CUL4B
+Selective clearance,CUTA
+Selective clearance,CXCL14
+Selective clearance,CXCL16
+Selective clearance,CYP20A1
+Selective clearance,CYTH3
+Selective clearance,DACT1
+Selective clearance,DCAF10
+Selective clearance,DCTN1
+Selective clearance,DDI2
+Selective clearance,DDX5
+Selective clearance,DEF6
+Selective clearance,DENND1A
+Selective clearance,DEXI
+Selective clearance,DMPK
+Selective clearance,DNAJC30
+Selective clearance,DNM1L
+Selective clearance,DOCK8
+Selective clearance,DPEP1
+Selective clearance,DPYSL3
+Selective clearance,DTNBP1
+Selective clearance,DUSP10
+Selective clearance,DYNC1I2
+Selective clearance,DYRK1A
+Selective clearance,EDIL3
+Selective clearance,EEA1
+Selective clearance,EEF1G
+Selective clearance,EFEMP1
+Selective clearance,EIF1
+Selective clearance,EIF4A3
+Selective clearance,ELK4
+Selective clearance,EMP3
+Selective clearance,ENTPD6
+Selective clearance,ERCC6L2
+Selective clearance,ERCC8
+Selective clearance,ERLEC1
+Selective clearance,ERO1A
+Selective clearance,ETNK1
+Selective clearance,ETS1
+Selective clearance,EVI5
+Selective clearance,EXOSC6
+Selective clearance,FABP3
+Selective clearance,FAM120AOS
+Selective clearance,FAM13A
+Selective clearance,FAM155A
+Selective clearance,FAM160B1
+Selective clearance,FBRS
+Selective clearance,FBXO44
+Selective clearance,FBXW7
+Selective clearance,FIBIN
+Selective clearance,FKBP11
+Selective clearance,FKBP5
+Selective clearance,FLOT1
+Selective clearance,FOXJ2
+Selective clearance,FOXRED1
+Selective clearance,FTH1
+Selective clearance,FUCA1
+Selective clearance,FZD5
+Selective clearance,G6PC3
+Selective clearance,GADD45B
+Selective clearance,GALNT1
+Selective clearance,GATAD2B
+Selective clearance,GCFC2
+Selective clearance,GFPT1
+Selective clearance,GLS
+Selective clearance,GNG11
+Selective clearance,GOPC
+Selective clearance,GOSR2
+Selective clearance,GPNMB
+Selective clearance,GRK3
+Selective clearance,GTPBP1
+Selective clearance,GUK1
+Selective clearance,HACE1
+Selective clearance,HADH
+Selective clearance,HDAC4
+Selective clearance,HDLBP
+Selective clearance,HIST1H1D
+Selective clearance,HMBOX1
+Selective clearance,HOOK3
+Selective clearance,HOXB3
+Selective clearance,HYI
+Selective clearance,IFI27L2
+Selective clearance,IGFBP4
+Selective clearance,IGHA1
+Selective clearance,IGHG1
+Selective clearance,IL18BP
+Selective clearance,IL1RAP
+Selective clearance,IL6R
+Selective clearance,IMMP2L
+Selective clearance,INO80
+Selective clearance,INTS10
+Selective clearance,IRAK1
+Selective clearance,IRF2
+Selective clearance,IRF7
+Selective clearance,IRX3
+Selective clearance,ITFG2
+Selective clearance,ITGA4
+Selective clearance,ITGAX
+Selective clearance,IVD
+Selective clearance,JAZF1
+Selective clearance,KCNK6
+Selective clearance,KCTD11
+Selective clearance,KCTD2
+Selective clearance,KCTD5
+Selective clearance,KDM3B
+Selective clearance,KDM4B
+Selective clearance,KIAA0753
+Selective clearance,KIAA0895L
+Selective clearance,KIDINS220
+Selective clearance,KIF7
+Selective clearance,KLF12
+Selective clearance,KSR1
+Selective clearance,L3HYPDH
+Selective clearance,L3MBTL4
+Selective clearance,LBP
+Selective clearance,LDAH
+Selective clearance,LDB1
+Selective clearance,LEMD2
+Selective clearance,LEMD3
+Selective clearance,LIMD2
+Selective clearance,LIMK1
+Selective clearance,LIX1L
+Selective clearance,LMNB2
+Selective clearance,LPIN3
+Selective clearance,LRBA
+Selective clearance,LRCH1
+Selective clearance,LRP1
+Selective clearance,LRRC20
+Selective clearance,LRRC29
+Selective clearance,LRRC37A3
+Selective clearance,LRRC61
+Selective clearance,LRRK1
+Selective clearance,LSM10
+Selective clearance,LUC7L
+Selective clearance,LZIC
+Selective clearance,LZTFL1
+Selective clearance,MAGOHB
+Selective clearance,MAP4K4
+Selective clearance,MAPK1
+Selective clearance,MAPK11
+Selective clearance,MAPK8IP1
+Selective clearance,MAPRE3
+Selective clearance,MARC1
+Selective clearance,MARCH6
+Selective clearance,MAX
+Selective clearance,MEPCE
+Selective clearance,MGST2
+Selective clearance,MICA
+Selective clearance,MICOS10
+Selective clearance,MIIP
+Selective clearance,MMP19
+Selective clearance,MORN4
+Selective clearance,MOSPD2
+Selective clearance,MPV17
+Selective clearance,MT-CYB
+Selective clearance,MTPAP
+Selective clearance,MYH14
+Selective clearance,N4BP2L2
+Selective clearance,NAT10
+Selective clearance,NCAM1
+Selective clearance,NCKAP5
+Selective clearance,NDP
+Selective clearance,NECTIN1
+Selective clearance,NEURL4
+Selective clearance,NFIB
+Selective clearance,NFIL3
+Selective clearance,NMT2
+Selective clearance,NOL12
+Selective clearance,NOP53
+Selective clearance,NPDC1
+Selective clearance,NUB1
+Selective clearance,NUBPL
+Selective clearance,NUP160
+Selective clearance,NUP88
+Selective clearance,NUP98
+Selective clearance,NUS1
+Selective clearance,OGFR
+Selective clearance,OGG1
+Selective clearance,OLFM1
+Selective clearance,OLFML2B
+Selective clearance,OMD
+Selective clearance,OS9
+Selective clearance,PA2G4
+Selective clearance,PACSIN1
+Selective clearance,PARP10
+Selective clearance,PARP8
+Selective clearance,PCCA
+Selective clearance,PCNA
+Selective clearance,PFAS
+Selective clearance,PHF20
+Selective clearance,PIGL
+Selective clearance,PIK3C2A
+Selective clearance,PIM3
+Selective clearance,PIP4P1
+Selective clearance,PITRM1
+Selective clearance,PLAAT4
+Selective clearance,PLCB4
+Selective clearance,PLCD1
+Selective clearance,PLEKHA5
+Selective clearance,PLEKHG5
+Selective clearance,PLPP1
+Selective clearance,PLPP3
+Selective clearance,PLXNA3
+Selective clearance,PNPLA2
+Selective clearance,PNPLA6
+Selective clearance,PNRC2
+Selective clearance,POLK
+Selective clearance,POLR3H
+Selective clearance,POU2AF1
+Selective clearance,PPP1R1A
+Selective clearance,PPP4R1
+Selective clearance,PPT1
+Selective clearance,PREPL
+Selective clearance,PROCR
+Selective clearance,PRSS51
+Selective clearance,PSEN2
+Selective clearance,PSME1
+Selective clearance,PSMF1
+Selective clearance,PTH1R
+Selective clearance,PTPN11
+Selective clearance,PTPN6
+Selective clearance,PTPRF
+Selective clearance,PTRH1
+Selective clearance,PUF60
+Selective clearance,PURB
+Selective clearance,PWWP3A
+Selective clearance,RAB11B
+Selective clearance,RAB5C
+Selective clearance,RABGGTA
+Selective clearance,RAF1
+Selective clearance,RALGAPB
+Selective clearance,RAPH1
+Selective clearance,RASAL3
+Selective clearance,RASGRP2
+Selective clearance,RAVER1
+Selective clearance,RETREG2
+Selective clearance,RGS12
+Selective clearance,RNFT1
+Selective clearance,RPAP3
+Selective clearance,RRBP1
+Selective clearance,RRNAD1
+Selective clearance,RTL8C
+Selective clearance,RUNDC3B
+Selective clearance,S100A4
+Selective clearance,SAMD3
+Selective clearance,SAP30BP
+Selective clearance,SAR1B
+Selective clearance,SAT1
+Selective clearance,SCO2
+Selective clearance,SDCBP
+Selective clearance,SEC24D
+Selective clearance,SEM1
+Selective clearance,SERGEF
+Selective clearance,SERPINB1
+Selective clearance,SESN2
+Selective clearance,SIAE
+Selective clearance,SLBP
+Selective clearance,SLC16A13
+Selective clearance,SLC25A10
+Selective clearance,SLC29A3
+Selective clearance,SMARCD3
+Selective clearance,SMCHD1
+Selective clearance,SMTN
+Selective clearance,SNX9
+Selective clearance,SP3
+Selective clearance,SPATA6L
+Selective clearance,SRCAP
+Selective clearance,SRGAP3
+Selective clearance,SRGN
+Selective clearance,SRP19
+Selective clearance,SRPK1
+Selective clearance,SRPK2
+Selective clearance,SRRM2
+Selective clearance,ST5
+Selective clearance,ST6GALNAC6
+Selective clearance,STK10
+Selective clearance,STK40
+Selective clearance,STMP1
+Selective clearance,STOML2
+Selective clearance,STXBP2
+Selective clearance,SWT1
+Selective clearance,TAB2
+Selective clearance,TBC1D16
+Selective clearance,TBC1D5
+Selective clearance,TBCK
+Selective clearance,TFCP2
+Selective clearance,TGFBR2
+Selective clearance,THBD
+Selective clearance,THBS1
+Selective clearance,THEM6
+Selective clearance,THUMPD3
+Selective clearance,TIPARP
+Selective clearance,TMCO6
+Selective clearance,TMED7
+Selective clearance,TMEM131
+Selective clearance,TMEM134
+Selective clearance,TMEM242
+Selective clearance,TMEM59
+Selective clearance,TMF1
+Selective clearance,TNFRSF10B
+Selective clearance,TNFSF10
+Selective clearance,TPX2
+Selective clearance,TRAPPC10
+Selective clearance,TRAPPC4
+Selective clearance,TRAPPC6B
+Selective clearance,TSNAX
+Selective clearance,TTC21B
+Selective clearance,TUBB2A
+Selective clearance,TUBGCP6
+Selective clearance,TUSC2
+Selective clearance,TWF2
+Selective clearance,TXNDC12
+Selective clearance,UBAP2L
+Selective clearance,UBASH3B
+Selective clearance,UBE2V1
+Selective clearance,UBFD1
+Selective clearance,UBXN11
+Selective clearance,UBXN6
+Selective clearance,ULK3
+Selective clearance,UNC93B1
+Selective clearance,UPF1
+Selective clearance,USF1
+Selective clearance,UST
+Selective clearance,UTP11
+Selective clearance,VAV3
+Selective clearance,VEGFA
+Selective clearance,VPS11
+Selective clearance,VPS33A
+Selective clearance,VPS39
+Selective clearance,VPS52
+Selective clearance,VPS53
+Selective clearance,VRK2
+Selective clearance,WASF3
+Selective clearance,YPEL5
+Selective clearance,ZBTB1
+Selective clearance,ZC2HC1A
+Selective clearance,ZC3H7A
+Selective clearance,ZDHHC1
+Selective clearance,ZFP64
+Selective clearance,ZNF148
+Selective clearance,ZNF16
+Selective clearance,ZNF207
+Selective clearance,ZNF32
+Selective clearance,ZNF354A
+Selective clearance,ZNF500
+Selective clearance,ZNF502
+Selective clearance,ZNF512
+Selective clearance,ZNF655
+Selective clearance,ZNF709
+Selective clearance,ZSCAN22
+EC inflammation,AC091057.6
+EC inflammation,ACAA1
+EC inflammation,ACBD3
+EC inflammation,ACSM3
+EC inflammation,AGFG1
+EC inflammation,AGRN
+EC inflammation,AMOTL2
+EC inflammation,ANAPC2
+EC inflammation,ANKRD33B
+EC inflammation,ANXA11
+EC inflammation,ARHGAP4
+EC inflammation,ATMIN
+EC inflammation,ATP13A1
+EC inflammation,ATP5MD
+EC inflammation,AURKAIP1
+EC inflammation,BCL7A
+EC inflammation,BGN
+EC inflammation,BICD2
+EC inflammation,BMP5
+EC inflammation,BSX
+EC inflammation,C16orf86
+EC inflammation,C17orf107
+EC inflammation,C19orf18
+EC inflammation,C22orf15
+EC inflammation,C7orf31
+EC inflammation,C9
+EC inflammation,CACNB3
+EC inflammation,CALD1
+EC inflammation,CAMK2N1
+EC inflammation,CCDC178
+EC inflammation,CCDC28B
+EC inflammation,CCNDBP1
+EC inflammation,CD4
+EC inflammation,CECR2
+EC inflammation,CENPA
+EC inflammation,CGNL1
+EC inflammation,CLDN10
+EC inflammation,CLN3
+EC inflammation,CNPY2
+EC inflammation,COL14A1
+EC inflammation,COPA
+EC inflammation,CORO6
+EC inflammation,CPSF7
+EC inflammation,CPXM1
+EC inflammation,CTF1
+EC inflammation,CYB5R3
+EC inflammation,CYFIP1
+EC inflammation,DERL2
+EC inflammation,DND1
+EC inflammation,ECE1
+EC inflammation,ECH1
+EC inflammation,EDA2R
+EC inflammation,EHHADH
+EC inflammation,EPHA6
+EC inflammation,ERCC5
+EC inflammation,ERFE
+EC inflammation,EVL
+EC inflammation,EXOC3
+EC inflammation,FAM200B
+EC inflammation,FAM20A
+EC inflammation,FAM71C
+EC inflammation,FBXL2
+EC inflammation,FCGR3B
+EC inflammation,FCGRT
+EC inflammation,FURIN
+EC inflammation,GAK
+EC inflammation,GLMP
+EC inflammation,GPATCH2L
+EC inflammation,GXYLT1
+EC inflammation,HTR4
+EC inflammation,IBSP
+EC inflammation,IFI30
+EC inflammation,IFNGR2
+EC inflammation,IGFBP7
+EC inflammation,IGLC1
+EC inflammation,IQGAP1
+EC inflammation,IRF2BPL
+EC inflammation,IRF9
+EC inflammation,ITGA7
+EC inflammation,ITGA8
+EC inflammation,JOSD1
+EC inflammation,KAT2B
+EC inflammation,KDELR1
+EC inflammation,KIAA1755
+EC inflammation,KPNA2
+EC inflammation,KSR1
+EC inflammation,LAMTOR4
+EC inflammation,LAPTM5
+EC inflammation,LRFN3
+EC inflammation,LTBR
+EC inflammation,LUC7L3
+EC inflammation,LY96
+EC inflammation,MAGI2
+EC inflammation,MAN1A1
+EC inflammation,MAP3K5
+EC inflammation,MAPK1
+EC inflammation,MBOAT7
+EC inflammation,MCUB
+EC inflammation,MGAT3
+EC inflammation,MS4A6A
+EC inflammation,MT-ND5
+EC inflammation,MT2A
+EC inflammation,NAA38
+EC inflammation,NCF2
+EC inflammation,NID1
+EC inflammation,NOL9
+EC inflammation,NPLOC4
+EC inflammation,NR2F1
+EC inflammation,NUMA1
+EC inflammation,OBSL1
+EC inflammation,OGT
+EC inflammation,PCDHB10
+EC inflammation,PCDHB4
+EC inflammation,PDE4D
+EC inflammation,PDPR
+EC inflammation,PFKFB4
+EC inflammation,PHC2
+EC inflammation,PHOX2A
+EC inflammation,PLIN1
+EC inflammation,PLK1
+EC inflammation,PLTP
+EC inflammation,POLR2A
+EC inflammation,POLR2E
+EC inflammation,PPP1R12C
+EC inflammation,PPP1R18
+EC inflammation,PPP4C
+EC inflammation,PRPF4B
+EC inflammation,PTCH1
+EC inflammation,PXDC1
+EC inflammation,RAB27A
+EC inflammation,RAB34
+EC inflammation,RACK1
+EC inflammation,RBL2
+EC inflammation,RC3H1
+EC inflammation,RCAN2
+EC inflammation,RET
+EC inflammation,RLIM
+EC inflammation,RNF34
+EC inflammation,RSU1
+EC inflammation,SEC13
+EC inflammation,SERPINB12
+EC inflammation,SESN2
+EC inflammation,SFRP1
+EC inflammation,SGSH
+EC inflammation,SH3GLB2
+EC inflammation,SIN3B
+EC inflammation,SLC16A14
+EC inflammation,SLC1A1
+EC inflammation,SLC25A10
+EC inflammation,SLC9A3R1
+EC inflammation,SLC9A7
+EC inflammation,SND1
+EC inflammation,SNED1
+EC inflammation,SOWAHD
+EC inflammation,SPATA2
+EC inflammation,SPATC1
+EC inflammation,SPECC1L
+EC inflammation,SRR
+EC inflammation,SRSF2
+EC inflammation,SRSF3
+EC inflammation,STARD3NL
+EC inflammation,STAT2
+EC inflammation,STOM
+EC inflammation,STUB1
+EC inflammation,SUMO3
+EC inflammation,SYNE2
+EC inflammation,TAS2R7
+EC inflammation,TBRG1
+EC inflammation,TECTA
+EC inflammation,TESK1
+EC inflammation,TMEM170B
+EC inflammation,TOMM40L
+EC inflammation,TRPC4AP
+EC inflammation,TSPAN12
+EC inflammation,TXNDC15
+EC inflammation,TXNL4B
+EC inflammation,TYMS
+EC inflammation,UBR3
+EC inflammation,UNC50
+EC inflammation,USF1
+EC inflammation,VAMP8
+EC inflammation,VAV3
+EC inflammation,VEGFA
+EC inflammation,VILL
+EC inflammation,VSTM4
+EC inflammation,YKT6
+EC inflammation,YWHAG
+EC inflammation,ZEB2
+EC inflammation,ZNF292
+EC inflammation,ZNF384
+EC inflammation,ZNF410
+EC inflammation,ZNF529
+EC inflammation,ZNF581
+EC inflammation,ZNF658
+EC inflammation,ZNF775
+EC inflammation,ZNF793
+EC inflammation,ZRANB3
+EC inflammation,ZSCAN30
+EC inflammation,ZSWIM6

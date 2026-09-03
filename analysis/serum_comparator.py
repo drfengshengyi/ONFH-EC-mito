@@ -1,4 +1,4 @@
-"""Export the deterministic Ma et al. comparator used in Figure 6.
+"""Export the deterministic Ma et al. comparator used in Figure 7.
 
 This script performs the comparator fit once and writes the repeat-level
 performance table.  Submission-figure assembly reads that saved table and does

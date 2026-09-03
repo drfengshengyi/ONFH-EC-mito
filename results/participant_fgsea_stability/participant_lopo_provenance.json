@@ -1,0 +1,16 @@
+{
+  "analysis": "leave-one-participant-out DESeq2 rank stability",
+  "contrast": "Liao ONFH ARCO 3A versus HOA",
+  "biological_unit": "independent participant pseudobulk",
+  "n_primary": {
+    "ONFH_3A": 3,
+    "HOA": 3
+  },
+  "n_leave_one_out_fits": 6,
+  "interpretive_scope": "sensitivity to removal of one participant; not an independent cohort validation",
+  "source_analysis_directory": "external preprocessed analysis directory supplied at runtime",
+  "source_input_files": [
+    "ec_final.h5ad",
+    "counts_qc.rds or counts_qc_v4.rds"
+  ]
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# Submission-width redraw of Figure 5 using the official-R scTenifoldKnk
+# Submission-width redraw of Figure 6 using the official-R scTenifoldKnk
 # outputs. Core conclusion: donor-separated virtual SQSTM1 perturbation yields
 # a parameter-audited candidate ranking, not experimental validation.
 # Evidence chain: A, design; B, removed WT neighborhood (hero); C, gene-manifold
@@ -699,15 +699,15 @@ legend_row <- (plot_spacer() | wrap_elements(full = network_legend)) +
   plot_layout(widths = c(1.10, 1.55))
 bottom_row <- (p_c | p_d) + plot_layout(widths = c(1.00, 1.55))
 
-figure5 <- top_row / legend_row / bottom_row +
+figure6 <- top_row / legend_row / bottom_row +
   plot_layout(heights = c(0.90, 0.15, 1.05)) &
   theme(plot.background = element_rect(fill = "white", colour = NA))
 
-save_pub_r(figure5, file.path(OUT, "Figure5"), 183, 132, dpi = 600)
+save_pub_r(figure6, file.path(OUT, "Figure6"), 183, 132, dpi = 600)
 
 writeLines(
   c(
-    "Figure 5 submission redraw",
+    "Figure 6 submission redraw",
     "Core conclusion: SQSTM1 virtual perturbation removes the WT outgoing neighborhood and yields parameter-audited candidate ranks, not experimental validation.",
     "Archetype: asymmetric mixed-modality figure.",
     "Backend: R only.",
@@ -717,7 +717,7 @@ writeLines(
     "Panel C/D captions are shortened to remain within their panel widths.",
     "Data and statistics: unchanged from official-R source tables."
   ),
-  file.path(QA_OUT, "Figure5_QA_notes.txt")
+  file.path(QA_OUT, "Figure6_QA_notes.txt")
 )
 
-cat(normalizePath(file.path(OUT, "Figure5.pdf"), winslash = "/"), "\n")
+cat(normalizePath(file.path(OUT, "Figure6.pdf"), winslash = "/"), "\n")

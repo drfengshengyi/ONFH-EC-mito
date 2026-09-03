@@ -1,0 +1,11 @@
+accession     sample disease_context  biological_samples  sections  spots_before_qc  minimum_umi_inclusive  spots_after_qc  median_umi_after_qc  median_detected_genes_after_qc  ec_enriched_spots  sqstm1_detected_spots  sqstm1_detected_percent                                                                                     claim_boundary
+GSE284089 GSM8677818  osteoarthritis                   1         1             4992                    100            2947                270.0                           217.0                590                    334                 11.33356 descriptive anatomical contextualization; not ONFH validation; spots are not biological replicates
+
+Descriptive correlations (no inferential p values):
+                      subset                 program  n_spots  spearman_rho_descriptive                   p_value
+                all QC spots Stress/permeabilization     2947                  0.070881 not_tested_single_section
+top-quintile EC-marker spots Stress/permeabilization      590                 -0.020405 not_tested_single_section
+                all QC spots     Selective clearance     2947                  0.019446 not_tested_single_section
+top-quintile EC-marker spots     Selective clearance      590                 -0.014257 not_tested_single_section
+                all QC spots         EC inflammation     2947                  0.060283 not_tested_single_section
+top-quintile EC-marker spots         EC inflammation      590                 -0.024209 not_tested_single_section

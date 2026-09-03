@@ -28,6 +28,12 @@ Create `data/gse169396/` containing the GEO supplementary 10x files for GSM52018
 
 Create `data/gse290411/` containing the supplementary 10x files for GSM8812280–GSM8812283. The deposited names are consumed exactly by `analysis/prepare_matrices.R`, including the absence of an underscore before `matrix`, `barcodes`, and `features`.
 
+## GSE284089
+
+Create `data/gse284089/` and download `GSE284089_RAW.tar` from the GEO supplementary-file area. Extract the GSM8677818 matrix, feature, barcode, spatial-coordinate, scale-factor, and high-resolution tissue-image files without renaming them. The archived source URL and SHA256 are recorded in `results/spatial_contextualization/spatial_provenance.json`.
+
+`analysis/spatial_contextualization.py` uses the single osteoarthritic femoral-head Visium CytAssist FFPE section only as an external anatomical scaffold. It retains spots with total UMI count >=100 and does not treat spots as biological replicates or as disease-matched ONFH validation.
+
 ## GSE123568
 
 Place these files directly under `data/`:

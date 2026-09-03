@@ -1,9 +1,8 @@
-Figure 5 submission redraw
-Core conclusion: SQSTM1 virtual perturbation removes the WT outgoing neighborhood and yields parameter-audited candidate ranks, not experimental validation.
-Archetype: asymmetric mixed-modality figure.
-Backend: R only.
-Panel B: original radial grammar retained; enlarged central node contains the complete SQSTM1 label; inner/outer node radii are increased from 0.82/1.03 to 1.02/1.32; maximum node diameter is slightly reduced while preserving weight encoding; the legend is moved into a dedicated strip so the network receives more physical space.
-Panel A: all workflow boxes use explicit line breaks and expanded internal padding; arrows terminate at box boundaries; the four-line audit adds the mtDNA-feature-excluded and matched-comparator calibration note.
-Panel C: significant-gene labels use fixed donor-specific positions with short leader lines.
-Panel C/D captions are shortened to remain within their panel widths.
-Data and statistics: unchanged from official-R source tables.
+Figure 5 external spatial-context audit
+Core conclusion: GSE284089 supplies external femoral-head anatomy only; it does not validate ONFH, endothelial-cell-specific colocalization, SQSTM1 causality, or a disease mechanism.
+Source: one osteoarthritic femoral-head Visium CytAssist FFPE section (GSM8677818).
+QC: 2,947 of 4,992 deposited spots retained at total UMI count >= 100.
+Panels: deposited H&E plus retained spots; EC-marker enrichment; prespecified stress, selective-clearance and EC-inflammation scores; SQSTM1 transcript detection.
+Spatial unit: multicellular Visium spots, not independent participants or individual endothelial cells.
+Statistics: within-section Spearman correlations are descriptive and are not assigned p-values.
+Visual QA: all titles, panel labels, annotations and color bars remain inside the figure canvas at submission width.

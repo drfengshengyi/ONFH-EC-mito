@@ -8,6 +8,6 @@ These compact tables are the machine-readable inputs for `plotting/make_reviewed
 - `gsea_ONFH3A_vs_HOA_H.csv` is the frozen Hallmark enrichment result used in Figure 4A and in the manuscript text.
 - `sample_level_tf_ulm_v4.csv` and `tf_stats_ulm_v4.csv` contain donor-level signed TF activities and exact-permutation FDR values used in Figure 4C.
 - `comm_scores_v4_long.csv.gz` and `comm_top_ONFH_4_vs_ONFH_3A_v4.csv` contain the donor-level communication scores and presorted largest effects used in Figure 4D.
-- `diag_*` files contain the repeated nested-CV, label-permutation, feature-stability, and comparator results used in Figure 6.
+- `diag_*` files contain the repeated nested-CV, label-permutation, feature-stability, and comparator results used in Figure 7.
 
 The plotting scripts read statistical labels directly from these files; displayed FDR values are not manually transcribed.

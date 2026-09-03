@@ -14,7 +14,7 @@ This release separates data preparation, biological analyses, the official-R `SQ
 | `virtual_knockout/` | Donor-separated official `scTenifoldKnk` analysis and post-processing |
 | `plotting/` | Figure 1–6 and Supplementary Figure S1 generation/assembly code |
 | `workflow/` | PowerShell entry points for the three reproducible stages |
-| `results/` | Processed tables, virtual-knockout results, and Supplementary Tables S1–S10 |
+| `results/` | Processed tables, spatial-context results, virtual-knockout results, and Supplementary Tables S1–S11 |
 | `figures/source/` | Versioned source panels used by the layout script |
 | `figures/final/` | Submission-ready PDF and PNG figures |
 | `data/` | Download instructions and a machine-readable dataset manifest; raw data are ignored |
@@ -28,6 +28,7 @@ This release separates data preparation, biological analyses, the official-R `SQ
 | SRP361778 | Liao femoral-head single-cell cohort; participant-level inference and HOA control-EC virtual knockout |
 | GSE169396 | Independent healthy femoral-head single-cell atlas component |
 | GSE290411 | Steroid-induced ONFH libraries; descriptive cross-cohort contrasts only because participant mapping was unavailable |
+| GSE284089 | One osteoarthritic femoral-head spatial-transcriptomic section; external anatomical contextualization only |
 | GSE123568 | Peripheral-serum expression dataset; repeated nested cross-validation |
 
 The exact local filenames expected by the scripts are listed in [`data/README.md`](data/README.md) and [`data/datasets.tsv`](data/datasets.tsv).
@@ -53,10 +54,13 @@ Rscript environment\check_r_packages.R
 # 3. Run the original/mtDNA-feature-excluded official-R profiles and matched comparators
 .\workflow\run_virtual_knockout.ps1 -Python python -Rscript Rscript -Cores 1
 
-# 4. Rebuild final figures from the versioned source panels/results
+# 4. Add the external single-section spatial contextualization
+.\workflow\run_spatial_contextualization.ps1 -Python python
+
+# 5. Rebuild final figures from the versioned source panels/results
 .\workflow\run_figures.ps1 -Python python -Rscript Rscript
 
-# 5. Audit repository structure, syntax, metadata, Table S10g, and portability
+# 6. Audit repository structure, syntax, metadata, Tables S10g/S11, and portability
 python qa\check_repository.py --rscript Rscript
 
 # Optional release audit: also require byte-identical manuscript figure PDFs
@@ -69,6 +73,7 @@ For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages 
 
 - Statistical inference is performed at the participant/sampling-unit level where participant identity is available.
 - The four GSE290411 SONFH libraries are retained for descriptive visualization and effect-size comparison, not treated as four confirmed independent participants.
+- GSE284089 contributes one osteoarthritic femoral-head Visium section as external anatomical context only. Its spots are not independent biological replicates and its maps do not validate ONFH, `SQSTM1`, or causality.
 - The `SQSTM1` virtual knockout is an expression-derived network perturbation performed separately in HOA2 and HOA3. It is **not** a wet-lab knockout and **not** a CellOracle cell-fate or differentiation-trajectory simulation.
 - The mtDNA-feature-exclusion sensitivity is a complete 295-gene network refit after removing `MT-ATP6`, `MT-CO1`, `MT-CO2`, `MT-ND1`, and `MT-ND4`; no replacement genes are introduced.
 - Twenty WT-matched gene perturbations calibrate whether `SQSTM1` is exceptional among similarly expressed and connected genes. They are computational comparators, not validated negative controls.
@@ -86,7 +91,7 @@ For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages 
 
 ## Data availability
 
-All datasets analyzed in this study are publicly available: SRP361778 in the NCBI Sequence Read Archive and GSE169396, GSE290411, and GSE123568 in NCBI GEO. Analysis code, frozen manifests, processed result tables, and figure-generation code are provided in this repository. No newly generated primary sequencing data are reported.
+All datasets analyzed in this study are publicly available: SRP361778 in the NCBI Sequence Read Archive and GSE169396, GSE290411, GSE284089, and GSE123568 in NCBI GEO. Analysis code, frozen manifests, processed result tables, and figure-generation code are provided in this repository. No newly generated primary sequencing data are reported.
 
 ## Contacts
 

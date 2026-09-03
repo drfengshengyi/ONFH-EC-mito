@@ -181,6 +181,14 @@ def draw_tf_activities(fig: plt.Figure, slot) -> None:
         ax.set_title(f"{tf} (Liao FDR = {float(stats.loc[tf, 'Liao_KW_fdr']):.2f})", fontsize=7.7, pad=5)
         ax.grid(axis="y", color="#e7e7e7", linewidth=0.45, zorder=0)
         axes.append(ax)
+    # The communication panel at right uses long sender-to-receiver labels.
+    # Shift the complete TF block slightly left to preserve a clean gutter
+    # between panel C and those labels at the final two-column figure width.
+    for ax in axes:
+        position = ax.get_position()
+        ax.set_position(
+            [position.x0 - 0.014, position.y0, position.width, position.height]
+        )
     panel_label(axes[0], "C", "Signed TF activities in independent Liao donors", x=-0.29, y=1.27)
 
 

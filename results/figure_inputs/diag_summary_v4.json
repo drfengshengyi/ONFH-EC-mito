@@ -33,6 +33,13 @@
   "ma2024_repeat_auc_sd": 0.0347,
   "ma2024_repeat_average_precision_mean": 0.871,
   "ma2024_repeat_average_precision_sd": 0.0353,
+  "candidate_minus_ma_auc": 0.0567,
+  "paired_fixed_prediction_bootstrap_ci95": [
+    -0.0267,
+    0.1533
+  ],
+  "paired_fixed_prediction_bootstrap_p": 0.187191,
+  "paired_comparison_scope": "paired stratified bootstrap of fixed aggregated cross-fitted predictions; model-refitting variability excluded",
   "feature_stability_top": {
     "AMBRA1": 0.8,
     "FKBP8": 0.8,

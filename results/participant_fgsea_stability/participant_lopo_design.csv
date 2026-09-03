@@ -1,0 +1,8 @@
+fit_id,omitted_sample,omitted_group,n_onfh_3a,n_hoa,n_genes
+full,,,3,3,14041
+omit_onfh1,onfh1,ONFH_3A,2,3,13955
+omit_onfh2,onfh2,ONFH_3A,2,3,14032
+omit_onfh3,onfh3,ONFH_3A,2,3,13995
+omit_hoa1,hoa1,HOA,3,2,14041
+omit_hoa2,hoa2,HOA,3,2,13993
+omit_hoa3,hoa3,HOA,3,2,14025

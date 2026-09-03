@@ -1,0 +1,9 @@
+Figure 6 submission redraw
+Core conclusion: SQSTM1 virtual perturbation removes the WT outgoing neighborhood and yields parameter-audited candidate ranks, not experimental validation.
+Archetype: asymmetric mixed-modality figure.
+Backend: R only.
+Panel B: original radial grammar retained; enlarged central node contains the complete SQSTM1 label; inner/outer node radii are increased from 0.82/1.03 to 1.02/1.32; maximum node diameter is slightly reduced while preserving weight encoding; the legend is moved into a dedicated strip so the network receives more physical space.
+Panel A: all workflow boxes use explicit line breaks and expanded internal padding; arrows terminate at box boundaries; the four-line audit adds the mtDNA-feature-excluded and matched-comparator calibration note.
+Panel C: significant-gene labels use fixed donor-specific positions with short leader lines.
+Panel C/D captions are shortened to remain within their panel widths.
+Data and statistics: unchanged from official-R source tables.

@@ -26,6 +26,10 @@ REQUIRED = [
     "analysis/sample_metadata_v4.csv",
     "analysis/v4_common.py",
     "analysis/prepare_matrices.R",
+    "analysis/participant_fgsea_stability.py",
+    "analysis/participant_fgsea_stability.R",
+    "analysis/serum_paired_comparison.R",
+    "analysis/spatial_contextualization.py",
     "virtual_knockout/run_official_vko.R",
     "virtual_knockout/run_matched_control_vko.R",
     "virtual_knockout/postprocess_mt_exclusion.R",
@@ -35,6 +39,9 @@ REQUIRED = [
     "plotting/make_reviewed_figures.py",
     "plotting/make_figure4.py",
     "plotting/make_virtual_knockout_figure.R",
+    "plotting/make_genes_revision_figures.R",
+    "plotting/make_genes_virtual_knockout_figure.R",
+    "plotting/compress_spatial_figure_for_portal.R",
     "environment/r-package-versions.tsv",
     "environment/check_r_packages.R",
     "results/README.md",
@@ -55,6 +62,9 @@ REQUIRED = [
     "results/figure_inputs/diag_feature_stability_v4.csv",
     "results/figure_inputs/diag_nested_cv_performance_v7.csv",
     "results/figure_inputs/diag_ma_comparator_repeat_performance_v7.csv",
+    "results/figure_inputs/diag_oof_predictions_aggregated_v8.csv",
+    "results/figure_inputs/diag_paired_model_comparison_v8.csv",
+    "results/figure_inputs/diag_delong_model_comparison_v8.csv",
     "results/official_r_vko_figure_data/sqstm1_outgoing_edges_hoa2.csv",
     "results/official_r_vko_figure_data/sqstm1_outgoing_edges_hoa3.csv",
     "results/official_r_vko_figure_data/wt_ko_manifold_hoa2.csv",
@@ -77,10 +87,21 @@ REQUIRED = [
     "results/official_r_vko_matched_controls/sqstm1_matched_control_calibration.csv",
     "results/official_r_vko_matched_controls/frozen_wt_reuse_validation.csv",
     "results/official_r_vko_matched_controls/sqstm1_selection_rationale.csv",
+    "results/participant_fgsea_stability/fgsea_leading_edge_top20.csv",
+    "results/participant_fgsea_stability/fgsea_lopo_summary.csv",
+    "results/participant_fgsea_stability/fgsea_selected_pathway_overlap.csv",
+    "results/spatial_contextualization/GSE284089_spatial_spot_scores.csv.gz",
+    "results/spatial_contextualization/spatial_module_gene_coverage.csv",
+    "results/spatial_contextualization/spatial_expression_matched_controls.csv",
+    "results/spatial_contextualization/spatial_within_section_correlations.csv",
+    "results/spatial_contextualization/spatial_run_summary.csv",
+    "results/spatial_contextualization/spatial_provenance.json",
     "workflow/run_core_analysis.ps1",
     "workflow/run_virtual_knockout.ps1",
+    "workflow/run_spatial_contextualization.ps1",
+    "workflow/run_genes_revision_robustness.ps1",
     "workflow/run_figures.ps1",
-    "results/Supplementary_Tables_S1-S10.xlsx",
+    "results/Supplementary_Tables_S1-S11.xlsx",
 ]
 
 DATA_REQUIRED = [
@@ -93,6 +114,13 @@ DATA_REQUIRED = [
     "data/cellchatdb_interactions.csv",
     "data/cellchatdb_complex_named.csv",
     "data/dorothea_ABC.tsv",
+    "data/gse284089/GSE284089_RAW.tar",
+    "data/gse284089/GSM8677818_matrix.mtx.gz",
+    "data/gse284089/GSM8677818_barcodes.tsv.gz",
+    "data/gse284089/GSM8677818_features.tsv.gz",
+    "data/gse284089/GSM8677818_tissue_positions.csv.gz",
+    "data/gse284089/GSM8677818_scalefactors_json.json.gz",
+    "data/gse284089/GSM8677818_tissue_hires_image.png.gz",
 ]
 
 
@@ -140,13 +168,13 @@ def same_value(actual: object, expected: object) -> bool:
 
 
 def audit_s10g_workbook() -> list[str]:
-    """Reconcile the Table S10g audit cells against their versioned CSVs."""
+    """Reconcile the detailed S10g and main-text S10i audits with source CSVs."""
     try:
         from openpyxl import load_workbook
     except ImportError:
         return ["openpyxl is unavailable; install environment/requirements-python.lock.txt"]
 
-    workbook_path = ROOT / "results/Supplementary_Tables_S1-S10.xlsx"
+    workbook_path = ROOT / "results/Supplementary_Tables_S1-S11.xlsx"
     cross_path = ROOT / "results/official_r_vko_no_mt_cross_donor_audit.csv"
     gene_path = ROOT / "results/official_r_vko_no_mt_hoa3_fdr_audit.csv"
     with cross_path.open(encoding="utf-8", newline="") as handle:
@@ -157,7 +185,10 @@ def audit_s10g_workbook() -> list[str]:
     if len(cross_rows) != 2 or [row["gene"] for row in gene_rows] != ["VWF", "NFKBIA", "C7"]:
         return ["source audit CSV row counts or HOA3 gene order changed"]
 
-    workbook = load_workbook(workbook_path, read_only=True, data_only=True)
+    # Artifact-authored OOXML may omit worksheet dimension metadata, which makes
+    # ``max_row`` unavailable in openpyxl's read-only mode. Load normally so the
+    # release audit derives worksheet dimensions from the actual cells.
+    workbook = load_workbook(workbook_path, read_only=False, data_only=True)
     try:
         if "Table S10" not in workbook.sheetnames:
             return ["Table S10 worksheet is missing"]
@@ -167,6 +198,8 @@ def audit_s10g_workbook() -> list[str]:
             issues.append("Table S10!K717 title")
         if sheet["K723"].value != "S10g-5B. Primary-refit HOA3 downstream FDR-positive genes":
             issues.append("Table S10!K723 title")
+        if sheet["A965"].value != "S10i. Main-text cross-donor common-nuclear audit after mtDNA-feature exclusion":
+            issues.append("Table S10!A965 title")
 
         cross_fields = (
             "profile", "model_variant", "donor_pair", "n_common_nuclear_genes",
@@ -185,6 +218,28 @@ def audit_s10g_workbook() -> list[str]:
                 if not same_value(observed, wanted):
                     issues.append(f"Table S10!{sheet.cell(row_number, column).coordinate}")
 
+        s10i_fields = (
+            "profile", "model_variant", "donor_pair", "n_common_nuclear_genes",
+            "rank_metric", "spearman_rho", "spearman_p_value", "top20_overlap_count",
+            "top20_jaccard", "common_bh_fdr_hoa2_count", "common_bh_fdr_hoa3_count",
+            "common_bh_fdr_replicated_count", "common_bh_fdr_hoa2_genes",
+            "common_bh_fdr_hoa3_genes", "common_bh_fdr_replicated_genes",
+        )
+        s10i_numeric = {
+            "n_common_nuclear_genes", "spearman_rho", "spearman_p_value",
+            "top20_overlap_count", "top20_jaccard", "common_bh_fdr_hoa2_count",
+            "common_bh_fdr_hoa3_count", "common_bh_fdr_replicated_count",
+        }
+        for row_number, source_row in zip((967, 968), cross_rows):
+            expected = [
+                float(source_row[field]) if field in s10i_numeric else (source_row[field] or None)
+                for field in s10i_fields
+            ]
+            actual = [sheet.cell(row_number, column).value for column in range(1, 16)]
+            for column, (observed, wanted) in enumerate(zip(actual, expected), 1):
+                if not same_value(observed, wanted):
+                    issues.append(f"Table S10!{sheet.cell(row_number, column).coordinate}")
+
         gene_fields = (
             "gene", "official_rank", "common_rank", "common_rank_percentile", "distance",
             "z_score", "fold_change", "raw_p_value", "official_bh_fdr_295_family",
@@ -199,6 +254,58 @@ def audit_s10g_workbook() -> list[str]:
             for column, (observed, wanted) in enumerate(zip(actual, expected), 11):
                 if not same_value(observed, wanted):
                     issues.append(f"Table S10!{sheet.cell(row_number, column).coordinate}")
+        return issues
+    finally:
+        workbook.close()
+
+
+def audit_s11_workbook() -> list[str]:
+    """Check spatial summary and row counts against the versioned source tables."""
+    try:
+        from openpyxl import load_workbook
+    except ImportError:
+        return ["openpyxl is unavailable; install environment/requirements-python.lock.txt"]
+
+    workbook_path = ROOT / "results/Supplementary_Tables_S1-S11.xlsx"
+    with (ROOT / "results/spatial_contextualization/spatial_run_summary.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        summary = next(csv.DictReader(handle))
+    with (ROOT / "results/spatial_contextualization/spatial_module_gene_coverage.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        coverage_rows = list(csv.DictReader(handle))
+    with (ROOT / "results/spatial_contextualization/spatial_expression_matched_controls.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        control_rows = list(csv.DictReader(handle))
+
+    # Artifact-authored OOXML may omit worksheet dimension metadata, which makes
+    # ``max_row`` unavailable in openpyxl's read-only mode. Load normally so the
+    # release audit derives worksheet dimensions from the actual cells.
+    workbook = load_workbook(workbook_path, read_only=False, data_only=True)
+    try:
+        required_sheets = {"Table S11a", "Table S11b", "Table S11c", "Table S11d"}
+        if not required_sheets.issubset(workbook.sheetnames):
+            return ["one or more Table S11a-S11d worksheets are missing"]
+        issues: list[str] = []
+        sheet = workbook["Table S11a"]
+        observed = {
+            sheet.cell(row, 1).value: sheet.cell(row, 2).value
+            for row in range(6, 20)
+        }
+        for field in (
+            "accession", "sample", "spots_before_qc", "spots_after_qc",
+            "ec_enriched_spots", "sqstm1_detected_spots",
+        ):
+            if not same_value(observed.get(field), summary[field]):
+                issues.append(f"Table S11a summary field {field}")
+        if workbook["Table S11b"].max_row != len(coverage_rows) + 5:
+            issues.append("Table S11b gene-coverage row count")
+        if workbook["Table S11c"].max_row != len(control_rows) + 5:
+            issues.append("Table S11c matched-control row count")
+        if workbook["Table S11d"].max_row != int(summary["spots_after_qc"]) + 5:
+            issues.append("Table S11d spot-score row count")
         return issues
     finally:
         workbook.close()
@@ -345,9 +452,15 @@ def main() -> int:
     if s10g_issues:
         fail(errors, "Table S10g workbook/CSV mismatch: " + ", ".join(s10g_issues))
     else:
-        pass_("Table S10g audit cells match the versioned cross-donor and HOA3 CSVs")
+        pass_("Table S10g/S10i audit cells match the versioned cross-donor and HOA3 CSVs")
 
-    final_expected = [f"figures/final/Figure{i}.{ext}" for i in range(1, 7) for ext in ("pdf", "png")]
+    s11_issues = audit_s11_workbook()
+    if s11_issues:
+        fail(errors, "Table S11 workbook/source mismatch: " + ", ".join(s11_issues))
+    else:
+        pass_("Table S11 spatial summary and row counts match the versioned source tables")
+
+    final_expected = [f"figures/final/Figure{i}.{ext}" for i in range(1, 8) for ext in ("pdf", "png")]
     final_expected += [f"figures/final/SupplementaryFigureS1.{ext}" for ext in ("pdf", "png")]
     final_missing = [name for name in final_expected if not (ROOT / name).exists()]
     if final_missing:
@@ -356,7 +469,7 @@ def main() -> int:
         pass_("all submission figures are present as PDF and PNG")
 
     if args.submission_dir:
-        names = [f"Figure{i}.pdf" for i in range(1, 7)]
+        names = [f"Figure{i}.pdf" for i in range(1, 8)]
         submission_names = {name: name for name in names}
         supplement_candidates = ("SupplementaryFigureS1.pdf", "Supplementary_Figure_S1.pdf")
         supplement_name = next(
@@ -383,10 +496,10 @@ def main() -> int:
             else:
                 pass_("repository and submission figure PDFs are byte-identical")
 
-        submission_workbook = args.submission_dir / "Supplementary_Tables_S1-S10.xlsx"
+        submission_workbook = args.submission_dir / "Supplementary_Tables_S1-S11.xlsx"
         if not submission_workbook.exists():
-            fail(errors, "missing Supplementary_Tables_S1-S10.xlsx in --submission-dir")
-        elif sha256(ROOT / "results/Supplementary_Tables_S1-S10.xlsx") != sha256(submission_workbook):
+            fail(errors, "missing Supplementary_Tables_S1-S11.xlsx in --submission-dir")
+        elif sha256(ROOT / "results/Supplementary_Tables_S1-S11.xlsx") != sha256(submission_workbook):
             fail(errors, "repository/submission supplementary-workbook hash mismatch")
         else:
             pass_("repository and submission supplementary workbooks are byte-identical")

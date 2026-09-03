@@ -1,0 +1,2 @@
+accession,sample,disease_context,biological_samples,sections,spots_before_qc,minimum_umi_inclusive,spots_after_qc,median_umi_after_qc,median_detected_genes_after_qc,ec_enriched_spots,sqstm1_detected_spots,sqstm1_detected_percent,claim_boundary
+GSE284089,GSM8677818,osteoarthritis,1,1,4992,100,2947,270.0,217.0,590,334,11.333559552086868,descriptive anatomical contextualization; not ONFH validation; spots are not biological replicates
