@@ -346,7 +346,7 @@ make_figure4 <- function() {
     scale_x_continuous(expand = expansion(mult = c(0.04, 0.10))) +
     labs(
       title = "Leave-one-participant-out sensitivity",
-      subtitle = "Six omissions; diamond = full fit; text = FDR<0.05 count",
+      subtitle = "Six omissions; diamond = full fit\nText = FDR<0.05 count",
       x = "Normalized enrichment score", y = NULL
     ) +
     theme_pub()
@@ -354,7 +354,17 @@ make_figure4 <- function() {
   p_c <- sampling_panel(
     read_modules(), c("EC_inflammation", "cGAS_STING", "YAP_mTOR"),
     ncol = 3, y_label = "Mean module score"
-  ) + labs(title = "Inflammatory and YAP-axis scores by sampling unit")
+  ) +
+    labs(title = "Inflammatory and YAP-axis scores by sampling unit") +
+    theme(
+      # Use the full-width row rather than inheriting the large left-side
+      # alignment allowance from panel A.  The larger facet gap keeps the
+      # three sampling-unit summaries visually distinct and evenly spaced.
+      panel.spacing.x = unit(7.5, "mm"),
+      plot.title.position = "plot",
+      plot.title = element_text(hjust = 0.5, margin = margin(b = 2)),
+      plot.margin = margin(0, 5, 2, 2)
+    )
 
   focus <- c("RELA", "NFKB1", "ATF4", "FOXO3", "STAT3", "HIF1A")
   tf <- fread(file.path(INPUT, "tf_stats_ulm_v4.csv")) %>%
@@ -373,7 +383,11 @@ make_figure4 <- function() {
       subtitle = "ARCO 3A minus HOA; no tested regulon had FDR<0.05",
       x = "Hodges-Lehmann shift", y = NULL
     ) +
-    theme_pub()
+    theme_pub() +
+    theme(
+      plot.title.position = "plot",
+      plot.margin = margin(0, 13, 4, 1)
+    )
 
   top <- fread(file.path(INPUT, "comm_top_ONFH_4_vs_ONFH_3A_v4.csv"))[1:12]
   keys <- unique(top[, .(sender, receiver, pair)])
@@ -399,12 +413,24 @@ make_figure4 <- function() {
       subtitle = "Independent Liao participants; no tested interaction had FDR<0.05",
       x = "Ligand-receptor score", y = NULL
     ) +
-    theme_pub() + theme(legend.position = "bottom")
+    theme_pub() +
+    theme(
+      legend.position = "bottom",
+      plot.title.position = "plot",
+      plot.margin = margin(0, 5, 4, 10)
+    )
+
+  # `free()` prevents the long labels in the upper panels from forcing panels
+  # C and D into the same oversized left gutter.  This pulls their plotting
+  # areas toward their panel tags without changing any quantitative content.
+  middle_row <- free(p_c, side = "lr")
+  bottom_row <- (free(p_d, side = "l") | p_e) +
+    plot_layout(widths = c(0.68, 1.32))
 
   figure <- ((p_a | p_b) + plot_layout(widths = c(1.18, 0.82))) /
-    p_c /
-    ((p_d | p_e) + plot_layout(widths = c(0.68, 1.32))) +
-    plot_layout(heights = c(1.05, 0.72, 1.03)) +
+    middle_row /
+    bottom_row +
+    plot_layout(heights = c(1.05, 0.76, 1.03)) +
     plot_annotation(tag_levels = "A") &
     theme(plot.background = element_rect(fill = "white", colour = NA))
   save_pub(figure, "Figure4", 183, 176)
@@ -529,10 +555,24 @@ make_figure7 <- function() {
   save_pub(figure, "Figure7", 183, 140)
 }
 
-make_figure2()
-make_figure3()
-make_figure4()
-make_figure7()
+figure_only <- Sys.getenv("FIGURE_ONLY", unset = "")
+if (nzchar(figure_only)) {
+  figure_builders <- list(
+    `2` = make_figure2,
+    `3` = make_figure3,
+    `4` = make_figure4,
+    `7` = make_figure7
+  )
+  if (!figure_only %in% names(figure_builders)) {
+    stop("FIGURE_ONLY must be one of: 2, 3, 4, 7")
+  }
+  figure_builders[[figure_only]]()
+} else {
+  make_figure2()
+  make_figure3()
+  make_figure4()
+  make_figure7()
+}
 
 writeLines(
   c(

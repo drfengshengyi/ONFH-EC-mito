@@ -26,7 +26,7 @@ function Invoke-R {
 Push-Location $RepoRoot
 try {
     Invoke-Python "plotting/make_evidence_model.py"
-    Invoke-R "plotting/make_virtual_knockout_figure.R"
+    Invoke-R "plotting/make_genes_virtual_knockout_figure.R"
     Invoke-Python "plotting/assemble_manuscript_figures.py"
     Invoke-Python "plotting/make_reviewed_figures.py"
     Invoke-Python "plotting/make_figure4.py"

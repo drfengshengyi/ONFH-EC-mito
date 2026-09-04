@@ -46,7 +46,7 @@ fig, ax = plt.subplots(figsize=(13.2, 7.2))
 ax.set_xlim(0, 1)
 ax.set_ylim(0, 1)
 ax.axis("off")
-ax.set_title("Evidence-constrained model of endothelial mitochondrial-quality-control changes in ONFH",
+ax.set_title("Evidence-constrained model of endothelial mitochondrial stress and selective-autophagy receptors in ONFH",
              pad=18, fontweight="bold")
 
 ax.text(0.17, 0.91, "OBSERVED IN THE REANALYSED DATA", ha="center", va="center",
@@ -57,7 +57,7 @@ ax.text(0.83, 0.91, "TESTABLE NEXT STEPS", ha="center", va="center",
         fontsize=10, fontweight="bold", color="#196f3d")
 
 box(ax, (0.04, 0.64), (0.26, 0.18),
-    "SONFH libraries versus HOA\n(descriptive only)\n\nBAX/BAK1 and EIF4EBP1 higher;\nSQSTM1/CALCOCO2/GABARAP lower",
+    "SONFH libraries versus HOA\n(descriptive only)\n\nBAX/BAK1 and EIF4EBP1 higher;\nSQSTM1/CALCOCO2 lower; OPTN not\nsimilarly prioritized",
     "#d6eaf8", edge="#2874a6")
 box(ax, (0.04, 0.38), (0.26, 0.18),
     "Independent Liao donors\n\nNo FDR-significant TF activity,\nYAP/TAZ signature, type H fraction,\nor communication contrast",
@@ -67,7 +67,7 @@ box(ax, (0.04, 0.12), (0.26, 0.18),
     "#e8f8f5", edge="#17a589")
 
 box(ax, (0.39, 0.64), (0.23, 0.18),
-    "Mitochondrial dysfunction\ncauses endothelial injury\nin human SONFH",
+    "A receptor-specific causal mechanism\n\nSQSTM1: primary computational case\nCALCOCO2: secondary candidate\nOPTN: mechanistic-context control",
     "#fcf3cf", edge="#b7950b")
 box(ax, (0.39, 0.38), (0.23, 0.18),
     "cGAS-STING activation\n\nCGAS and TMEM173 expression alone\ndoes not establish pathway activity",
@@ -77,7 +77,7 @@ box(ax, (0.39, 0.12), (0.23, 0.18),
     "#fce4ec", edge="#c2185b")
 
 box(ax, (0.70, 0.64), (0.26, 0.18),
-    "Resolve participant-library mapping;\nreplicate donor-level effects in an\nindependent SONFH bone cohort",
+    "Test the receptor system experimentally:\nparallel SQSTM1/CALCOCO2 loss-rescue,\nOPTN comparator, and single versus\ncombined perturbations",
     "#e9f7ef", edge="#239b56")
 box(ax, (0.70, 0.38), (0.26, 0.18),
     "Measure mitochondrial respiration,\nmtDNA release and phospho-TBK1/IRF3;\nperturb cGAS/STING experimentally",

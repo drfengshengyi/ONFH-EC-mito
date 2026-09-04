@@ -248,46 +248,106 @@ def make_figure3() -> None:
     ax_a = fig.add_subplot(outer[0, 0])
     x = np.log10(pd.to_numeric(de["baseMean"], errors="coerce").clip(lower=0) + 1)
     y = pd.to_numeric(de["log2FoldChange"], errors="coerce")
-    ax_a.scatter(x, y, s=5, color="#9fb3c1", alpha=0.20, linewidth=0)
-    ax_a.axhline(0, color="#333333", lw=0.8)
+    # Panel A supplies transcriptome-wide context; panel B carries the complete
+    # gene-by-gene readout.  Restricting direct labels here to the narrative
+    # anchors prevents redundant callout ladders from obscuring the data cloud.
+    ax_a.scatter(x, y, s=5.5, color="#aebdc6", alpha=0.24, linewidth=0, rasterized=True)
+    ax_a.axhline(0, color="#33434d", lw=0.85, zorder=1)
+    ax_a.grid(axis="y", color="#edf1f3", linewidth=0.55, zorder=0)
+
     targets = [gene for gene in effects.index if gene in de.index]
-    ax_a.scatter(x.loc[targets], y.loc[targets], s=24, color="#d9472f", edgecolor="white", linewidth=0.4, zorder=4)
-    left = ["BAK1", "EIF4EBP1", "MFN1", "OPA1", "MFN2", "GABARAP", "CGAS"]
-    right = ["TBK1", "BAX", "TMEM173", "DNM1L", "MAP1LC3B", "BNIP3L", "SQSTM1", "CALCOCO2"]
-    for side, genes in (("left", left), ("right", right)):
-        label_y = np.linspace(2.4, -2.1, len(genes))
-        label_x = 1.30 if side == "left" else 3.65
-        for gene, target_y in zip(genes, label_y):
-            if gene not in de.index:
-                continue
-            gx, gy = float(x.loc[gene]), float(y.loc[gene])
-            ax_a.annotate(
-                gene,
-                (gx, gy),
-                xytext=(label_x, target_y),
-                textcoords="data",
-                ha="right" if side == "left" else "left",
-                va="center",
-                fontsize=7.1,
-                arrowprops={"arrowstyle": "-", "color": "#777777", "lw": 0.45},
-            )
+    focal = {"BAK1", "BAX", "SQSTM1", "CALCOCO2", "OPTN"}
+    contextual = [gene for gene in targets if gene not in focal]
+    ax_a.scatter(
+        x.loc[contextual],
+        y.loc[contextual],
+        s=27,
+        color="#4f8094",
+        alpha=0.82,
+        edgecolor="white",
+        linewidth=0.55,
+        zorder=4,
+        label="Other prespecified genes",
+    )
+
+    marker_specs = {
+        "BAK1": {"marker": "o", "face": "#d95f59", "edge": "white", "size": 38},
+        "BAX": {"marker": "o", "face": "#d95f59", "edge": "white", "size": 38},
+        "SQSTM1": {"marker": "o", "face": "#c94f4f", "edge": "#8f3333", "size": 48},
+        "CALCOCO2": {"marker": "D", "face": "#dfa62f", "edge": "white", "size": 52},
+        "OPTN": {"marker": "s", "face": "white", "edge": "#7562a3", "size": 48},
+    }
+    label_specs = {
+        "BAK1": {"offset": (-8, 12), "ha": "right", "color": "#a94442"},
+        "BAX": {"offset": (9, 12), "ha": "left", "color": "#a94442"},
+        # Place OPTN above-left at approximately the same visual height as BAX.
+        # This keeps its label and leader clear of the adjacent CALCOCO2 marker.
+        "OPTN": {"offset": (-10, 25), "ha": "right", "color": "#69538f"},
+        "CALCOCO2": {"offset": (-10, -17), "ha": "right", "color": "#a56f00"},
+        "SQSTM1": {"offset": (10, -2), "ha": "left", "color": "#9f3d3d"},
+    }
+    for gene, spec in marker_specs.items():
+        if gene not in de.index:
+            continue
+        ax_a.scatter(
+            [x.loc[gene]],
+            [y.loc[gene]],
+            s=spec["size"],
+            marker=spec["marker"],
+            facecolor=spec["face"],
+            edgecolor=spec["edge"],
+            linewidth=1.15 if gene in {"SQSTM1", "OPTN"} else 0.65,
+            zorder=6,
+        )
+        label = label_specs[gene]
+        ax_a.annotate(
+            gene,
+            (float(x.loc[gene]), float(y.loc[gene])),
+            xytext=label["offset"],
+            textcoords="offset points",
+            ha=label["ha"],
+            va="center",
+            fontsize=7.3,
+            color=label["color"],
+            fontweight="bold",
+            bbox={"boxstyle": "round,pad=0.16", "facecolor": "white", "edgecolor": "none", "alpha": 0.90},
+            arrowprops={"arrowstyle": "-", "color": label["color"], "lw": 0.55, "shrinkA": 1.5, "shrinkB": 2},
+            zorder=7,
+        )
     ax_a.set_xlabel("Mean endothelial pseudobulk abundance, log10(baseMean + 1)")
     ax_a.set_ylabel("Descriptive log2 fold change")
+    ax_a.legend(loc="lower right", frameon=False, fontsize=7.0, handletextpad=0.35, borderaxespad=0.6)
+    ax_a.text(
+        0.98,
+        0.96,
+        "DESCRIPTIVE ONLY\nSONFH participant mapping unavailable",
+        transform=ax_a.transAxes,
+        ha="right",
+        va="top",
+        fontsize=6.9,
+        color="#65517f",
+        linespacing=1.35,
+        bbox={"boxstyle": "round,pad=0.38", "facecolor": "#f3eff7", "edgecolor": "#d8cee4", "linewidth": 0.6},
+    )
     ax_a.text(
         0.02,
-        0.03,
-        "Descriptive cross-cohort contrast; SONFH participant mapping unavailable",
+        0.035,
+        "Complete prespecified-gene effects are shown in B",
         transform=ax_a.transAxes,
-        fontsize=7.2,
-        color="#555555",
+        fontsize=6.9,
+        color="#66747c",
     )
-    panel_label(ax_a, "A", "SONFH library-level endothelial effects")
+    panel_label(ax_a, "A", "Transcriptome-wide context of SONFH library effects")
 
     ax_b = fig.add_subplot(outer[0, 1])
     matrix = effects.to_numpy(dtype=float)
     limit = max(1.3, float(np.nanmax(np.abs(matrix))))
     heat = ax_b.imshow(matrix, cmap="coolwarm", vmin=-limit, vmax=limit, aspect="auto")
     ax_b.set_yticks(range(len(effects.index)), effects.index)
+    for tick in ax_b.get_yticklabels():
+        if tick.get_text() == "CALCOCO2":
+            tick.set_color("#b97800")
+            tick.set_fontweight("bold")
     ax_b.set_xticks(
         [0, 1],
         [
@@ -303,19 +363,24 @@ def make_figure3() -> None:
     cbar = fig.colorbar(heat, ax=ax_b, fraction=0.045, pad=0.04)
     cbar.set_label("log2 fold change")
     ax_b.spines[["left", "bottom"]].set_visible(False)
-    panel_label(ax_b, "B", "Mitochondrial stress and selective-clearance genes")
+    panel_label(ax_b, "B", "Heterogeneous stress and selective-clearance effects")
 
     grid_c = GridSpecFromSubplotSpec(1, 3, subplot_spec=outer[1, :], wspace=0.24)
     axes_c: list[plt.Axes] = []
     for idx, module in enumerate(("Mito_fission", "Mito_fusion", "Mitophagy_core")):
         ax = fig.add_subplot(grid_c[0, idx])
         fdr = float(stats.loc[module, "Liao_KW_fdr"])
+        display_label = (
+            "Selective-clearance transcripts"
+            if module == "Mitophagy_core"
+            else MODULE_LABELS[module]
+        )
         draw_group_points(
             ax,
             modules,
             module,
             "Mean module score",
-            f"{MODULE_LABELS[module]}\nLiao exact KW FDR = {fdr:.2f}",
+            f"{display_label}\nLiao exact KW FDR = {fdr:.2f}",
         )
         axes_c.append(ax)
     # One shared y-axis label is sufficient for these aligned small multiples

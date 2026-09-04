@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
 # Paired comparison of two archived, aggregated cross-fitted serum predictions.
-# This test compares predictions for the same 40 participants. It does not
+# This test compares predictions for the same 40 serum samples. It does not
 # include uncertainty from refitting either nested-CV pipeline and therefore
 # remains an internal, exploratory comparison.
 

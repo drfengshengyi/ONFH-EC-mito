@@ -96,12 +96,25 @@ comparators, not validated biological negative controls.
 - Re-running SQSTM1 from each frozen WT network reproduced all 300 ranks exactly
   with a maximum absolute p-value difference of zero.
 
+`CALCOCO2`/NDP52 is one of the 20 matched comparator perturbations. Its
+cross-donor correlations were 0.346 in the manuscript profile and 0.317 under
+package defaults, with no cross-donor replicated downstream FDR gene. It is
+highlighted in Figure 6 as a transcript-supported, post-analysis secondary candidate inside
+the calibration distribution, not as a validated second target. `OPTN` is
+retained only as a mechanistic-context control: its descriptive SONFH-versus-HOA
+effect was positive (+0.469 log2 fold change), and its ranks after `SQSTM1`
+perturbation were 227 in HOA2 and 165 in HOA3 in the mtDNA-feature-excluded
+manuscript profile. The gene-level role and source audit is
+`results/selective_autophagy_receptor_audit.csv` and Supplementary Table S1b.
+
 ## Interpretation
 
 The official implementation yields donor-correlated computational rankings,
 but the calibration analyses do not identify a donor-replicated nuclear-encoded
 downstream hit or establish SQSTM1 as an exceptional perturbation target. The
-leading mtDNA-encoded ranks are sensitive to the modeled feature space, and the
-HOA3 EC-inflammation signal does not replicate in HOA2. These outputs are a
-transparent candidate-prioritization audit, not experimental knockout evidence,
-a cell-fate trajectory simulation, or causal validation.
+combined interpretation is therefore a heterogeneous selective-autophagy
+receptor context, not a single-gene mechanism. The leading mtDNA-encoded ranks
+are sensitive to the modeled feature space, and the HOA3 EC-inflammation signal
+does not replicate in HOA2. These outputs are a transparent
+candidate-prioritization audit, not experimental knockout evidence, a cell-fate
+trajectory simulation, or causal validation.

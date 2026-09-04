@@ -78,6 +78,8 @@ For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages 
 - The mtDNA-feature-exclusion sensitivity is a complete 295-gene network refit after removing `MT-ATP6`, `MT-CO1`, `MT-CO2`, `MT-ND1`, and `MT-ND4`; no replacement genes are introduced.
 - Twenty WT-matched gene perturbations calibrate whether `SQSTM1` is exceptional among similarly expressed and connected genes. They are computational comparators, not validated negative controls.
 - Virtual-knockout gene and pathway ranks are exploratory predictions. They do not establish causal `SQSTM1` dependence, mitochondrial function, or clinical utility.
+- The manuscript-level interpretation is receptor-system based: post-analysis interpretation designates `CALCOCO2`/NDP52 as a directionally concordant secondary candidate, while `OPTN` is a mechanistic-context control not prioritized by the available transcript and `SQSTM1`-perturbation results.
+- `results/selective_autophagy_receptor_audit.csv` separates mechanism literature, frozen-feature inclusion, pathway-test inclusion and post-analysis candidate tier for every member of the 24-gene selective-clearance panel.
 
 ## Reproducibility notes
 
