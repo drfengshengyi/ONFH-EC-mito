@@ -130,10 +130,10 @@ SQSTM1（主要计算案例） / CALCOCO2（次级候选） / OPTN（机制背�
 ### 建议上传给 Nano Banana 的参考图
 
 1. 已认可的简化股骨头：
-   `E:\ONFH2026dry\figures\source\proximal_femur_simplified_no_vessels_v1.png`
+   `figures/source/proximal_femur_simplified_no_vessels_v1.png`
 
 2. 如果要保持上一版的整体色调，可上传当前图形摘要，仅声明“只参考色彩和线条，不参考布局与文字”：
-   `E:\ONFH2026dry\outputs\onfh-genes-revision-v1-20260903\submission_ready\graphical_abstract.png`
+   使用本地投稿目录中的当前图形摘要。
 
 3. 若手头有已经认可的圆形骨小梁微血管图，请把它作为“anatomy/style reference”单独上传。
 

@@ -346,10 +346,19 @@ make_figure4 <- function() {
     scale_x_continuous(expand = expansion(mult = c(0.04, 0.10))) +
     labs(
       title = "Leave-one-participant-out sensitivity",
-      subtitle = "Six omissions; diamond = full fit\nText = FDR<0.05 count",
+      subtitle = paste0(
+        "Six omissions; <span style='color:#D95F59;'>&#9670;</span> ",
+        "full fit<br>Text = FDR&lt;0.05 count"
+      ),
       x = "Normalized enrichment score", y = NULL
     ) +
-    theme_pub()
+    theme_pub() +
+    theme(
+      plot.subtitle = ggtext::element_markdown(
+        size = 5.7, colour = "#4B5563", lineheight = 1.05,
+        margin = margin(b = 3)
+      )
+    )
 
   p_c <- sampling_panel(
     read_modules(), c("EC_inflammation", "cGAS_STING", "YAP_mTOR"),
@@ -374,10 +383,6 @@ make_figure4 <- function() {
     geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.35, colour = "#9CA3AF") +
     geom_segment(aes(x = 0, xend = ONFH_3A_vs_HOA_hodges_lehmann, yend = TF), linewidth = 0.55, colour = "#9EC3D5") +
     geom_point(size = 2.0, colour = "#2B8CBE") +
-    geom_text(
-      aes(label = paste0("FDR=", sprintf("%.2f", ONFH_3A_vs_HOA_fdr))),
-      x = Inf, hjust = 1.05, size = 1.55, family = FONT
-    ) +
     labs(
       title = "Signed TF-activity summary",
       subtitle = "ARCO 3A minus HOA; no tested regulon had FDR<0.05",
@@ -386,7 +391,7 @@ make_figure4 <- function() {
     theme_pub() +
     theme(
       plot.title.position = "plot",
-      plot.margin = margin(0, 13, 4, 1)
+      plot.margin = margin(0, 4, 4, 1)
     )
 
   top <- fread(file.path(INPUT, "comm_top_ONFH_4_vs_ONFH_3A_v4.csv"))[1:12]
@@ -527,15 +532,18 @@ make_figure7 <- function() {
     scale_colour_manual(values = c(
       "Candidate space" = "#0072B2",
       "Ma comparator" = "#CC79A7"
-    ), guide = "none") +
-    annotate("text", x = 0.04, y = 0.98, label = "Candidate: AUC 0.870",
-             hjust = 0, vjust = 1, size = 1.7, family = FONT, colour = "#0072B2") +
-    annotate("text", x = 0.04, y = 0.91, label = "Ma comparator: AUC 0.813",
-             hjust = 0, vjust = 1, size = 1.7, family = FONT, colour = "#CC79A7") +
+    ), labels = c(
+      "Candidate space" = "Candidate space · AUC 0.870",
+      "Ma comparator" = "Ma comparator · AUC 0.813"
+    ), name = NULL) +
+    guides(colour = guide_legend(
+      nrow = 2, byrow = TRUE,
+      override.aes = list(linewidth = 1.0)
+    )) +
     annotate(
-      "label", x = 0.98, y = 0.08,
+      "label", x = 0.98, y = 0.055,
       label = sprintf(
-        "Delta AUC %.3f (95%% CI %.3f to %.3f)\npaired DeLong p=%.3f",
+        "Delta AUC %.3f\n95%% CI %.3f to %.3f\npaired DeLong p=%.3f",
         delong$delta_auc, paired$ci_low, paired$ci_high, delong$delong_p_two_sided
       ),
       hjust = 1, vjust = 0, size = 1.65, family = FONT,
@@ -546,7 +554,19 @@ make_figure7 <- function() {
       subtitle = "Paired fixed-prediction comparison",
       x = "False-positive rate", y = "True-positive rate"
     ) +
-    theme_pub()
+    theme_pub() +
+    theme(
+      legend.position = "top",
+      legend.justification = "left",
+      legend.box.just = "left",
+      legend.direction = "horizontal",
+      legend.text = element_text(size = 5.0),
+      legend.key.width = unit(4.0, "mm"),
+      legend.key.height = unit(2.0, "mm"),
+      legend.spacing.x = unit(1.2, "mm"),
+      legend.spacing.y = unit(0, "mm"),
+      legend.margin = margin(0, 0, 1, 0)
+    )
 
   figure <- ((p_a | p_b) / (p_c | p_d)) +
     plot_layout(widths = c(1, 1), heights = c(1, 1)) +
@@ -576,12 +596,12 @@ if (nzchar(figure_only)) {
 
 writeLines(
   c(
-    "Genes revision figure QA contract",
+    "Genes figure QA",
     "Backend: R only for Figures 2, 3, 4 and 7.",
-    "Figure 2: module-score duplication removed; annotation-margin evidence added.",
-    "Figure 3: mitochondrial modules retained only here.",
-    "Figure 4: competitive-null warning appears in-panel; leave-one-participant-out ranges added; inflammatory/YAP modules consolidated; TF panel compressed.",
-    "Figure 7: paired candidate-versus-Ma comparison added; non-significant AUC difference shown with fixed-prediction uncertainty.",
+    "Figure 2: duplicate module scores removed.",
+    "Figure 3: mitochondrial modules retained here only.",
+    "Figure 4: the full fit uses a red diamond; redundant FDR=1.00 labels are hidden.",
+    "Figure 7: paired candidate-versus-Ma comparison includes fixed-prediction uncertainty.",
     "All plotted statistics are read from versioned CSV/JSON inputs."
   ),
   file.path(QA, "Genes_revision_figures_QA_notes.txt")

@@ -11,7 +11,7 @@ public matrices are not redistributed.
 | Figure 3 | `plotting/make_reviewed_figures.py` | `de_ec_SONFH_vs_HOA_descriptive_v4.csv`, `fig3_key_gene_effects_v4.csv`, `module_scores_*` |
 | Figure 4 | `plotting/make_figure4.py` | GSEA, module-score, signed-TF and communication tables in `results/figure_inputs/` |
 | Figure 5 | `analysis/spatial_contextualization.py` | GSE284089 spatial matrix, coordinates, deposited H&E image, and frozen gene sets |
-| Figure 6 | `plotting/make_virtual_knockout_figure.R` | official-R donor results, `results/official_r_vko_figure_data/`, matched-null pathway tables |
+| Figure 6 | `plotting/make_genes_virtual_knockout_figure.R` | official-R donor results, matched-gene controls, nuclear refits, and matched-null pathway tables |
 | Figure 7 | `plotting/make_reviewed_figures.py` | `results/figure_inputs/diag_*` |
 | Supplementary Figure S1 | `plotting/make_evidence_model.py` | prespecified evidence model encoded in the script |
 | Supplementary Tables S1-S11 | versioned workbook | machine-readable analysis tables; S10g-5 is reconciled against the two `official_r_vko_no_mt_*_audit.csv` files and S11 contains the spatial summary, gene coverage, score controls, and spot-level values |

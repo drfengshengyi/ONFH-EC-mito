@@ -1,7 +1,7 @@
-Genes revision figure QA contract
+Genes figure QA
 Backend: R only for Figures 2, 3, 4 and 7.
-Figure 2: module-score duplication removed; annotation-margin evidence added.
-Figure 3: mitochondrial modules retained only here.
-Figure 4: competitive-null warning appears in-panel; leave-one-participant-out ranges added; inflammatory/YAP modules consolidated; TF panel compressed.
-Figure 7: paired candidate-versus-Ma comparison added; non-significant AUC difference shown with fixed-prediction uncertainty.
-All plotted statistics are read from versioned CSV/JSON inputs.
+Figure 2: duplicate module scores removed.
+Figure 3: mitochondrial modules retained here only.
+Figure 4: full fit uses a red diamond; redundant FDR=1.00 labels are hidden.
+Figure 7: paired candidate-versus-Ma comparison includes fixed-prediction uncertainty.
+All statistics are read from versioned CSV/JSON inputs.

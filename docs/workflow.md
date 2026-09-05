@@ -19,7 +19,7 @@ HOA2 and HOA3 EC count matrices + frozen genes/barcodes
 official scTenifoldKnk (donor separated; two parameter profiles)
                 |
                 v
-matched-null audit + plot-data export -> Figure 5
+matched-null audit + plot-data export -> Figure 6
 ```
 
 ## Entry points

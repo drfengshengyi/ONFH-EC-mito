@@ -415,6 +415,14 @@ def main() -> int:
     else:
         pass_("no machine-specific absolute paths")
 
+    vko_workflow = (ROOT / "workflow/run_virtual_knockout.ps1").read_text(encoding="utf-8")
+    canonical_vko_plot = 'plotting/make_genes_virtual_knockout_figure.R'
+    legacy_vko_plot = 'plotting/make_virtual_knockout_figure.R'
+    if canonical_vko_plot in vko_workflow and legacy_vko_plot not in vko_workflow:
+        pass_("virtual-knockout workflow uses the Genes Figure 6 script")
+    else:
+        fail(errors, "virtual-knockout workflow does not use the Genes Figure 6 script")
+
     with (ROOT / "analysis/sample_metadata_v4.csv").open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     participants = {row["participant_id"] for row in rows if row["participant_id"]}

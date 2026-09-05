@@ -55,11 +55,11 @@
 
 ### 股骨头参考图
 
-`E:\ONFH2026dry\figures\source\proximal_femur_simplified_no_vessels_v1.png`
+`figures/source/proximal_femur_simplified_no_vessels_v1.png`
 
 ### 仅供配色参考的旧图
 
-`E:\ONFH2026dry\outputs\onfh-genes-revision-v1-20260903\submission_ready\graphical_abstract.png`
+Use the current approved graphical abstract from the local submission folder.
 
 如果上传旧图，必须告诉模型：
 

@@ -1,19 +1,6 @@
-"""Legacy diagnostic Figure 6 with official scTenifoldKnk outputs.
+"""Legacy diagnostic Figure 6; the Genes figure uses the canonical R script.
 
-The submission Figure 6 is generated only by ``make_virtual_knockout_figure.R``.
-This historical Python implementation is retained for provenance and writes to
-``figures/legacy`` so that an accidental manual run cannot overwrite the
-canonical submission files.
-
-The figure borrows the visual grammar of established in-silico perturbation
-papers while preserving the meaning of the analysis:
-
-* the network panel contains actual SQSTM1 outgoing edges from the official
-  scTenifoldKnk wild-type tensor networks;
-* the vector panels show WT-to-virtual-KO displacement of genes in the official
-  manifold alignment, not cell-state trajectories;
-* the pathway curves display cumulative recovery along perturbation ranks, with
-  p values/FDR taken from the prespecified matched-null analysis.
+This script writes only to ``figures/legacy``.
 """
 
 from __future__ import annotations

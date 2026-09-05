@@ -28,7 +28,7 @@ try {
     Invoke-Checked $Rscript @("virtual_knockout/run_matched_control_vko.R", "--cores=$Cores")
     Invoke-Checked $Rscript @("virtual_knockout/postprocess_mt_exclusion.R")
     Invoke-Checked $Rscript @("virtual_knockout/export_figure_data.R")
-    Invoke-Checked $Rscript @("plotting/make_virtual_knockout_figure.R")
+    Invoke-Checked $Rscript @("plotting/make_genes_virtual_knockout_figure.R")
 } finally {
     Pop-Location
 }

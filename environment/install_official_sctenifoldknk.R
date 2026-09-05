@@ -12,7 +12,7 @@ options(
 
 packages <- c(
   "scTenifoldNet", "scTenifoldKnk", "Matrix", "jsonlite",
-  "ggplot2", "patchwork", "ggrepel", "dplyr", "tidyr", "ragg",
+  "ggplot2", "patchwork", "ggrepel", "dplyr", "tidyr", "ragg", "svglite",
   "cowplot", "tibble"
 )
 missing <- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]

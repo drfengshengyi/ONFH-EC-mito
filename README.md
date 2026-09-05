@@ -1,105 +1,82 @@
-# ONFH endothelial and mitochondrial reanalysis
+# ONFH endothelial transcriptomic reanalysis
 
-Reproducible code and processed outputs for the manuscript:
+Code and processed outputs for:
 
-> **Endothelial heterogeneity and mitochondrial stress--clearance profiles in osteonecrosis of the femoral head: a participant-aware multi-cohort transcriptomic reanalysis**
+> **Participant-aware transcriptomic benchmarking of endothelial states and mitochondrial hypotheses in osteonecrosis of the femoral head**
 
-This release separates data preparation, biological analyses, the official-R `SQSTM1` virtual-knockout audit, and manuscript plotting. Primary public matrices are not redistributed. Processed result tables and final figures are included so the reported outputs can be inspected without rebuilding the complete atlas.
+The repository separates analysis, virtual knockout, spatial contextualization, and figure generation. Raw public matrices are not redistributed. Compact results and final figures are included for audit and reuse.
 
-## What is in this repository
+## Repository map
 
 | Directory | Contents |
 |---|---|
-| `analysis/` | Ordered Python/R analysis modules and frozen analysis manifests |
-| `virtual_knockout/` | Donor-separated official `scTenifoldKnk` analysis and post-processing |
-| `plotting/` | Figure 1–6 and Supplementary Figure S1 generation/assembly code |
-| `workflow/` | PowerShell entry points for the three reproducible stages |
-| `results/` | Processed tables, spatial-context results, virtual-knockout results, and Supplementary Tables S1–S11 |
-| `figures/source/` | Versioned source panels used by the layout script |
-| `figures/final/` | Submission-ready PDF and PNG figures |
-| `data/` | Download instructions and a machine-readable dataset manifest; raw data are ignored |
-| `environment/` | Frozen Python dependencies and R installation helper |
-| `qa/` | Repository integrity and portability checks |
+| `analysis/` | Core Python and R analyses |
+| `virtual_knockout/` | Donor-separated `scTenifoldKnk` analyses |
+| `plotting/` | Figures 1–7 and Supplementary Figure S1 |
+| `workflow/` | Reproducible PowerShell entry points |
+| `results/` | Processed tables and supplementary results |
+| `figures/` | Source panels and final figures |
+| `data/` | Download instructions and dataset manifest |
+| `environment/` | Frozen Python and R environments |
+| `qa/` | Syntax, integrity, and portability checks |
 
 ## Public datasets
 
-| Accession | Analysis role |
+| Accession | Role |
 |---|---|
-| SRP361778 | Liao femoral-head single-cell cohort; participant-level inference and HOA control-EC virtual knockout |
-| GSE169396 | Independent healthy femoral-head single-cell atlas component |
-| GSE290411 | Steroid-induced ONFH libraries; descriptive cross-cohort contrasts only because participant mapping was unavailable |
-| GSE284089 | One osteoarthritic femoral-head spatial-transcriptomic section; external anatomical contextualization only |
-| GSE123568 | Peripheral-serum expression dataset; repeated nested cross-validation |
+| SRP361778 | Femoral-head scRNA-seq; participant-level analyses and HOA2/HOA3 virtual knockout |
+| GSE169396 | Healthy femoral-head scRNA-seq context |
+| GSE290411 | SONFH libraries; descriptive contrasts because participant mapping is unavailable |
+| GSE284089 | One OA femoral-head spatial section; anatomical context only |
+| GSE123568 | Serum expression; repeated nested cross-validation |
 
-The exact local filenames expected by the scripts are listed in [`data/README.md`](data/README.md) and [`data/datasets.tsv`](data/datasets.tsv).
-The exact HOA2/HOA3 processed-matrix checksums used by the virtual-knockout release are in [`virtual_knockout/vko_input_checksums.tsv`](virtual_knockout/vko_input_checksums.tsv).
+Expected files are listed in [`data/README.md`](data/README.md) and [`data/datasets.tsv`](data/datasets.tsv). Virtual-knockout input checksums are in [`virtual_knockout/vko_input_checksums.tsv`](virtual_knockout/vko_input_checksums.tsv).
 
 ## Quick start
 
-Run these commands from the repository root in PowerShell. Override `-Python` or `-Rscript` if the executables are not on `PATH`.
+Run from the repository root in PowerShell. Override `-Python` or `-Rscript` when needed.
 
 ```powershell
-# 1. Create an environment
-# Python 3.12 is the archived release runtime (see .python-version).
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r environment\requirements-python.lock.txt
-
-# Verify the exact R 4.6.1/package release environment.
 Rscript environment\check_r_packages.R
 
-# 2. Rebuild the main analysis after placing public data under data/
 .\workflow\run_core_analysis.ps1 -Python python -Rscript Rscript -Jobs 4
-
-# 3. Run the original/mtDNA-feature-excluded official-R profiles and matched comparators
 .\workflow\run_virtual_knockout.ps1 -Python python -Rscript Rscript -Cores 1
-
-# 4. Add the external single-section spatial contextualization
 .\workflow\run_spatial_contextualization.ps1 -Python python
-
-# 5. Rebuild final figures from the versioned source panels/results
 .\workflow\run_figures.ps1 -Python python -Rscript Rscript
-
-# 6. Audit repository structure, syntax, metadata, Tables S10g/S11, and portability
 python qa\check_repository.py --rscript Rscript
-
-# Optional release audit: also require byte-identical manuscript figure PDFs
-python qa\check_repository.py --submission-dir <path-to-submission-figures>
 ```
 
-For a complete run, use `workflow/run_all.ps1`. The virtual-knockout R packages are installed separately with `environment/install_official_sctenifoldknk.R`; see [`virtual_knockout/README.md`](virtual_knockout/README.md).
+`workflow/run_all.ps1` runs the complete sequence. Install missing virtual-knockout R packages with `environment/install_official_sctenifoldknk.R`.
 
-## Analysis boundary
+## Analysis limits
 
-- Statistical inference is performed at the participant/sampling-unit level where participant identity is available.
-- The four GSE290411 SONFH libraries are retained for descriptive visualization and effect-size comparison, not treated as four confirmed independent participants.
-- GSE284089 contributes one osteoarthritic femoral-head Visium section as external anatomical context only. Its spots are not independent biological replicates and its maps do not validate ONFH, `SQSTM1`, or causality.
-- The `SQSTM1` virtual knockout is an expression-derived network perturbation performed separately in HOA2 and HOA3. It is **not** a wet-lab knockout and **not** a CellOracle cell-fate or differentiation-trajectory simulation.
-- The mtDNA-feature-exclusion sensitivity is a complete 295-gene network refit after removing `MT-ATP6`, `MT-CO1`, `MT-CO2`, `MT-ND1`, and `MT-ND4`; no replacement genes are introduced.
-- Twenty WT-matched gene perturbations calibrate whether `SQSTM1` is exceptional among similarly expressed and connected genes. They are computational comparators, not validated negative controls.
-- Virtual-knockout gene and pathway ranks are exploratory predictions. They do not establish causal `SQSTM1` dependence, mitochondrial function, or clinical utility.
-- The manuscript-level interpretation is receptor-system based: post-analysis interpretation designates `CALCOCO2`/NDP52 as a directionally concordant secondary candidate, while `OPTN` is a mechanistic-context control not prioritized by the available transcript and `SQSTM1`-perturbation results.
-- `results/selective_autophagy_receptor_audit.csv` separates mechanism literature, frozen-feature inclusion, pathway-test inclusion and post-analysis candidate tier for every member of the 24-gene selective-clearance panel.
+- Formal inference uses participants or sampling units when their identities are available.
+- GSE290411 is descriptive because its participant-to-library map is unresolved.
+- GSE284089 contains one OA spatial section. It provides anatomical context, not ONFH or causal validation.
+- The `SQSTM1` analysis is an expression-derived network perturbation, not an experimental knockout or cell-fate simulation.
+- MtDNA-feature-excluded refits and 20 matched-gene perturbations calibrate robustness and specificity.
+- Virtual-knockout ranks remain exploratory. The interpretation emphasizes a heterogeneous selective-autophagy receptor system, with `CALCOCO2`/NDP52 as a secondary candidate and `OPTN` as a context control.
 
-## Reproducibility notes
+## Reproducibility
 
-- `analysis/sample_metadata_v4.csv` is the authoritative library-to-participant map.
+- `analysis/sample_metadata_v4.csv` is the authoritative sampling-unit map.
 - Randomized analyses use fixed seeds recorded in code and provenance files.
-- Python 3.12 is fixed in `.python-version`; the R 4.6.1 package manifest is `environment/r-package-versions.tsv`.
-- `results/official_r_vko_manuscript/` and `results/official_r_vko_official_default/` retain parameter, package-version, and session information.
-- Matching, mtDNA-feature-excluded refits, common-universe rank comparisons, and target-selection rationale are versioned under `results/official_r_vko_matched_controls/` and the corresponding sensitivity-result directories.
-- Final figure PDFs in `figures/final/` are the submission versions; PNG counterparts are included for rapid review.
-- `results/README.md` maps each figure/table to its canonical producer and direct versioned inputs.
+- Python 3.12 is fixed in `.python-version`; R versions are in `environment/r-package-versions.tsv`.
+- `results/README.md` links each figure and table to its producer and inputs.
+- Final submission figures are in `figures/final/` as PDF and PNG.
 
 ## Data availability
 
-All datasets analyzed in this study are publicly available: SRP361778 in the NCBI Sequence Read Archive and GSE169396, GSE290411, GSE284089, and GSE123568 in NCBI GEO. Analysis code, frozen manifests, processed result tables, and figure-generation code are provided in this repository. No newly generated primary sequencing data are reported.
+All analyzed datasets are public. This repository provides code, frozen manifests, processed tables, and figure scripts. No new primary sequencing data were generated.
 
 ## Contacts
 
 - Qiugen Wang: wangqiugen@126.com
 - Jianguang Xu: xjg@shutcm.edu.cn
 
-## License and third-party data
+## Third-party data
 
-No license is asserted for the public datasets or third-party databases. Users should follow the terms of the original repositories and packages.
+Public datasets and databases remain subject to their original terms of use.

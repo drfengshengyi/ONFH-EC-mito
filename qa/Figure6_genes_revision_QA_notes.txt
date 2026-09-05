@@ -1,10 +1,10 @@
-Genes Figure 6 QA contract
+Genes Figure 6 QA
 Backend: R only.
-Core finding: selective-autophagy receptor evidence is heterogeneous; after excluding mitochondrially encoded features, SQSTM1 perturbation ranks are donor-correlated but not specific relative to matched comparator genes.
-Panel B displays the top ten nuclear downstream differential-regulation ranks per donor; the WT topology network is not used as the primary result display.
-HOA3-only FDR genes (VWF, NFKBIA and C7) are not described as cross-donor hits.
-No nuclear downstream gene reached FDR<0.05 in both donors.
-One pathway reached empirical FDR<0.05 in HOA3 only; no pathway replicated.
-Matched-comparator exact empirical p values are shown for both parameter profiles, with all 20 comparator values displayed and CALCOCO2 identified as a post-analysis secondary candidate inside the comparator distribution.
-Pathway cells with donor-specific empirical FDR<0.05 are outlined; no pathway replicated.
+A: donors are modeled separately; labels clear the network outlines.
+B: top 10 nuclear ranks per donor; red rings mark donor-specific FDR hits.
+C: shared top-50=22; red rings mark HOA3-only hits.
+No nuclear FDR hit replicated across donors.
+D: 20 matched genes, CALCOCO2, comparator medians, and SQSTM1 are shown.
+E: red outlines mark donor-specific pathway FDR hits; none replicated.
 No experimental knockout observations are represented.
+Exports: SVG, PDF, 300-dpi PNG, and 600-dpi TIFF.
