@@ -1,0 +1,20 @@
+sample,dataset,group,retained_ec_cells,stored_ec_nCount_sum,median_stored_ec_nCount,included_in_liao_pseudobulk,pseudobulk_inclusion_rule,included_in_SQSTM1_virtual_KO,virtual_KO_note
+AL,sonfh_cystic,SONFH,1328,10436905.0,6908.0,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+DWR,sonfh_cystic,SONFH,3801,23714421.0,5392.0,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+S1,healthy,Healthy,29,259758.0,9172.0,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+S2,healthy,Healthy,122,945843.0,6982.5,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+S3,healthy,Healthy,42,239660.0,2732.5,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+S4,healthy,Healthy,58,469890.0,7002.0,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+WXJ,sonfh_cystic,SONFH,757,6070938.0,7032.0,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+bone,sonfh_cystic,SONFH,2682,19988563.0,6892.5,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+fnf1,liao_alcohol,FNF,14,127422.0,5730.5,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+fnf2,liao_alcohol,FNF,218,2200749.0,9324.5,False,not part of the formal Liao HOA/ONFH_3A/ONFH_4 pseudobulk contrasts,False,separate from the low-depth pseudobulk inclusion decision
+hoa1,liao_alcohol,HOA,26,277830.89802337514,7960.793372363374,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,excluded from donor-network perturbation because only 26 ECs remained
+hoa2,liao_alcohol,HOA,1043,8234188.756164645,6841.757167725689,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,True,separate from the low-depth pseudobulk inclusion decision
+hoa3,liao_alcohol,HOA,760,6014653.727843711,6341.0482082824765,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,True,separate from the low-depth pseudobulk inclusion decision
+onfh1,liao_alcohol,ONFH_3A,1124,7147465.0,5355.5,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,separate from the low-depth pseudobulk inclusion decision
+onfh2,liao_alcohol,ONFH_3A,63,623478.0,9013.0,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,separate from the low-depth pseudobulk inclusion decision
+onfh3,liao_alcohol,ONFH_3A,331,4195984.0,11838.0,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,separate from the low-depth pseudobulk inclusion decision
+onfh4,liao_alcohol,ONFH_4,75,586072.0,8166.0,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,separate from the low-depth pseudobulk inclusion decision
+onfh5,liao_alcohol,ONFH_4,628,5368992.0,7036.5,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,separate from the low-depth pseudobulk inclusion decision
+onfh6,liao_alcohol,ONFH_4,325,2393578.0,7156.0,True,all independent Liao participants with at least one retained EC; no post hoc minimum EC threshold,False,separate from the low-depth pseudobulk inclusion decision

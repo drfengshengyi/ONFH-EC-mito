@@ -1,0 +1,10 @@
+metric,n_valid,median,q025,q975,interval_name
+candidate_auc,1000,0.8409090909090908,0.5555555555555556,1.0,refit-aware OOB bootstrap sensitivity interval
+candidate_ap,1000,0.9342069546615002,0.7713789682539683,1.0000000000000002,refit-aware OOB bootstrap sensitivity interval
+candidate_brier,1000,0.11569870314960262,0.0017245343919475152,0.23488417354965505,refit-aware OOB bootstrap sensitivity interval
+ma_auc,1000,0.8193473193473193,0.5,1.0,refit-aware OOB bootstrap sensitivity interval
+ma_ap,1000,0.9376903960237295,0.741024531024531,1.0,refit-aware OOB bootstrap sensitivity interval
+ma_brier,1000,0.24346566377865658,0.10165891593484223,0.2925491821311709,refit-aware OOB bootstrap sensitivity interval
+delta_auc,1000,0.041666666666666685,-0.3055555555555556,0.3611742424242424,refit-aware OOB bootstrap sensitivity interval
+delta_ap,1000,0.009090909090909038,-0.1957295424482925,0.19581554178145077,refit-aware OOB bootstrap sensitivity interval
+delta_brier,1000,-0.0974289902896975,-0.24289077520954314,0.06125097120597127,refit-aware OOB bootstrap sensitivity interval

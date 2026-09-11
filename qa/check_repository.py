@@ -29,6 +29,9 @@ REQUIRED = [
     "analysis/participant_fgsea_stability.py",
     "analysis/participant_fgsea_stability.R",
     "analysis/serum_paired_comparison.R",
+    "analysis/ec_preprocessing_sensitivity.py",
+    "analysis/serum_classifier_enhanced.py",
+    "analysis/requirements_serum_enhanced.txt",
     "analysis/spatial_contextualization.py",
     "virtual_knockout/run_official_vko.R",
     "virtual_knockout/run_matched_control_vko.R",
@@ -41,6 +44,7 @@ REQUIRED = [
     "plotting/make_virtual_knockout_figure.R",
     "plotting/make_genes_revision_figures.R",
     "plotting/make_genes_virtual_knockout_figure.R",
+    "plotting/make_figure7_enhanced.R",
     "plotting/compress_spatial_figure_for_portal.R",
     "environment/r-package-versions.tsv",
     "environment/check_r_packages.R",
@@ -96,11 +100,36 @@ REQUIRED = [
     "results/spatial_contextualization/spatial_within_section_correlations.csv",
     "results/spatial_contextualization/spatial_run_summary.csv",
     "results/spatial_contextualization/spatial_provenance.json",
+    "results/sr_preprocessing_sensitivity/provenance.json",
+    "results/sr_preprocessing_sensitivity/atlas_no_combat_summary.csv",
+    "results/sr_preprocessing_sensitivity/no_combat_summary.csv",
+    "results/sr_preprocessing_sensitivity/annotation_margin_threshold_summary.csv",
+    "results/sr_preprocessing_sensitivity/pseudobulk_sampling_unit_depth_audit.csv",
+    "results/sr_preprocessing_sensitivity/omit_hoa1_hallmark_refit.csv",
+    "results/serum_enhanced_20260910/00_frozen_plan/analysis_plan_frozen.json",
+    "results/serum_enhanced_20260910/00_frozen_plan/sample_manifest.csv",
+    "results/serum_enhanced_20260910/00_frozen_plan/candidate_gene_manifest.csv",
+    "results/serum_enhanced_20260910/00_frozen_plan/ma_comparator_gene_manifest.csv",
+    "results/serum_enhanced_20260910/00_frozen_plan/probe_selection_leakage_unit_test.json",
+    "results/serum_enhanced_20260910/02_formal/aggregate_performance.csv",
+    "results/serum_enhanced_20260910/02_formal/label_permutation_summary.csv",
+    "results/serum_enhanced_20260910/02_formal/matched_random_space_summary.csv",
+    "results/serum_enhanced_20260910/02_formal/delong_comparison.csv",
+    "results/serum_enhanced_20260910/02_formal/fixed_oof_paired_bootstrap_summary.csv",
+    "results/serum_enhanced_20260910/02_formal/refit_oob_bootstrap_summary.csv",
+    "results/serum_enhanced_20260910/02_formal/feature_stability_summary.csv",
+    "results/serum_enhanced_20260910/02_formal/calibration_summary.csv",
+    "results/serum_enhanced_20260910/02_formal/serum_enhanced_summary.json",
     "workflow/run_core_analysis.ps1",
     "workflow/run_virtual_knockout.ps1",
     "workflow/run_spatial_contextualization.ps1",
     "workflow/run_genes_revision_robustness.ps1",
+    "workflow/run_sr_preprocessing_sensitivity.ps1",
+    "workflow/run_serum_enhanced.ps1",
     "workflow/run_figures.ps1",
+    "qa/check_serum_enhanced.py",
+    "qa/build_supplementary_table_s13.py",
+    "tools/append_sr_sensitivity_tables.py",
     "results/Supplementary_Tables_S1-S11.xlsx",
 ]
 
@@ -174,7 +203,7 @@ def audit_s10g_workbook() -> list[str]:
     except ImportError:
         return ["openpyxl is unavailable; install environment/requirements-python.lock.txt"]
 
-    workbook_path = ROOT / "results/Supplementary_Tables_S1-S11.xlsx"
+    workbook_path = ROOT / "results/Supplementary_Tables_S1-S13.xlsx"
     cross_path = ROOT / "results/official_r_vko_no_mt_cross_donor_audit.csv"
     gene_path = ROOT / "results/official_r_vko_no_mt_hoa3_fdr_audit.csv"
     with cross_path.open(encoding="utf-8", newline="") as handle:
@@ -266,7 +295,7 @@ def audit_s11_workbook() -> list[str]:
     except ImportError:
         return ["openpyxl is unavailable; install environment/requirements-python.lock.txt"]
 
-    workbook_path = ROOT / "results/Supplementary_Tables_S1-S11.xlsx"
+    workbook_path = ROOT / "results/Supplementary_Tables_S1-S13.xlsx"
     with (ROOT / "results/spatial_contextualization/spatial_run_summary.csv").open(
         encoding="utf-8", newline=""
     ) as handle:
@@ -306,6 +335,36 @@ def audit_s11_workbook() -> list[str]:
             issues.append("Table S11c matched-control row count")
         if workbook["Table S11d"].max_row != int(summary["spots_after_qc"]) + 5:
             issues.append("Table S11d spot-score row count")
+        return issues
+    finally:
+        workbook.close()
+
+
+def audit_s12_s13_workbook() -> list[str]:
+    """Check the Scientific Reports sensitivity and enhanced-serum sheets."""
+    try:
+        from openpyxl import load_workbook
+    except ImportError:
+        return ["openpyxl is unavailable; install environment/requirements-python.lock.txt"]
+
+    workbook_path = ROOT / "results/Supplementary_Tables_S1-S13.xlsx"
+    workbook = load_workbook(workbook_path, read_only=False, data_only=True)
+    try:
+        issues: list[str] = []
+        if "Table S12" not in workbook.sheetnames:
+            issues.append("Table S12 worksheet is missing")
+        else:
+            note = str(workbook["Table S12"]["A2"].value or "")
+            if "separate enhanced serum analysis is reported in Table S13" not in note:
+                issues.append("Table S12 explanatory note")
+        if "Table S13" not in workbook.sheetnames:
+            issues.append("Table S13 worksheet is missing")
+        else:
+            sheet = workbook["Table S13"]
+            if sheet.max_row != 222:
+                issues.append("Table S13 row count")
+            if not str(sheet["A1"].value or "").startswith("Supplementary Table S13"):
+                issues.append("Table S13 title")
         return issues
     finally:
         workbook.close()
@@ -468,6 +527,16 @@ def main() -> int:
     else:
         pass_("Table S11 spatial summary and row counts match the versioned source tables")
 
+    s12_s13_path = ROOT / "results/Supplementary_Tables_S1-S13.xlsx"
+    if s12_s13_path.exists():
+        s12_s13_issues = audit_s12_s13_workbook()
+        if s12_s13_issues:
+            fail(errors, "Table S12/S13 workbook audit: " + ", ".join(s12_s13_issues))
+        else:
+            pass_("local Table S12/S13 workbook passes release checks")
+    else:
+        pass_("submission workbook is intentionally not versioned")
+
     final_expected = [f"figures/final/Figure{i}.{ext}" for i in range(1, 8) for ext in ("pdf", "png")]
     final_expected += [f"figures/final/SupplementaryFigureS1.{ext}" for ext in ("pdf", "png")]
     final_missing = [name for name in final_expected if not (ROOT / name).exists()]
@@ -479,12 +548,6 @@ def main() -> int:
     if args.submission_dir:
         names = [f"Figure{i}.pdf" for i in range(1, 8)]
         submission_names = {name: name for name in names}
-        supplement_candidates = ("SupplementaryFigureS1.pdf", "Supplementary_Figure_S1.pdf")
-        supplement_name = next(
-            (name for name in supplement_candidates if (args.submission_dir / name).exists()),
-            supplement_candidates[0],
-        )
-        submission_names["SupplementaryFigureS1.pdf"] = supplement_name
         missing_submission = [
             submitted
             for submitted in submission_names.values()
@@ -504,10 +567,10 @@ def main() -> int:
             else:
                 pass_("repository and submission figure PDFs are byte-identical")
 
-        submission_workbook = args.submission_dir / "Supplementary_Tables_S1-S11.xlsx"
+        submission_workbook = args.submission_dir / "Supplementary_Tables_S1-S13.xlsx"
         if not submission_workbook.exists():
-            fail(errors, "missing Supplementary_Tables_S1-S11.xlsx in --submission-dir")
-        elif sha256(ROOT / "results/Supplementary_Tables_S1-S11.xlsx") != sha256(submission_workbook):
+            fail(errors, "missing Supplementary_Tables_S1-S13.xlsx in --submission-dir")
+        elif sha256(ROOT / "results/Supplementary_Tables_S1-S13.xlsx") != sha256(submission_workbook):
             fail(errors, "repository/submission supplementary-workbook hash mismatch")
         else:
             pass_("repository and submission supplementary workbooks are byte-identical")

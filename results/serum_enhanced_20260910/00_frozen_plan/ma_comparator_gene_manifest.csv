@@ -1,0 +1,8 @@
+gene,source,platform_has_probe,n_probes,final_available,unavailable_reason
+BID,Ma et al. original seven-gene comparator,True,4,True,
+FTH1,Ma et al. original seven-gene comparator,True,2,True,
+LACTB,Ma et al. original seven-gene comparator,True,2,True,
+PDK3,Ma et al. original seven-gene comparator,True,1,True,
+RAB5IF,Ma et al. original seven-gene comparator,False,0,False,not measurable under frozen original annotation rule
+SOD2,Ma et al. original seven-gene comparator,False,0,False,not measurable under frozen original annotation rule
+SQOR,Ma et al. original seven-gene comparator,False,0,False,not measurable under frozen original annotation rule

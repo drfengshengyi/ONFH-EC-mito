@@ -1,0 +1,2 @@
+comparison,delta_auc,delta_average_precision,delta_brier,brier_direction
+candidate_minus_ma,0.11999999999999988,0.08179283035486762,-0.11364335999599362,negative favors candidate

@@ -1,0 +1,2 @@
+observed_candidate_auc,n_matched_spaces,n_ge_observed,empirical_p_specificity,matching_scope
+0.8799999999999999,1000,726,0.7262737262737263,outer-training-fold probe selection and mean/log1p-variance deciles

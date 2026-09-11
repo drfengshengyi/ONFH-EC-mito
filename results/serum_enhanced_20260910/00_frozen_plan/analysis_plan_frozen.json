@@ -1,0 +1,332 @@
+{
+  "plan_version": "GSE123568_Figure7_enhanced_20260910_v1",
+  "created_before_formal_models": true,
+  "samples": [
+    {
+      "sample_id": "GSM3507251",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507252",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507253",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507254",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507255",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507256",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507257",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507258",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507259",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507260",
+      "label": 0
+    },
+    {
+      "sample_id": "GSM3507261",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507262",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507263",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507264",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507265",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507266",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507267",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507268",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507269",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507270",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507271",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507272",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507273",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507274",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507275",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507276",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507277",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507278",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507279",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507280",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507281",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507282",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507283",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507284",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507285",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507286",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507287",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507288",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507289",
+      "label": 1
+    },
+    {
+      "sample_id": "GSM3507290",
+      "label": 1
+    }
+  ],
+  "candidate_genes": [
+    "AKT1",
+    "AMBRA1",
+    "ATG5",
+    "ATG7",
+    "BAK1",
+    "BAX",
+    "BBC3",
+    "BCL2",
+    "BCL2L1",
+    "BCL2L13",
+    "BID",
+    "BNIP3",
+    "BNIP3L",
+    "CALCOCO2",
+    "CCL5",
+    "CHUK",
+    "CXCL10",
+    "DNM1",
+    "DNM1L",
+    "DNM2",
+    "EIF4EBP1",
+    "FIS1",
+    "FKBP8",
+    "FUNDC1",
+    "GABARAP",
+    "GABARAPL2",
+    "GDAP1",
+    "GIGYF1",
+    "GIGYF2",
+    "HIF1A",
+    "IKBKB",
+    "IL6",
+    "INF2",
+    "IRF3",
+    "IRF7",
+    "LATS1",
+    "LATS2",
+    "MAP1LC3B",
+    "MCL1",
+    "MFF",
+    "MFN1",
+    "MFN2",
+    "MIEF1",
+    "MIEF2",
+    "MST1",
+    "MTCH2",
+    "MTFR1",
+    "MTFR1L",
+    "MTOR",
+    "NBR1",
+    "NFKB1",
+    "OPA1",
+    "OPTN",
+    "PHB2",
+    "PINK1",
+    "PLD6",
+    "PMAIP1",
+    "RELA",
+    "RHEB",
+    "RPS6KB1",
+    "RPTOR",
+    "SQSTM1",
+    "TAX1BP1",
+    "TBK1",
+    "TEAD1",
+    "TEAD4",
+    "TMEM173",
+    "TNF",
+    "TSC1",
+    "TSC2",
+    "ULK1",
+    "VCP",
+    "VDAC1",
+    "VDAC2",
+    "VDAC3",
+    "WWTR1",
+    "YAP1"
+  ],
+  "candidate_modules": [
+    "Mito_fission",
+    "Mito_fusion",
+    "Mitophagy_core",
+    "mtDNA_release",
+    "cGAS_STING",
+    "YAP_mTOR"
+  ],
+  "ma_original_genes": [
+    "BID",
+    "FTH1",
+    "LACTB",
+    "PDK3",
+    "RAB5IF",
+    "SOD2",
+    "SQOR"
+  ],
+  "ma_measurable_genes": [
+    "BID",
+    "FTH1",
+    "LACTB",
+    "PDK3"
+  ],
+  "base_seed": 20260820,
+  "outer": "StratifiedKFold 5 folds x 5 repeats; random_state 0..4",
+  "inner": "StratifiedKFold 4 folds; bootstrap uses StratifiedGroupKFold min(4, unique class groups)",
+  "C_grid": [
+    0.001,
+    0.0021544346900318843,
+    0.004641588833612777,
+    0.01,
+    0.021544346900318832,
+    0.046415888336127774,
+    0.1,
+    0.21544346900318823,
+    0.46415888336127775,
+    1.0,
+    2.154434690031882,
+    4.6415888336127775,
+    10.0,
+    21.54434690031882,
+    46.41588833612773,
+    100.0
+  ],
+  "candidate_model": "StandardScaler pipeline + L1 liblinear logistic regression",
+  "ma_model": "StandardScaler pipeline + L2 liblinear logistic regression",
+  "class_weight": "balanced",
+  "max_iter": 5000,
+  "formal_counts": {
+    "label_permutations": 1000,
+    "valid_refit_oob_bootstraps": 1000,
+    "matched_random_spaces": 1000,
+    "fixed_prediction_bootstraps": 20000
+  },
+  "smoke_counts": {
+    "label_permutations": 20,
+    "valid_refit_oob_bootstraps": 20,
+    "matched_random_spaces": 20
+  },
+  "jobs": 4,
+  "checkpoint_interval": 20,
+  "primary_metric": "ROC-AUC of per-sample probabilities averaged across five repeated nested outer CV runs",
+  "secondary_metrics": [
+    "average precision",
+    "Brier score",
+    "repeat-specific metrics",
+    "paired candidate-minus-Ma differences"
+  ],
+  "empirical_p_formula": "(1 + number(null >= observed))/(1 + number(valid null))",
+  "bootstrap_validity": "OOB contains at least 2 SONFH and 2 controls; inner group CV has at least 2 unique GSM per class; maximum 5000 attempts",
+  "random_space_matching": "outer-training-only mean and log1p variance deciles; no replacement; Manhattan expansion",
+  "figure_panels": [
+    "A label permutation",
+    "B matched random spaces",
+    "C feature stability",
+    "D paired model metrics",
+    "E ROC and exploratory calibration"
+  ],
+  "interpretation_boundary": "exploratory internal cross-fitted evaluation; no external validation, locked signature, clinical threshold, diagnostic or causal claim",
+  "stop_conditions": [
+    "input/sample/gene mismatch",
+    "uncertain expression scale",
+    "probe leakage unit test failure",
+    "smoke QC failure",
+    "fewer than requested valid bootstrap runs",
+    "incomplete matched 77-gene spaces"
+  ]
+}

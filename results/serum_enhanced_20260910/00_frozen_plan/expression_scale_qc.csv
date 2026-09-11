@@ -1,0 +1,8 @@
+quantile,value,missing_values,interpretation
+min,1.347544,0,GEO archived processed log2-scale expression; no additional log transformation applied
+q01,1.858042,0,GEO archived processed log2-scale expression; no additional log transformation applied
+q25,3.317812,0,GEO archived processed log2-scale expression; no additional log transformation applied
+median,4.7503085,0,GEO archived processed log2-scale expression; no additional log transformation applied
+q75,6.3686352500000005,0,GEO archived processed log2-scale expression; no additional log transformation applied
+q99,10.757296200000003,0,GEO archived processed log2-scale expression; no additional log transformation applied
+max,14.48512,0,GEO archived processed log2-scale expression; no additional log transformation applied

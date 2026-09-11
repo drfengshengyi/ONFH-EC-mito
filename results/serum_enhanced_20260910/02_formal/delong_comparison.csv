@@ -1,0 +1,2 @@
+"comparison","candidate_auc","ma_auc","delta_auc","paired_delong_p","scope"
+"candidate_vs_ma",0.88,0.76,0.12,0.122986636838557,"paired DeLong test of fixed aggregate cross-fitted predictions"

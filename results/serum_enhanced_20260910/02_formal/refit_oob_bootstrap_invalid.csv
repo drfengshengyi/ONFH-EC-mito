@@ -1,0 +1,20 @@
+attempt_id,n_oob_case,n_oob_control,n_unique_train,valid,invalid_reason
+49,12,1,27,False,OOB requires at least two samples per class
+117,14,1,25,False,OOB requires at least two samples per class
+131,10,1,29,False,OOB requires at least two samples per class
+137,10,1,29,False,OOB requires at least two samples per class
+155,8,1,31,False,OOB requires at least two samples per class
+191,13,1,26,False,OOB requires at least two samples per class
+249,10,1,29,False,OOB requires at least two samples per class
+314,11,1,28,False,OOB requires at least two samples per class
+374,9,1,30,False,OOB requires at least two samples per class
+601,11,1,28,False,OOB requires at least two samples per class
+658,10,1,29,False,OOB requires at least two samples per class
+669,11,1,28,False,OOB requires at least two samples per class
+715,13,1,26,False,OOB requires at least two samples per class
+731,11,1,28,False,OOB requires at least two samples per class
+753,13,1,26,False,OOB requires at least two samples per class
+772,10,1,29,False,OOB requires at least two samples per class
+781,12,1,27,False,OOB requires at least two samples per class
+904,10,1,29,False,OOB requires at least two samples per class
+947,12,1,27,False,OOB requires at least two samples per class

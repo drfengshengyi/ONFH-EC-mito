@@ -2,7 +2,7 @@
 
 Code and processed outputs for:
 
-> **Participant-aware transcriptomic benchmarking of endothelial states and mitochondrial hypotheses in osteonecrosis of the femoral head**
+> **Participant-aware reanalysis maps pathway-rank robustness and preprocessing-sensitive endothelial states in osteonecrosis of the femoral head**
 
 The repository separates analysis, virtual knockout, spatial contextualization, and figure generation. Raw public matrices are not redistributed. Compact results and final figures are included for audit and reuse.
 
@@ -51,6 +51,14 @@ python qa\check_repository.py --rscript Rscript
 
 `workflow/run_all.ps1` runs the complete sequence. Install missing virtual-knockout R packages with `environment/install_official_sctenifoldknk.R`.
 
+Scientific Reports sensitivity modules are separate because they either require
+frozen intermediate objects or long resampling runs:
+
+```powershell
+.\workflow\run_sr_preprocessing_sensitivity.ps1 -SourceAnalysis <directory-with-h5ad-files> -Python python
+.\workflow\run_serum_enhanced.ps1 -Phase all -Python python -Rscript Rscript -DataDir .\data -Jobs 4
+```
+
 ## Analysis limits
 
 - Formal inference uses participants or sampling units when their identities are available.
@@ -59,6 +67,8 @@ python qa\check_repository.py --rscript Rscript
 - The `SQSTM1` analysis is an expression-derived network perturbation, not an experimental knockout or cell-fate simulation.
 - MtDNA-feature-excluded refits and 20 matched-gene perturbations calibrate robustness and specificity.
 - Virtual-knockout ranks remain exploratory. The interpretation emphasizes a heterogeneous selective-autophagy receptor system, with `CALCOCO2`/NDP52 as a secondary candidate and `OPTN` as a context control.
+- No-ComBat, annotation-margin, and low-EC-pseudobulk analyses quantify preprocessing sensitivity; they do not select a single definitive endothelial-state map.
+- The enhanced serum workflow performs outer-training-fold probe selection, full-pipeline label permutation, refit-aware out-of-bag bootstrap, and expression/variance-matched random-space calibration. It remains an internal exploratory analysis, not a diagnostic signature.
 
 ## Reproducibility
 

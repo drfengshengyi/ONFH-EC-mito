@@ -1,0 +1,83 @@
+"model","specificity","sensitivity"
+"Candidate",0,1
+"Candidate",0.1,1
+"Candidate",0.2,1
+"Candidate",0.3,1
+"Candidate",0.4,1
+"Candidate",0.5,1
+"Candidate",0.6,1
+"Candidate",0.7,1
+"Candidate",0.7,0.966666666666667
+"Candidate",0.7,0.933333333333333
+"Candidate",0.7,0.9
+"Candidate",0.7,0.866666666666667
+"Candidate",0.7,0.833333333333333
+"Candidate",0.7,0.8
+"Candidate",0.8,0.8
+"Candidate",0.8,0.766666666666667
+"Candidate",0.8,0.733333333333333
+"Candidate",0.8,0.7
+"Candidate",0.8,0.666666666666667
+"Candidate",0.9,0.666666666666667
+"Candidate",0.9,0.633333333333333
+"Candidate",0.9,0.6
+"Candidate",0.9,0.566666666666667
+"Candidate",0.9,0.533333333333333
+"Candidate",0.9,0.5
+"Candidate",0.9,0.466666666666667
+"Candidate",0.9,0.433333333333333
+"Candidate",0.9,0.4
+"Candidate",0.9,0.366666666666667
+"Candidate",0.9,0.333333333333333
+"Candidate",1,0.333333333333333
+"Candidate",1,0.3
+"Candidate",1,0.266666666666667
+"Candidate",1,0.233333333333333
+"Candidate",1,0.2
+"Candidate",1,0.166666666666667
+"Candidate",1,0.133333333333333
+"Candidate",1,0.1
+"Candidate",1,0.0666666666666667
+"Candidate",1,0.0333333333333333
+"Candidate",1,0
+"Ma comparator",0,1
+"Ma comparator",0,0.966666666666667
+"Ma comparator",0.1,0.966666666666667
+"Ma comparator",0.2,0.966666666666667
+"Ma comparator",0.2,0.933333333333333
+"Ma comparator",0.3,0.933333333333333
+"Ma comparator",0.4,0.933333333333333
+"Ma comparator",0.5,0.933333333333333
+"Ma comparator",0.6,0.933333333333333
+"Ma comparator",0.7,0.933333333333333
+"Ma comparator",0.7,0.9
+"Ma comparator",0.7,0.866666666666667
+"Ma comparator",0.7,0.833333333333333
+"Ma comparator",0.7,0.8
+"Ma comparator",0.7,0.766666666666667
+"Ma comparator",0.7,0.733333333333333
+"Ma comparator",0.7,0.7
+"Ma comparator",0.7,0.666666666666667
+"Ma comparator",0.7,0.633333333333333
+"Ma comparator",0.7,0.6
+"Ma comparator",0.7,0.566666666666667
+"Ma comparator",0.7,0.533333333333333
+"Ma comparator",0.7,0.5
+"Ma comparator",0.8,0.5
+"Ma comparator",0.8,0.466666666666667
+"Ma comparator",0.9,0.466666666666667
+"Ma comparator",0.9,0.433333333333333
+"Ma comparator",0.9,0.4
+"Ma comparator",0.9,0.366666666666667
+"Ma comparator",0.9,0.333333333333333
+"Ma comparator",0.9,0.3
+"Ma comparator",0.9,0.266666666666667
+"Ma comparator",0.9,0.233333333333333
+"Ma comparator",0.9,0.2
+"Ma comparator",0.9,0.166666666666667
+"Ma comparator",0.9,0.133333333333333
+"Ma comparator",0.9,0.1
+"Ma comparator",0.9,0.0666666666666667
+"Ma comparator",0.9,0.0333333333333333
+"Ma comparator",1,0.0333333333333333
+"Ma comparator",1,0

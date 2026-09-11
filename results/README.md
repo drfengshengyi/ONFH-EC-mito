@@ -12,11 +12,14 @@ public matrices are not redistributed.
 | Figure 4 | `plotting/make_figure4.py` | GSEA, module-score, signed-TF and communication tables in `results/figure_inputs/` |
 | Figure 5 | `analysis/spatial_contextualization.py` | GSE284089 spatial matrix, coordinates, deposited H&E image, and frozen gene sets |
 | Figure 6 | `plotting/make_genes_virtual_knockout_figure.R` | official-R donor results, matched-gene controls, nuclear refits, and matched-null pathway tables |
-| Figure 7 | `plotting/make_reviewed_figures.py` | `results/figure_inputs/diag_*` |
+| Figure 7 | `plotting/make_figure7_enhanced.R` | frozen plan and formal outputs in `results/serum_enhanced_20260910/` |
 | Supplementary Figure S1 | `plotting/make_evidence_model.py` | prespecified evidence model encoded in the script |
-| Supplementary Tables S1-S11 | versioned workbook | machine-readable analysis tables; S10g-5 is reconciled against the two `official_r_vko_no_mt_*_audit.csv` files and S11 contains the spatial summary, gene coverage, score controls, and spot-level values |
+| Supplementary Figure S2 | `plotting/make_figure7_enhanced.R` | refit-aware OOB, selected-feature count, matched-space QC, and calibration-bin diagnostics |
+| Supplementary Tables S1-S13 | `tools/append_sr_sensitivity_tables.py` and `qa/build_supplementary_table_s13.py` | S10 contains virtual-knockout audits, S11 spatial context, S12 preprocessing/annotation/HOA1 sensitivity, and S13 the enhanced serum audit; the assembled submission workbook is kept local |
 
 `workflow/run_figures.ps1` is the canonical figure entry point. Historical
 scripts that are not part of that workflow must not write to `figures/final/`.
 The optional `--submission-dir` repository audit requires byte-identical PDF
 figures and a byte-identical supplementary workbook.
+
+Large serum checkpoints, the 52.5-MB per-match gene map, rendered figure files, and manuscript/submission artifacts are intentionally not versioned in this release. The frozen design, compact formal tables, plot data, and code are retained; omitted artifacts are reproducible from `workflow/run_serum_enhanced.ps1`.

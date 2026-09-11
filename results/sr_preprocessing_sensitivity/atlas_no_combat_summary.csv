@@ -1,0 +1,2 @@
+n_cells,n_original_clusters,n_no_combat_clusters,cluster_adjusted_rand_index,cell_type_adjusted_rand_index,cell_level_type_concordance,original_combat_ec_cells,no_combat_ec_cells,ec_overlap_cells,ec_jaccard
+115572,28,26,0.4384040244261203,0.758078314568184,0.793946630671789,13426,8065,7640,0.5515847231246841

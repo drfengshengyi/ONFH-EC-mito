@@ -1,0 +1,75 @@
+{
+  "source_h5ad": "D:\\onfh-pilot\\analysis\\ec_final.h5ad",
+  "source_h5ad_bytes": 299245434,
+  "source_h5ad_mtime": 1786576264.5788667,
+  "source_scores": "D:\\onfh-pilot\\analysis\\ec_subtype_scores.csv",
+  "source_atlas_h5ad": "D:\\onfh-pilot\\analysis\\atlas_annotated.h5ad",
+  "output_dir": "E:\\ONFH2026dry\\results\\sr_preprocessing_sensitivity",
+  "thresholds": [
+    0.1,
+    0.15,
+    0.2
+  ],
+  "scanpy": "1.12.3",
+  "anndata": "0.13.2",
+  "scikit_learn": "1.9.0",
+  "random_state": 0,
+  "serum_analysis_rerun": false,
+  "no_combat_summary": {
+    "n_cells": 13426,
+    "n_hvg": 1500,
+    "n_original_clusters": 9,
+    "n_no_combat_clusters": 13,
+    "cluster_adjusted_rand_index": 0.166950014632861,
+    "subtype_adjusted_rand_index": 0.11469961609971911,
+    "cell_level_subtype_concordance": 0.5863995233129748,
+    "no_combat_typeH_exact_omnibus_p": 0.8285714285714286
+  },
+  "atlas_no_combat_summary": {
+    "n_cells": 115572,
+    "n_original_clusters": 28,
+    "n_no_combat_clusters": 26,
+    "cluster_adjusted_rand_index": 0.4384040244261203,
+    "cell_type_adjusted_rand_index": 0.758078314568184,
+    "cell_level_type_concordance": 0.793946630671789,
+    "original_combat_ec_cells": 13426,
+    "no_combat_ec_cells": 8065,
+    "ec_overlap_cells": 7640,
+    "ec_jaccard": 0.5515847231246841
+  },
+  "threshold_summary": [
+    {
+      "margin_threshold": 0.1,
+      "ambiguous_clusters": 6,
+      "total_clusters": 9,
+      "ambiguous_cells": 8863,
+      "ambiguous_cells_percent": 66.01370475197378,
+      "typeH_exact_omnibus_p": 0.07142857142857142
+    },
+    {
+      "margin_threshold": 0.15,
+      "ambiguous_clusters": 7,
+      "total_clusters": 9,
+      "ambiguous_cells": 9422,
+      "ambiguous_cells_percent": 70.17726798748697,
+      "typeH_exact_omnibus_p": 0.23214285714285715
+    },
+    {
+      "margin_threshold": 0.2,
+      "ambiguous_clusters": 7,
+      "total_clusters": 9,
+      "ambiguous_cells": 9422,
+      "ambiguous_cells_percent": 70.17726798748697,
+      "typeH_exact_omnibus_p": 0.23214285714285715
+    }
+  ],
+  "low_depth_summary": {
+    "hoa1_retained_ec_cells": 26,
+    "hoa1_stored_ec_nCount_sum": 277831,
+    "hoa1_key_pathways_positive": 4,
+    "hoa1_key_pathways_fdr_lt_0_05": 4,
+    "hoa1_key_pathways_total": 4,
+    "hoa1_key_pathway_NES_min": 2.35678565460841,
+    "hoa1_key_pathway_NES_max": 2.64789959876409
+  }
+}

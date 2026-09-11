@@ -1,0 +1,33 @@
+{
+  "scope": "exploratory internal cross-fitted evaluation; not external validation",
+  "candidate": {
+    "auc": 0.8799999999999999,
+    "average_precision": 0.9485093763552224,
+    "brier": 0.0857880354000932
+  },
+  "ma": {
+    "auc": 0.76,
+    "average_precision": 0.8667165460003547,
+    "brier": 0.1994313953960868
+  },
+  "comparison": {
+    "comparison": "candidate_minus_ma",
+    "delta_auc": 0.11999999999999988,
+    "delta_average_precision": 0.08179283035486762,
+    "delta_brier": -0.11364335999599362,
+    "brier_direction": "negative favors candidate"
+  },
+  "label_permutation": {
+    "n": 1000,
+    "empirical_p": 0.001998001998001998
+  },
+  "matched_random_spaces": {
+    "n": 1000,
+    "empirical_p_specificity": 0.7262737262737263
+  },
+  "refit_oob_bootstrap": {
+    "n_valid": 1000,
+    "n_invalid_before_target": 19
+  },
+  "paired_delong_p": 0.122986636838557
+}

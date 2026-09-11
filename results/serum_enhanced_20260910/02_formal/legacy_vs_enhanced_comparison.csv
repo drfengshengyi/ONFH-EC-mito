@@ -1,0 +1,6 @@
+metric,legacy_value,enhanced_value,absolute_difference,relative_difference,plausible_pipeline_source,changes_cautious_conclusion
+candidate_auc,0.87,0.8799999999999999,0.009999999999999898,0.0114942528735631,outer-training-fold probe collapse and inner-fold scaler fitting,False
+candidate_average_precision,0.927,0.9485093763552224,0.02150937635522232,0.023203210739182654,outer-training-fold probe collapse and inner-fold scaler fitting,False
+ma_auc,0.813,0.76,-0.052999999999999936,-0.06519065190651899,outer-training-fold probe collapse and inner-fold scaler fitting,False
+delta_auc,0.057,0.11999999999999988,0.06299999999999989,1.105263157894735,both candidate and comparator were rebuilt under the stricter paired pipeline,False
+paired_delong_p,0.192,0.122986636838557,-0.069013363161443,-0.3594445997991823,paired DeLong applied to the newly aggregated cross-fitted predictions,False

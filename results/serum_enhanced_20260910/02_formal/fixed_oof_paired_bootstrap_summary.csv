@@ -1,0 +1,4 @@
+metric,median,q025,q975,two_sided_zero_p,scope
+delta_auc,0.11999999999999977,-0.026666666666666727,0.27333333333333343,0.11399430028498575,paired stratified bootstrap of fixed aggregate cross-fitted predictions
+delta_ap,0.07129014874705647,-0.005411796949069596,0.15843684029984814,0.07349632518374082,paired stratified bootstrap of fixed aggregate cross-fitted predictions
+delta_brier,-0.11399316812768084,-0.15307372844306483,-0.07182377711642576,9.99950002499875e-05,paired stratified bootstrap of fixed aggregate cross-fitted predictions

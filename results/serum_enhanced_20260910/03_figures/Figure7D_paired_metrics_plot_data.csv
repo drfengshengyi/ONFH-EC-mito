@@ -1,0 +1,31 @@
+"repeat","metric","model","value"
+0,"AUC","Candidate",0.89
+1,"AUC","Candidate",0.816666666666667
+2,"AUC","Candidate",0.876666666666667
+3,"AUC","Candidate",0.883333333333333
+4,"AUC","Candidate",0.896666666666667
+0,"AP","Candidate",0.95470093312894
+1,"AP","Candidate",0.911283455696908
+2,"AP","Candidate",0.950811058161548
+3,"AP","Candidate",0.954980563120527
+4,"AP","Candidate",0.959556724069237
+0,"Brier score","Candidate",0.112004675131851
+1,"Brier score","Candidate",0.114941305542302
+2,"Brier score","Candidate",0.104997374310262
+3,"Brier score","Candidate",0.107150114997297
+4,"Brier score","Candidate",0.091833627723577
+0,"AUC","Ma comparator",0.796666666666667
+1,"AUC","Ma comparator",0.706666666666667
+2,"AUC","Ma comparator",0.703333333333333
+3,"AUC","Ma comparator",0.76
+4,"AUC","Ma comparator",0.786666666666667
+0,"AP","Ma comparator",0.89613732952869
+1,"AP","Ma comparator",0.847345676460261
+2,"AP","Ma comparator",0.8212613535977
+3,"AP","Ma comparator",0.850039818338907
+4,"AP","Ma comparator",0.863579810000534
+0,"Brier score","Ma comparator",0.246334919907958
+1,"Brier score","Ma comparator",0.221920458888042
+2,"Brier score","Ma comparator",0.21653215825151
+3,"Brier score","Ma comparator",0.207951800904107
+4,"Brier score","Ma comparator",0.216009317948035

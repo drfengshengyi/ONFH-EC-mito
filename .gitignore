@@ -25,6 +25,24 @@ __pycache__/
 *.bak
 tmp/
 
+# Enhanced serum rerun intermediates. Keep the frozen plan, formal summaries,
+# plot data, and final review figures; regenerate these large checkpoints.
+results/serum_enhanced_*/01_smoke/
+results/serum_enhanced_*/checkpoints/
+results/serum_enhanced_*/04_report/
+results/serum_enhanced_*/02_formal/matched_random_space_gene_map.csv.gz
+results/serum_enhanced_*/00_frozen_plan/input_manifest.csv
+results/serum_enhanced_*/00_frozen_plan/file_checksums_sha256.txt
+results/serum_enhanced_*/00_frozen_plan/protected_artifact_manifest_before.csv
+results/serum_enhanced_*/03_figures/*.pdf
+results/serum_enhanced_*/03_figures/*.png
+results/Supplementary_Tables_S1-S13.xlsx
+
+# Local manuscript-page previews and layout snapshots.
+qa/*_manuscript_page*.png
+qa/figure4_layout_before_*/
+qa/*_layout_QA_*.txt
+
 # Local graphical-abstract and illustration work.  Commit only a deliberately
 # named final export/source after manual editing is complete.
 figures/qa/
