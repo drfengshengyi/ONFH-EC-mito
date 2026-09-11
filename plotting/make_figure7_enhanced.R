@@ -186,12 +186,39 @@ pS1 <- ggplot(boot_plot, aes(value, fill = metric)) + geom_histogram(bins = 32, 
   facet_wrap(~metric, scales = "free_x", ncol = 1) + guides(fill = "none") + labs(title = "Refit-aware OOB distributions", x = NULL, y = "Count") + theme_review
 pS2 <- ggplot(features, aes(n_selected_genes)) + geom_histogram(binwidth = 1, fill = candidate_col, colour = "white") +
   labs(title = "Selected genes per outer fit", x = "Number of non-zero coefficients", y = "Count") + theme_review
-pS3 <- ggplot(random_qc, aes(expanded_fraction)) + geom_histogram(bins = 25, fill = gold_col, colour = "white") +
-  labs(title = "Matched-space expansion", x = "Fraction requiring Manhattan expansion", y = "Count") + theme_review
+qc_median_expression <- median(random_qc$mean_abs_expression_difference, na.rm = TRUE)
+qc_median_logvariance <- median(random_qc$mean_abs_logvariance_difference, na.rm = TRUE)
+qc_n_expanded <- sum(random_qc$expanded_fraction > 0, na.rm = TRUE)
+pS3 <- ggplot(
+  random_qc,
+  aes(mean_abs_expression_difference, mean_abs_logvariance_difference)
+) +
+  geom_vline(xintercept = qc_median_expression, colour = "grey72", linewidth = .35, linetype = 2) +
+  geom_hline(yintercept = qc_median_logvariance, colour = "grey72", linewidth = .35, linetype = 2) +
+  geom_point(shape = 21, size = 1.45, stroke = .2, fill = gold_col, colour = "white", alpha = .62) +
+  labs(
+    title = "Matched random-space QC",
+    subtitle = sprintf(
+      "%s matched sets; Manhattan expansion required: %s",
+      comma(nrow(random_qc)), comma(qc_n_expanded)
+    ),
+    x = "Mean absolute expression difference",
+    y = "Mean absolute log-variance difference"
+  ) +
+  scale_x_continuous(labels = label_number(accuracy = .01)) +
+  scale_y_continuous(labels = label_number(accuracy = .001)) +
+  theme_review
 pS4 <- ggplot(calibration, aes(factor(bin), n, fill = model)) + geom_col(position = "dodge") +
   scale_fill_manual(values = c(candidate = candidate_col, ma = ma_col)) +
   labs(title = "Samples per calibration bin", x = "Quantile bin", y = "n") + theme_review
-supp <- (pS1 | pS2) / (pS3 | pS4) + plot_layout(guides = "collect") & theme(legend.position = "top")
+supp <- (pS1 | pS2) / (pS3 | pS4) +
+  plot_layout(guides = "collect") +
+  plot_annotation(tag_levels = "A") &
+  theme(
+    legend.position = "top",
+    plot.tag = element_text(face = "bold", size = 11, colour = text_col),
+    plot.tag.position = c(0, 1)
+  )
 ggsave(file.path(figdir, "Figure7_enhanced_supplemental_diagnostics.pdf"), supp, width = 190, height = 150, units = "mm", device = cairo_pdf)
 agg_png(file.path(figdir, "Figure7_enhanced_supplemental_diagnostics.png"), width = 190, height = 150, units = "mm", res = 300, background = "white")
 print(supp)
